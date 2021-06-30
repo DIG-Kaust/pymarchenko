@@ -1,0 +1,34 @@
+TODO
+
+- Marchenko:
+    - code: V
+    - example: V
+    - test: copy from pylops
+    - imaging: X add code and example
+
+- Iterative Marchenko:
+    - code: V
+    - example: V
+    - test: X
+    - imaging: X
+
+- Rayleigh-Marchenko:
+    - code: V (need to take away Rollop)
+    - example: V
+    - test: X
+    - imaging: X
+
+- TMM/demultiple:
+    - code: X  (need to take away Rollop)
+    - example: X
+    - test: X
+    - imaging: X
+
+- Marchenko missing:
+    - code: X  (need to take away Rollop)
+    - example: X
+    - test: X
+    - imaging: X
+
+
+- Change all codes to work without Roll and do eveything to do with flipping from -T to T to nonphysical panel used for efficiency inside
