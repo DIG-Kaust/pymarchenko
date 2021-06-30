@@ -41,7 +41,7 @@ def main():
 	print('OMP_NUM_THREADS', os.environ["OMP_NUM_THREADS"])
 	print('MKL_NUM_THREADS', os.environ["MKL_NUM_THREADS"])
 	
-	inputfile = '/home/ravasim/Documents/Data/Shynclinal_flatwavelet_dualsensor/input_dualsensor.npz' # choose file in testdata folder of repo
+	inputfile = '../data/raymarchenko/input_dualsensor.npz' # choose file in testdata folder of repo
 
 	vel = 2400.0        # velocity
 	tsoff = 0.06        # direct arrival time shift source side
@@ -103,7 +103,7 @@ def main():
 	#vz = inputdata['vz'][::js, :, ::jr]
 
 	# separated data
-	d = loadmat('/home/ravasim/Documents/Data/Shynclinal_flatwavelet_dualsensor/separated_data.mat')
+	d = loadmat('../data/raymarchenko/separated_data.mat')
 	Vzu = d['VUP'][:,:,::js]
 	Vzd = d['VDOWN'][:,:,::js]
 

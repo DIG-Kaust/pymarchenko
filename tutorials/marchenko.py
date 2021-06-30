@@ -88,9 +88,9 @@ plt.title('Model and Geometry')
 plt.xlim(x[0], x[-1])
 
 fig, axs = plt.subplots(1, 3, sharey=True, figsize=(12, 7))
-axs[0].imshow(R[0].T, cmap='gray', vmin=-1e-2, vmax=1e-2,
+axs[0].imshow(R[20].T, cmap='gray', vmin=-1e-2, vmax=1e-2,
               extent=(r[0, 0], r[0, -1], t[-1], t[0]))
-axs[0].set_title('R shot=0')
+axs[0].set_title('R shot=20')
 axs[0].set_xlabel(r'$x_R$')
 axs[0].set_ylabel(r'$t$')
 axs[0].axis('tight')
@@ -102,9 +102,9 @@ axs[1].set_xlabel(r'$x_R$')
 axs[1].set_ylabel(r'$t$')
 axs[1].axis('tight')
 axs[1].set_ylim(1.5, 0)
-axs[2].imshow(R[-1].T, cmap='gray', vmin=-1e-2, vmax=1e-2,
+axs[2].imshow(R[ns-20].T, cmap='gray', vmin=-1e-2, vmax=1e-2,
               extent=(r[0, 0], r[0, -1], t[-1], t[0]))
-axs[2].set_title('R shot=%d' %ns)
+axs[2].set_title('R shot=%d' %(ns-20))
 axs[2].set_xlabel(r'$x_R$')
 axs[2].axis('tight')
 axs[2].set_ylim(1.5, 0)
