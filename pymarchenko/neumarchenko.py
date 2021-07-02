@@ -198,6 +198,8 @@ class NeumannMarchenko():
             Use :func:`numpy.matmul` (``True``) or for-loop with :func:`numpy.dot`
             (``False``) in :py:class:`pylops.signalprocessing.Fredholm1` operator.
             Refer to Fredholm1 documentation for details.
+        n_iter : :obj:`int`, optional
+            Number of iterations of Neumann series
 
         Returns
         ----------
