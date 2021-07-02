@@ -257,7 +257,7 @@ class MME():
         U_sub_minus = np.zeros((self.nr, self.nt), dtype=self.dtype)
         for it in range(itmin, ntmax if ntmax is not None else self.nt):
             U_sub_minus[:, it] = \
-                self._apply_onetime_onesrc(it * self.dt - trcomp* self.toff, Rop,
+                self._apply_onetime_onesrc(it * self.dt - trcomp * self.toff, Rop,
                                            R1op, Rsrc, n_iter)[it]
         return U_sub_minus
 
@@ -268,7 +268,7 @@ class MME():
 
         # Create window
         w = np.zeros((self.nr, nsrc, 2 * self.nt - 1), dtype=self.dtype)
-        w[:, int(self.toff / self.dt):int(t0 / self.dt)] = 1
+        w[:, :, int(self.toff / self.dt):int(t0 / self.dt)] = 1
         if self.nsmooth > 0:
             smooth = np.ones(self.nsmooth, dtype=self.dtype) / self.nsmooth
             w = filtfilt(smooth, 1, w)
