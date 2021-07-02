@@ -19,16 +19,13 @@ TODO
     - imaging: X (need to move codes from script to library!
 
 - TMM/demultiple:
-    - code: X  (Need to fix code with multiple sources)
-    - example: X
+    - code: V
+    - example: V
     - test: X
-    - imaging: X
 
 - Marchenko missing:
-    - code: X  (need to take away Rollop)
+    - code: X  (need to do multi with Restriction... and add option to use sparsity precond.,
+    Radon as default or anything else directly passed by user)
     - example: X
     - test: X
     - imaging: X
-
-
-- Change all codes to work without Roll and do eveything to do with flipping from -T to T to nonphysical panel used for efficiency inside

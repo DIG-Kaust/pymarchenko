@@ -99,10 +99,14 @@ class MME():
         \Theta \mathbf{R^*} \Theta R = \sum_{k=1}^\inf (\Theta \mathbf{R^*}
         \Theta \mathbf{R})^k \delta
 
-    where $R$ is the reflection response (or $\delta$ is a spatio-temporal delta).
+    where :math:`R` is the reflection response (or $\delta$ is a
+    spatio-temporal delta) and :math:`\Theta` is the window. The MME algorithm
+    requires a small time offset $toff$ (on the order of the wavelet lenght)
+    to be subtracted to the window time, whilst the TMME requires such time
+    offset to be added.
 
-    At this point we compute $U^-$ and extract its values at time sample
-    $t=2t_d$:
+    At this point the projected demultipled data $U^-$ is computed and
+    its values at time sample $t=2t_d$ is extracted:
 
     .. math::
         \mathbf{U^-} = \mathbf{R} + \mathbf{R} \mathbf{v^+} = \mathbf{R} +
