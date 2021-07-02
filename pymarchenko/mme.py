@@ -2,7 +2,7 @@ import logging
 import warnings
 import numpy as np
 
-from scipy.signal import filtfilt
+from scipy.signal import convolve, filtfilt
 from scipy.sparse.linalg import lsqr
 from scipy.special import hankel2
 from pylops.utils import dottest as Dottest
@@ -31,6 +31,11 @@ class MME():
         provided in frequency, `R` should contain the positive time axis
         followed by the negative one. Note that the reflection response
         should have already been multiplied by 2.
+    wav : :obj:`numpy.ndarray`
+        Wavelet to apply to the reflection response shot gather used as
+        initial guess
+    wav_c : :obj:`int`, optional
+        Index of center of wavelet. If ``None`` the middle sample is used.
     dt : :obj:`float`, optional
         Sampling of time integration axis
     nt : :obj:`float`, optional
@@ -39,8 +44,6 @@ class MME():
         Sampling of receiver integration axis
     nfmax : :obj:`int`, optional
         Index of max frequency to include in deconvolution process
-    wav : :obj:`numpy.ndarray`, optional
-        Wavelet to apply to direct arrival when created using ``trav``
     toff : :obj:`float`, optional
         Time-offset to apply to traveltime
     nsmooth : :obj:`int`, optional
@@ -96,8 +99,7 @@ class MME():
         \Theta \mathbf{R^*} \Theta R = \sum_{k=1}^\inf (\Theta \mathbf{R^*}
         \Theta \mathbf{R})^k \delta
 
-    where $R$ is the reflection response
-    (or $\delta$ is a spatio-temporal delta).
+    where $R$ is the reflection response (or $\delta$ is a spatio-temporal delta).
 
     At this point we compute $U^-$ and extract its values at time sample
     $t=2t_d$:
@@ -119,13 +121,16 @@ class MME():
         consequences for imaging", Geophysics, vol. 84, pp. Q27–Q36. 2019.
 
     """
-    def __init__(self, R, dt=0.004, nt=None, dr=1.,
-                 nfmax=None, wav=None, toff=0.0, nsmooth=10,
+    def __init__(self, R, wav, wav_c=None, dt=0.004, nt=None, dr=1.,
+                 nfmax=None, toff=0.0, nsmooth=10,
                  dtype='float64', saveRt=True, prescaled=False):
         # Save inputs into class
         self.dt = dt
         self.dr = dr
         self.wav = wav
+        self.wav_c = wav_c
+        if wav is not None and wav_c is None:
+            self.wav_c = len(wav) // 2
         self.toff = toff
         self.nsmooth = nsmooth
         self.saveRt = saveRt
@@ -165,52 +170,78 @@ class MME():
         # bring frequency to first dimension
         self.Rtwosided_fft = self.Rtwosided_fft.transpose(2, 0, 1)
 
-    def apply_onetime_one(self, t0, isrc, nfft=None, usematmul=False, n_iter=10):
-        r"""Marchenko redatuming for one time step and one source
-
-        Solve the Marchenko Multiple elimination iterative substitution
-        for a single time step given its direct arrival traveltime curve (``trav``)
-        and waveform (``G0``).
-
-        Parameters
-        ----------
-        t0 : :obj:`float`
-            Time level
-        isrc : :obj:`int`
-            Source index
-        nfft : :obj:`int`, optional
-            Number of samples in fft when creating the analytical direct wave
-        usematmul : :obj:`bool`, optional
-            Use :func:`numpy.matmul` (``True``) or for-loop with :func:`numpy.dot`
-            (``False``) in :py:class:`pylops.signalprocessing.Fredholm1` operator.
-            Refer to Fredholm1 documentation for details.
-
-        Returns
-        ----------
-        f1_inv_minus : :obj:`numpy.ndarray`
-            Inverted upgoing focusing function of size :math:`[n_r \times n_t]`
-        f1_inv_plus : :obj:`numpy.ndarray`
-            Inverted downgoing focusing function
-            of size :math:`[n_r \times n_t]`
-        p0_minus : :obj:`numpy.ndarray`
-            Single-scattering standard redatuming upgoing Green's function of
-            size :math:`[n_r \times n_t]`
-        g_inv_minus : :obj:`numpy.ndarray`
-            Inverted upgoing Green's function of size :math:`[n_r \times n_t]`
-        g_inv_plus : :obj:`numpy.ndarray`
-            Inverted downgoing Green's function
-            of size :math:`[n_r \times n_t]`
-
+    def _apply_onetime_onesrc(self, t0, Rop, R1op, Rsrc, n_iter=10):
+        """Marchenko redatuming for one time step and one source
         """
         # Create window
         w = np.zeros((self.nr, 2 * self.nt - 1), dtype=self.dtype)
-
-        w = np.zeros((nr, 2 * nt - 1))
-        w[:, int(t0 / dt):self.nt] = 1
+        w[:, int(self.toff / self.dt):int(t0 / self.dt)] = 1
         if self.nsmooth > 0:
             smooth = np.ones(self.nsmooth, dtype=self.dtype) / self.nsmooth
             w = filtfilt(smooth, 1, w)
         w = to_cupy_conditional(self.Rtwosided_fft, w)
+        Wop = Diagonal(w.T.ravel())
+
+        # Create initial guess
+        if self.wav is not None:
+            Rsrc = np.apply_along_axis(convolve, -1, Rsrc, self.wav,
+                                       mode='full')
+            Rsrc = Rsrc[:, self.wav_c:][:, :self.nt]
+        v_sub_plus = np.concatenate((Rsrc.T,
+                                     np.zeros((self.nt - 1, self.nr),
+                                              dtype=self.dtype)))
+
+        # First step
+        v_sub_plus = Wop * R1op * Wop * v_sub_plus.ravel()
+
+        # Run iterative scheme
+        dv_sub_plus = v_sub_plus.copy().ravel()
+        for _ in range(n_iter - 1):
+            dv_sub_plus = (Wop * R1op * Wop * Rop) * dv_sub_plus
+            v_sub_plus += dv_sub_plus
+
+        v_sub_minus = Rop * v_sub_plus.ravel()
+        U_sub_minus = Rsrc.T + v_sub_minus.reshape(2*self.nt-1, self.nr)[:self.nt]
+        return U_sub_minus
+
+    def apply_onesrc(self, Rsrc, usematmul=False, trcomp=False, ntmax=None,
+                     n_iter=10):
+        r"""Marchenko Multiple elimination for one shot gather
+
+        Solve the Marchenko Multiple elimination problem via
+        iterative substitution for a set of sources
+        Parameters
+        ----------
+        t0 : :obj:`float`
+            Time level
+        Rsrc : :obj:`np.ndarray`
+            Reflection response in time domain for single source of
+            size :math:`[n_r \times n_t]`.
+        usematmul : :obj:`bool`, optional
+            Use :func:`numpy.matmul` (``True``) or for-loop with :func:`numpy.dot`
+            (``False``) in :py:class:`pylops.signalprocessing.Fredholm1` operator.
+            Refer to Fredholm1 documentation for details.
+        trcomp : :obj:`bool`, optional
+            Transmission compensation
+        ntmax : :obj:`int`, optional
+            Index of maximum time to run demultiple for
+        n_iter : :obj:`int`, optional
+            Number of iterations of Neumann series
+
+        Returns
+        ----------
+        U_inv_minus : :obj:`numpy.ndarray`
+            Upgoing projected focusing function of size
+            :math:`[n_r \times n_t]`
+
+        """
+        # Choose how to add offset to window (positive or negative)
+        itmin = int(self.toff / self.dt)
+        if trcomp:
+            trcomp = -1.
+            itmin = 1
+        else:
+            trcomp = 1.
 
         # Create operators
         Rop = MDC(self.Rtwosided_fft, self.nt2, nv=1, dt=self.dt, dr=self.dr,
@@ -221,37 +252,107 @@ class MME():
                    twosided=False, conj=True, transpose=False,
                    saveGt=self.saveRt, prescaled=self.prescaled,
                    usematmul=usematmul, dtype=self.dtype)
-        Wop = Diagonal(w.T.flatten())
+
+        # Run estimate over time steps
+        U_sub_minus = np.zeros((self.nr, self.nt), dtype=self.dtype)
+        for it in range(itmin, ntmax if ntmax is not None else self.nt):
+            U_sub_minus[:, it] = \
+                self._apply_onetime_onesrc(it * self.dt - trcomp* self.toff, Rop,
+                                           R1op, Rsrc, n_iter)[it]
+        return U_sub_minus
+
+    def _apply_onetime_multisrc(self, t0, Rop, R1op, Rsrcs, n_iter=10):
+        """Marchenko redatuming for one time step and multiple sources
+        """
+        nsrc = Rsrcs.shape[0]
+
+        # Create window
+        w = np.zeros((self.nr, nsrc, 2 * self.nt - 1), dtype=self.dtype)
+        w[:, int(self.toff / self.dt):int(t0 / self.dt)] = 1
+        if self.nsmooth > 0:
+            smooth = np.ones(self.nsmooth, dtype=self.dtype) / self.nsmooth
+            w = filtfilt(smooth, 1, w)
+        w = to_cupy_conditional(self.Rtwosided_fft, w)
+        Wop = Diagonal(w.transpose(2, 0, 1).ravel())
+
+        # Create initial guess
+        if self.wav is not None:
+            Rsrcs = np.apply_along_axis(convolve, -1, Rsrcs, self.wav,
+                                        mode='full')
+            Rsrcs = Rsrcs[:, :, self.wav_c:][:, :, :self.nt]
+        v_sub_plus = np.concatenate((Rsrcs.transpose(2, 1, 0),
+                                     np.zeros((self.nt - 1, self.nr, nsrc),
+                                              dtype=self.dtype)))
+
+        # First step
+        v_sub_plus = Wop * R1op * Wop * v_sub_plus.ravel()
 
         # Run iterative scheme
-        f1_sub_plus = fd_plus.copy().ravel()
-        df1_sub_plus = fd_plus.copy().ravel()
+        dv_sub_plus = v_sub_plus.copy().ravel()
         for _ in range(n_iter - 1):
-            df1_sub_plus = (Wop * R1op * Wop * Rop) * df1_sub_plus
-            f1_sub_plus += df1_sub_plus
-        f1_sub_minus = Wop * Rop * f1_sub_plus.ravel()
-        g_sub_minus = - (f1_sub_minus.ravel() - Rop * f1_sub_plus.ravel())
-        g_sub_plus = f1_sub_plus.ravel() - R1op * f1_sub_minus.ravel()
+            dv_sub_plus = (Wop * R1op * Wop * Rop) * dv_sub_plus
+            v_sub_plus += dv_sub_plus
 
-        f1_sub_plus = f1_sub_plus.reshape(self.nt2, self.nr).T
-        f1_sub_minus = f1_sub_minus.reshape(self.nt2, self.nr).T
-        g_sub_minus = g_sub_minus.reshape(self.nt2, self.nr).T
-        g_sub_plus = np.flipud(g_sub_plus.reshape(self.nt2, self.nr)).T
+        v_sub_minus = Rop * v_sub_plus.ravel()
+        U_sub_minus = Rsrcs.transpose(2, 1, 0) + \
+                      v_sub_minus.reshape(2*self.nt-1, self.nr, nsrc)[:self.nt]
+        return U_sub_minus
 
-        # Bring back to time axis with negative part
-        f1_sub_minus = np.fft.ifftshift(f1_sub_minus, axes=1)
-        f1_sub_plus = np.fft.ifftshift(f1_sub_plus, axes=1)
-        if rtm:
-            p0_minus = np.fft.ifftshift(p0_minus, axes=1)
-        if greens:
-            g_sub_minus = np.fft.ifftshift(g_sub_minus, axes=1)
-            g_sub_plus = np.fft.ifftshift(g_sub_plus, axes=1)
+    def apply_multisrc(self, Rsrcs, usematmul=False, trcomp=False, ntmax=None,
+                     n_iter=10):
+        r"""Marchenko Multiple elimination for multiple shot gathers
 
-        if rtm and greens:
-            return f1_sub_minus, f1_sub_plus, p0_minus, g_sub_minus, g_sub_plus
-        elif rtm:
-            return f1_sub_minus, f1_sub_plus, p0_minus
-        elif greens:
-            return f1_sub_minus, f1_sub_plus, g_sub_minus, g_sub_plus
+        Solve the Marchenko Multiple elimination problem via
+        iterative substitution for a set of sources
+
+        Parameters
+        ----------
+        t0 : :obj:`float`
+            Time level
+        Rsrcs : :obj:`np.ndarray`
+            Reflection response in time domain for multiple sources of
+            size :math:`[n_s \times n_r \times n_t]`.
+        usematmul : :obj:`bool`, optional
+            Use :func:`numpy.matmul` (``True``) or for-loop with :func:`numpy.dot`
+            (``False``) in :py:class:`pylops.signalprocessing.Fredholm1` operator.
+            Refer to Fredholm1 documentation for details.
+        trcomp : :obj:`bool`, optional
+            Transmission compensation
+        ntmax : :obj:`int`, optional
+            Index of maximum time to run demultiple for
+        n_iter : :obj:`int`, optional
+            Number of iterations of Neumann series
+
+        Returns
+        ----------
+        U_inv_minus : :obj:`numpy.ndarray`
+            Upgoing projected focusing function of size
+            :math:`[n_s \times n_r \times n_t]`
+
+        """
+        # Choose how to add offset to window (positive or negative)
+        itmin = int(self.toff / self.dt)
+        if trcomp:
+            trcomp = -1.
+            itmin = 1
         else:
-            return f1_sub_minus, f1_sub_plus
+            trcomp = 1.
+
+        # Create operators
+        nsrc = Rsrcs.shape[0]
+        Rop = MDC(self.Rtwosided_fft, self.nt2, nv=nsrc, dt=self.dt, dr=self.dr,
+                  twosided=False, conj=False, transpose=False,
+                  saveGt=self.saveRt, prescaled=self.prescaled,
+                  usematmul=usematmul, dtype=self.dtype)
+        R1op = MDC(self.Rtwosided_fft, self.nt2, nv=nsrc, dt=self.dt, dr=self.dr,
+                   twosided=False, conj=True, transpose=False,
+                   saveGt=self.saveRt, prescaled=self.prescaled,
+                   usematmul=usematmul, dtype=self.dtype)
+
+        # Run estimate over time steps
+        U_sub_minus = np.zeros((nsrc, self.nr, self.nt), dtype=self.dtype)
+        for it in range(itmin, ntmax if ntmax is not None else self.nt):
+            U_sub_minus[:, :, it] = \
+                self._apply_onetime_multisrc(it * self.dt - trcomp * self.toff, Rop,
+                                             R1op, Rsrcs, n_iter)[it].T
+        return U_sub_minus

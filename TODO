@@ -13,13 +13,13 @@ TODO
     - imaging: X
 
 - Rayleigh-Marchenko:
-    - code: V (need to take away Rollop)
+    - code: V
     - example: V
     - test: X
-    - imaging: X
+    - imaging: X (need to move codes from script to library!
 
 - TMM/demultiple:
-    - code: X  (need to take away Rollop)
+    - code: X  (Need to fix code with multiple sources)
     - example: X
     - test: X
     - imaging: X
