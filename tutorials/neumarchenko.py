@@ -26,7 +26,7 @@ inputfile = '../testdata/marchenko/input.npz'
 vel = 2400.0         # velocity
 toff = 0.045         # direct arrival time shift
 nsmooth = 10         # time window smoothing
-nfmax = 1000         # max frequency for MDC (#samples)
+nfmax = 400          # max frequency for MDC (#samples)
 niter = 10           # iterations
 
 inputdata = np.load(inputfile)
