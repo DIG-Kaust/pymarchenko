@@ -6,7 +6,7 @@ from scipy.signal import filtfilt
 from scipy.sparse.linalg import lsqr
 from scipy.special import hankel2
 from pylops.utils import dottest as Dottest
-from pylops import Diagonal, Identity, Block, BlockDiag, Roll
+from pylops import Diagonal, Identity, Block, BlockDiag
 from pylops.waveeqprocessing.mdd import MDC
 from pylops.waveeqprocessing.marchenko import directwave
 from pylops.optimization.solver import cgls
@@ -156,20 +156,22 @@ class RayleighMarchenko():
 
         # Add negative time to reflection data and convert to frequency
         if not np.iscomplexobj(VZplus):
-            VZplus = np.concatenate((self.ncp.zeros((self.ns, self.nr,
+            VZplus = np.concatenate((VZplus,
+                                     self.ncp.zeros((self.ns, self.nr,
                                                      self.nt - 1),
-                                                    dtype=VZplus.dtype),
-                                     VZplus), axis=-1)
+                                                    dtype=VZplus.dtype)),
+                                    axis=-1)
             VZplus_fft = np.fft.rfft(VZplus, self.nt2,
                                      axis=-1) / np.sqrt(self.nt2)
             self.VZplus_fft = VZplus_fft[..., :nfmax]
         else:
             self.VZplus_fft = VZplus
         if not np.iscomplexobj(VZminus):
-            VZminus = np.concatenate((self.ncp.zeros((self.ns, self.nr,
+            VZminus = np.concatenate((VZminus,
+                                      self.ncp.zeros((self.ns, self.nr,
                                                       self.nt - 1),
-                                                     dtype=VZminus.dtype),
-                                     VZminus), axis=-1)
+                                                     dtype=VZminus.dtype)),
+                                     axis=-1)
             VZminus_fft = np.fft.rfft(VZminus, self.nt2,
                                       axis=-1) / np.sqrt(self.nt2)
             self.VZminus_fft = VZminus_fft[..., :nfmax]
@@ -246,8 +248,9 @@ class RayleighMarchenko():
             ws[ir, :travsrc_off[ir]] = 1
         for ir in range(self.nr):
             wr[ir, :travrec_off[ir]] = 1
-        ws = np.hstack((np.fliplr(ws), ws[:, 1:]))
-        wr = np.hstack((np.fliplr(wr), wr[:, 1:]))
+        ws = np.hstack((ws[:, 1:], np.fliplr(ws)))
+        wr = np.hstack((wr[:, 1:], np.fliplr(wr)))
+
         if self.nsmooth > 0:
             smooth = np.ones(self.nsmooth, dtype=self.dtype) / self.nsmooth
             ws = filtfilt(smooth, 1, ws)
@@ -257,33 +260,30 @@ class RayleighMarchenko():
 
         # Create operators
         Vzuop = MDC(self.VZminus_fft, self.nt2, nv=1, dt=self.dt, dr=self.dr,
-                    twosided=True, conj=False, transpose=False,
+                    twosided=False, conj=False, transpose=False,
                     saveGt=self.saveVt, prescaled=self.prescaled,
                     usematmul=usematmul, dtype=self.dtype)
         Vzu1op = MDC(self.VZminus_fft, self.nt2, nv=1, dt=self.dt, dr=self.dr,
-                     twosided=True, conj=True, transpose=False,
+                     twosided=False, conj=True, transpose=False,
                      saveGt=self.saveVt, prescaled=self.prescaled,
                      usematmul=usematmul, dtype=self.dtype)
         Vzdop = MDC(self.VZplus_fft, self.nt2, nv=1, dt=self.dt, dr=self.dr,
-                    twosided=True, conj=False, transpose=False,
+                    twosided=False, conj=False, transpose=False,
                     saveGt=self.saveVt, prescaled=self.prescaled,
                     usematmul=usematmul, dtype=self.dtype)
         Vzd1op = MDC(self.VZplus_fft, self.nt2, nv=1, dt=self.dt, dr=self.dr,
-                     twosided=True, conj=True, transpose=False,
+                     twosided=False, conj=True, transpose=False,
                      saveGt=self.saveVt, prescaled=self.prescaled,
                      usematmul=usematmul, dtype=self.dtype)
-        Rollop = Roll(self.nt2 * self.ns,
-                      dims=(self.nt2, self.ns),
-                      dir=0, shift=-1, dtype=self.dtype)
 
         Wfop = Diagonal(wr.T.flatten())
         Wgop = Diagonal(ws.T.flatten())
 
         Dop = Block([[Wgop * Vzdop, Wgop * Vzuop],
-                     [Wgop * Rollop * Vzu1op, Wgop * Rollop * Vzd1op]])
+                     [Wgop * Vzu1op, Wgop * Vzd1op]])
         Mop = Dop * BlockDiag([Wfop, Wfop])
         Gop = Block([[Vzdop, Vzuop],
-                     [Rollop * Vzu1op, Rollop * Vzd1op]])
+                     [Vzu1op, Vzd1op]])
 
         if dottest:
             Dottest(Gop, 2 * self.ns * self.nt2,
@@ -307,9 +307,10 @@ class RayleighMarchenko():
                               'Provide either G0 or wav and nfft...')
                 raise ValueError('wav and/or nfft are not provided. '
                                  'Provide either G0 or wav and nfft...')
-        fd_plus = np.concatenate((np.fliplr(G0).T,
-                                  self.ncp.zeros((self.nt - 1, self.nr),
-                                                 dtype=self.dtype)))
+        fd_plus = np.concatenate((self.ncp.zeros((self.nt - 1, self.nr),
+                                                 dtype=self.dtype),
+                                  np.fliplr(G0).T))
+
         # Run standard redatuming as benchmark
         if rtm:
             p0_minus = Vzuop * fd_plus.flatten()
@@ -341,6 +342,15 @@ class RayleighMarchenko():
             g_inv = g_inv.reshape(2 * self.nt2, self.ns)
             g_inv_minus, g_inv_plus = -g_inv[:self.nt2].T, \
                                       np.fliplr(g_inv[self.nt2:].T)
+        # Bring back to time axis with negative part
+        f1_inv_minus = np.fft.ifftshift(f1_inv_minus, axes=1)
+        f1_inv_plus = np.fft.ifftshift(f1_inv_plus, axes=1)
+        if rtm:
+            p0_minus = np.fft.ifftshift(p0_minus, axes=1)
+        if greens:
+            g_inv_minus = np.fft.ifftshift(g_inv_minus, axes=1)
+            g_inv_plus = np.fft.ifftshift(g_inv_plus, axes=1)
+
         if rtm and greens:
             return f1_inv_minus, f1_inv_plus, p0_minus, g_inv_minus, g_inv_plus
         elif rtm:
@@ -424,8 +434,8 @@ class RayleighMarchenko():
         for ir in range(self.nr):
             for ivs in range(nvs):
                 wr[ir, ivs, :travrec_off[ir, ivs]] = 1
-        ws = np.concatenate((np.flip(ws, axis=-1), ws[:, :, 1:]), axis=-1)
-        wr = np.concatenate((np.flip(wr, axis=-1), wr[:, :, 1:]), axis=-1)
+        ws = np.concatenate((ws[:, :, 1:], np.flip(ws, axis=-1)), axis=-1)
+        wr = np.concatenate((wr[:, :, 1:], np.flip(wr, axis=-1)), axis=-1)
         if self.nsmooth > 0:
             smooth = np.ones(self.nsmooth, dtype=self.dtype) / self.nsmooth
             ws = filtfilt(smooth, 1, ws)
@@ -435,32 +445,29 @@ class RayleighMarchenko():
 
         # Create operators
         Vzuop = MDC(self.VZminus_fft, self.nt2, nv=nvs, dt=self.dt, dr=self.dr,
-                    twosided=True, conj=False, transpose=False,
+                    twosided=False, conj=False, transpose=False,
                     saveGt=self.saveVt, prescaled=self.prescaled,
                     usematmul=usematmul, dtype=self.dtype)
         Vzu1op = MDC(self.VZminus_fft, self.nt2, nv=nvs, dt=self.dt, dr=self.dr,
-                     twosided=True, conj=True, transpose=False,
+                     twosided=False, conj=True, transpose=False,
                      saveGt=self.saveVt, prescaled=self.prescaled,
                      usematmul=usematmul, dtype=self.dtype)
         Vzdop = MDC(self.VZplus_fft, self.nt2, nv=nvs, dt=self.dt, dr=self.dr,
-                    twosided=True, conj=False, transpose=False,
+                    twosided=False, conj=False, transpose=False,
                     saveGt=self.saveVt, prescaled=self.prescaled,
                     usematmul=usematmul, dtype=self.dtype)
         Vzd1op = MDC(self.VZplus_fft, self.nt2, nv=nvs, dt=self.dt, dr=self.dr,
-                     twosided=True, conj=True, transpose=False,
+                     twosided=False, conj=True, transpose=False,
                      saveGt=self.saveVt, prescaled=self.prescaled,
                      usematmul=usematmul, dtype=self.dtype)
-        Rollop = Roll(self.ns * nvs * self.nt2,
-                      dims=(self.nt2, self.ns, nvs),
-                      dir=0, shift=-1, dtype=self.dtype)
         Wfop = Diagonal(wr.transpose(2, 0, 1).flatten())
         Wgop = Diagonal(ws.transpose(2, 0, 1).flatten())
 
         Dop = Block([[Wgop * Vzdop, Wgop * Vzuop],
-                     [Wgop * Rollop * Vzu1op, Wgop * Rollop * Vzd1op]])
+                     [Wgop * Vzu1op, Wgop * Vzd1op]])
         Mop = Dop * BlockDiag([Wfop, Wfop])
         Gop = Block([[Vzdop, Vzuop],
-                     [Rollop * Vzu1op, Rollop * Vzd1op]])
+                     [Vzu1op, Vzd1op]])
 
         if dottest:
             Dottest(Gop, 2 * self.ns * nvs * self.nt2,
@@ -487,9 +494,9 @@ class RayleighMarchenko():
                               'Provide either G0 or wav and nfft...')
                 raise ValueError('wav and/or nfft are not provided. '
                                  'Provide either G0 or wav and nfft...')
-        fd_plus = np.concatenate((np.flip(G0, axis=-1).transpose(2, 0, 1),
-                                  self.ncp.zeros((self.nt - 1, self.nr, nvs),
-                                                 dtype = self.dtype)))
+        fd_plus = np.concatenate((self.ncp.zeros((self.nt - 1, self.nr, nvs),
+                                                 dtype=self.dtype),
+                                  np.flip(G0, axis=-1).transpose(2, 0, 1)))
 
         # Run standard redatuming as benchmark
         if rtm:
@@ -526,6 +533,15 @@ class RayleighMarchenko():
             g_inv = g_inv.reshape(2 * self.nt2, self.ns, nvs)
             g_inv_minus = -g_inv[:self.nt2].transpose(1, 2, 0)
             g_inv_plus = np.flip(g_inv[self.nt2:], axis=0).transpose(1, 2, 0)
+
+        # Bring back to time axis with negative part
+        f1_inv_minus = np.fft.ifftshift(f1_inv_minus, axes=-1)
+        f1_inv_plus = np.fft.ifftshift(f1_inv_plus, axes=-1)
+        if rtm:
+            p0_minus = np.fft.ifftshift(p0_minus, axes=-1)
+        if greens:
+            g_inv_minus = np.fft.ifftshift(g_inv_minus, axes=-1)
+            g_inv_plus = np.fft.ifftshift(g_inv_plus, axes=-1)
 
         if rtm and greens:
             return f1_inv_minus, f1_inv_plus, p0_minus, g_inv_minus, g_inv_plus
