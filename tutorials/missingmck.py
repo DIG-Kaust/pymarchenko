@@ -1,5 +1,5 @@
 """
-2. Marchenko redatuming with missing sources
+3. Marchenko redatuming with missing sources
 ============================================
 This example shows how the :py:class:`pymarchenko.marchenko.Marchenko`
 routine can handle acquisition geometries with missing sources. We will first
@@ -249,7 +249,7 @@ fig.tight_layout()
 # And the up- and down- Green's functions
 
 fig, axs = plt.subplots(2, 3, sharey=True, figsize=(14, 12))
-axs[0][0].imshow(g_inv_minus.T, cmap='gray', vmin=-5e5, vmax=5e5,
+axs[0][0].imshow(g_inv_minus[iava, :].T, cmap='gray', vmin=-5e5, vmax=5e5,
                  extent=(r[0, 0], r[0, -1], t2[-1], t2[0]))
 axs[0][0].set_title(r'$g^-$')
 axs[0][0].axis('tight')
@@ -264,7 +264,7 @@ axs[0][2].imshow(g_inv_minus_l1.T, cmap='gray', vmin=-5e5, vmax=5e5,
 axs[0][2].set_title(r'$g^- L1$')
 axs[0][2].axis('tight')
 axs[0][2].set_ylim(1.2, 0)
-axs[1][0].imshow(g_inv_plus.T, cmap='gray', vmin=-5e5, vmax=5e5,
+axs[1][0].imshow(g_inv_plus[iava, :].T, cmap='gray', vmin=-5e5, vmax=5e5,
                  extent=(r[0, 0], r[0, -1], t2[-1], t2[0]))
 axs[1][0].set_title(r'$g^+$')
 axs[1][0].axis('tight')
@@ -316,3 +316,4 @@ ax4.plot(t**2*g_inv_tot_l1[nr//4, nt-1:]/g_inv_tot.max(), t, '--g', lw=3, label=
 ax4.set_ylim(1.2, 0)
 ax4.legend()
 fig.tight_layout()
+
