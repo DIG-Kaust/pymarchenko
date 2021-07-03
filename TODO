@@ -3,8 +3,8 @@ TODO
 - Marchenko:
     - code: V
     - example: V
-    - test: copy from pylops
-    - imaging: X add code and example
+    - test: X, copy from pylops
+    - imaging: V
 
 - Iterative Marchenko:
     - code: V
@@ -24,8 +24,10 @@ TODO
     - test: X
 
 - Marchenko missing:
-    - code: X  (need to do multi with Restriction... and add option to use sparsity precond.,
-    Radon as default or anything else directly passed by user)
-    - example: X
+    - code: V
+    - example: V
     - test: X
-    - imaging: X
+
+
+- Fix angle gathers...
+- Do pylint of all functions

@@ -1,5 +1,5 @@
 """
-3. Rayleigh-Marchenko redatuming
+4. Rayleigh-Marchenko redatuming
 ================================
 This example shows how to set-up and run the
 :py:class:`pymarchenko.raymarchenko.RayleighMarchenko` algorithm using
