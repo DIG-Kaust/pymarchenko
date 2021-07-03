@@ -19,6 +19,7 @@ dependencies:
     - pytest-runner
     - setuptools_scm
     - sphinx-rtd-theme
+    - pydata-sphinx-theme
     - sphinx-gallery
     - nbsphinx
     - image

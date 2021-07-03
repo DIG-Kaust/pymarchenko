@@ -15,17 +15,8 @@ Redatuming
    :toctree: generated/
 
     neumarchenko.NeumannMarchenko
+    marchenko.Marchenko
     raymarchenko.RayleighMarchenko
-
-Imaging
--------
-
-.. currentmodule:: pymarchenko
-
-.. autosummary::
-   :toctree: generated/
-
-    imaging.MarchenkoImaging
 
 Demultiple
 ----------
@@ -36,6 +27,16 @@ Demultiple
    :toctree: generated/
 
     mme.MME
+
+Imaging
+-------
+
+.. currentmodule:: pymarchenko
+
+.. autosummary::
+   :toctree: generated/
+
+    imaging.MarchenkoImaging
 
 Utilities
 ---------

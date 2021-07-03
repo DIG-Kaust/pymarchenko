@@ -84,7 +84,7 @@ master_doc = 'index'
 # General information about the project
 year = datetime.date.today().year
 project = 'PyMarchenko'
-copyright = '{}, Matteo Ravasi'.format(year)
+copyright = '{}, DIG-Kaust'.format(year)
 
 # Version
 version = __version__
@@ -110,16 +110,25 @@ html_show_sphinx = True
 html_show_copyright = True
 
 # Theme config
-html_theme = "sphinx_rtd_theme"
+html_theme = "pydata_sphinx_theme" #"sphinx_rtd_theme"
 html_theme_options = {
-    'logo_only': True,
+    #'logo_only': True,
+    #'github_url': "https://github.com/DIG-Kaust/pymarchenko",
+    'icon_links': [
+        {
+            "name": "GitHub",
+            "url": "https://github.com/DIG-Kaust/pymarchenko",
+            "icon": "fab fa-github-square",
+        }
+    ],
     'display_version': True,
+    'collapse_navigation': True
 }
 html_context = {
     'menu_links_name': 'Repository',
     'menu_links': [
-        ('<i class="fa fa-github fa-fw"></i> Source Code', 'https://github.com/mrava87/pymarchenko'),
-        ('<i class="fa fa-users fa-fw"></i> Contributing', 'https://github.com/mrava87/pymarchenko/blob/master/CONTRIBUTING.md'),
+        ('<i class="fa fa-github fa-fw"></i> Source Code', 'https://github.com/DIG-Kaust/pymarchenko'),
+        ('<i class="fa fa-users fa-fw"></i> Contributing', 'https://github.com/DIG-Kaust/pymarchenko/blob/master/CONTRIBUTING.md'),
     ],
     # Custom variables to enable "Improve this page"" and "Download notebook"
     # links
@@ -129,7 +138,7 @@ html_context = {
                             sphinx_gallery_conf['examples_dirs'])),
     'github_project': 'PyLops',
     'github_repo': 'pymarchenko',
-    'github_version': 'master',
+    'github_version': 'main',
 }
 
 

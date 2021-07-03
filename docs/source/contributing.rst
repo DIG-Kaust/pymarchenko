@@ -83,7 +83,7 @@ that the both old and new tests pass successfully:
 
 .. code-block:: bash
 
-   >>  git add .
+   >> git add .
    >> git commit -m "Your detailed description of your changes."
    >> git push origin name-of-your-branch
 
