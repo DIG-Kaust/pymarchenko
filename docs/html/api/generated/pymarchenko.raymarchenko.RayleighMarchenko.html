@@ -1,0 +1,411 @@
+
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
+        <title>pymarchenko.raymarchenko.RayleighMarchenko &#8212; PyMarchenko</title>
+    
+
+    
+  <link href="../../_static/css/theme.css" rel="stylesheet" />
+  <link href="../../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
+
+    
+  <link rel="stylesheet"
+    href="../../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/basic.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/style.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/gallery.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/gallery-binder.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/gallery-dataframe.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/gallery-rendered-html.css" />
+    
+  <link rel="preload" as="script" href="../../_static/js/index.1c5a1a01449ed65a7b51.js">
+
+    <script id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true, "ignoreClass": "document", "processClass": "math|output_area"}})</script>
+    <link rel="shortcut icon" href="../../_static/favicon.ico"/>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="pymarchenko.mme.MME" href="pymarchenko.mme.MME.html" />
+    <link rel="prev" title="pymarchenko.marchenko.Marchenko" href="pymarchenko.marchenko.Marchenko.html" />
+    
+    <script src="../../_static/require.js"></script>
+
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+    <nav class="navbar navbar-light navbar-expand-lg bg-light fixed-top bd-navbar" id="navbar-main"><div class="container-xl">
+
+  <div id="navbar-start">
+    
+    
+<a class="navbar-brand" href="../../index.html">
+<p class="title">PyMarchenko</p>
+</a>
+
+    
+  </div>
+
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-collapsible" aria-controls="navbar-collapsible" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  
+  <div id="navbar-collapsible" class="col-lg-9 collapse navbar-collapse">
+    <div id="navbar-center" class="mr-auto">
+      
+      <div class="navbar-center-item">
+        <ul id="navbar-main-elements" class="navbar-nav">
+    <li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../../installation.html">
+  Installation
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../../tutorials/index.html">
+  Tutorials
+ </a>
+</li>
+
+<li class="toctree-l1 current active nav-item">
+ <a class="reference internal nav-link" href="../index.html">
+  PyMarchenko API
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../../contributing.html">
+  Contributing
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../../credits.html">
+  Credits
+ </a>
+</li>
+
+    
+</ul>
+      </div>
+      
+    </div>
+
+    <div id="navbar-end">
+      
+      <div class="navbar-end-item">
+        <ul id="navbar-icon-links" class="navbar-nav" aria-label="Icon Links">
+        <li class="nav-item">
+          <a class="nav-link" href="https://github.com/DIG-Kaust/pymarchenko" rel="noopener" target="_blank" title="GitHub">
+            <span><i class="fab fa-github-square"></i></span>
+            <label class="sr-only">GitHub</label>
+          </a>
+        </li>
+      </ul>
+      </div>
+      
+    </div>
+  </div>
+</div>
+    </nav>
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+            
+            <!-- Only show if we have sidebars configured, else just a small margin  -->
+            <div class="col-12 col-md-3 bd-sidebar"><form class="bd-search d-flex align-items-center" action="../../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs ..." aria-label="Search the docs ..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+  <div class="bd-toc-item active">
+    <ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="pymarchenko.neumarchenko.NeumannMarchenko.html">
+   pymarchenko.neumarchenko.NeumannMarchenko
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="pymarchenko.marchenko.Marchenko.html">
+   pymarchenko.marchenko.Marchenko
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   pymarchenko.raymarchenko.RayleighMarchenko
+  </a>
+ </li>
+</ul>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="pymarchenko.mme.MME.html">
+   pymarchenko.mme.MME
+  </a>
+ </li>
+</ul>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="pymarchenko.imaging.MarchenkoImaging.html">
+   pymarchenko.imaging.MarchenkoImaging
+  </a>
+ </li>
+</ul>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="pymarchenko.anglegather.AngleGather.html">
+   pymarchenko.anglegather.AngleGather
+  </a>
+ </li>
+</ul>
+
+  </div>
+</nav>
+            </div>
+            
+          
+
+          
+          <div class="d-none d-xl-block col-xl-2 bd-toc">
+            
+              
+              <div class="toc-item">
+                
+<div class="tocsection onthispage pt-5 pb-3">
+    <i class="fas fa-list"></i> On this page
+</div>
+
+<nav id="bd-toc-nav">
+    <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#examples-using-pymarchenko-raymarchenko-rayleighmarchenko">
+   Examples using
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     pymarchenko.raymarchenko.RayleighMarchenko
+    </span>
+   </code>
+  </a>
+ </li>
+</ul>
+
+</nav>
+              </div>
+              
+              <div class="toc-item">
+                
+              </div>
+              
+            
+          </div>
+          
+
+          
+          
+            
+          
+          <main class="col-12 col-md-9 col-xl-7 py-md-5 pl-md-5 pr-md-4 bd-content" role="main">
+              
+              <div>
+                
+  <div class="section" id="pymarchenko-raymarchenko-rayleighmarchenko">
+<h1>pymarchenko.raymarchenko.RayleighMarchenko<a class="headerlink" href="#pymarchenko-raymarchenko-rayleighmarchenko" title="Permalink to this headline">¶</a></h1>
+<dl class="py class">
+<dt id="pymarchenko.raymarchenko.RayleighMarchenko">
+<em class="property">class </em><code class="sig-prename descclassname">pymarchenko.raymarchenko.</code><code class="sig-name descname">RayleighMarchenko</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">VZplus</span></em>, <em class="sig-param"><span class="n">VZminus</span></em>, <em class="sig-param"><span class="n">dt</span><span class="o">=</span><span class="default_value">0.004</span></em>, <em class="sig-param"><span class="n">nt</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">dr</span><span class="o">=</span><span class="default_value">1.0</span></em>, <em class="sig-param"><span class="n">nfmax</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">wav</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">toff</span><span class="o">=</span><span class="default_value">0.0</span></em>, <em class="sig-param"><span class="n">nsmooth</span><span class="o">=</span><span class="default_value">10</span></em>, <em class="sig-param"><span class="n">dtype</span><span class="o">=</span><span class="default_value">'float64'</span></em>, <em class="sig-param"><span class="n">saveVt</span><span class="o">=</span><span class="default_value">True</span></em>, <em class="sig-param"><span class="n">prescaled</span><span class="o">=</span><span class="default_value">False</span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/pymarchenko/raymarchenko.html#RayleighMarchenko"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pymarchenko.raymarchenko.RayleighMarchenko" title="Permalink to this definition">¶</a></dt>
+<dd><p>Rayleigh-Marchenko redatuming</p>
+<p>Solve multi-dimensional Rayleigh-Marchenko redatuming problem using
+<a class="reference external" href="https://docs.scipy.org/doc/scipy/reference/reference/generated/scipy.sparse.linalg.lsqr.html#scipy.sparse.linalg.lsqr" title="(in SciPy v1.7.0)"><code class="xref py py-func docutils literal notranslate"><span class="pre">scipy.sparse.linalg.lsqr</span></code></a> iterative solver.</p>
+<dl class="field-list">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl>
+<dt><strong>VZplus</strong><span class="classifier"><a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v1.21)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">numpy.ndarray</span></code></a></span></dt><dd><p>Multi-dimensional downgoing particle velocity data in time or frequency
+domain of size <span class="math notranslate nohighlight">\([n_s \times n_r \times n_t/n_{fmax}]\)</span>. If
+provided in time, <cite>VZplus</cite> should not be of complex type.</p>
+</dd>
+<dt><strong>VZminus</strong><span class="classifier"><a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v1.21)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">numpy.ndarray</span></code></a></span></dt><dd><p>Multi-dimensional upgoing particle velocity data in time or frequency
+domain of size <span class="math notranslate nohighlight">\([n_s \times n_r \times n_t/n_{fmax}]\)</span>. If
+provided in time, <cite>VZplus</cite> should not be of complex type.</p>
+</dd>
+<dt><strong>dt</strong><span class="classifier"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.9)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">float</span></code></a>, optional</span></dt><dd><p>Sampling of time integration axis</p>
+</dd>
+<dt><strong>nt</strong><span class="classifier"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.9)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">float</span></code></a>, optional</span></dt><dd><p>Number of samples in time (not required if <code class="docutils literal notranslate"><span class="pre">R</span></code> is in time)</p>
+</dd>
+<dt><strong>dr</strong><span class="classifier"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.9)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">float</span></code></a>, optional</span></dt><dd><p>Sampling of receiver integration axis</p>
+</dd>
+<dt><strong>nfmax</strong><span class="classifier"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.9)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">int</span></code></a>, optional</span></dt><dd><p>Index of max frequency to include in deconvolution process</p>
+</dd>
+<dt><strong>wav</strong><span class="classifier"><a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v1.21)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">numpy.ndarray</span></code></a>, optional</span></dt><dd><p>Wavelet to apply to direct arrival when created using <code class="docutils literal notranslate"><span class="pre">trav</span></code></p>
+</dd>
+<dt><strong>toff</strong><span class="classifier"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.9)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">float</span></code></a>, optional</span></dt><dd><p>Time-offset to apply to traveltime</p>
+</dd>
+<dt><strong>nsmooth</strong><span class="classifier"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.9)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">int</span></code></a>, optional</span></dt><dd><p>Number of samples of smoothing operator to apply to window</p>
+</dd>
+<dt><strong>dtype</strong><span class="classifier"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.9)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">bool</span></code></a>, optional</span></dt><dd><p>Type of elements in input array.</p>
+</dd>
+<dt><strong>saveVt</strong><span class="classifier"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.9)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">bool</span></code></a>, optional</span></dt><dd><p>Save <code class="docutils literal notranslate"><span class="pre">VZ</span></code> and <code class="docutils literal notranslate"><span class="pre">VZ^H</span></code> to speed up the computation of adjoint of
+<a class="reference external" href="https://pylops.readthedocs.io/en/latest/api/generated/pylops.signalprocessing.Fredholm1.html#pylops.signalprocessing.Fredholm1" title="(in PyLops vdev)"><code class="xref py py-class docutils literal notranslate"><span class="pre">pylops.signalprocessing.Fredholm1</span></code></a> (<code class="docutils literal notranslate"><span class="pre">True</span></code>) or create
+<code class="docutils literal notranslate"><span class="pre">VZ^H</span></code> on-the-fly (<code class="docutils literal notranslate"><span class="pre">False</span></code>) Note that <code class="docutils literal notranslate"><span class="pre">saveVt=True</span></code> will be
+faster but double the amount of required memory</p>
+</dd>
+<dt><strong>prescaled</strong><span class="classifier"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.9)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">bool</span></code></a>, optional</span></dt><dd><p>Apply scaling to <code class="docutils literal notranslate"><span class="pre">R</span></code> (<code class="docutils literal notranslate"><span class="pre">False</span></code>) or not (<code class="docutils literal notranslate"><span class="pre">False</span></code>)
+when performing spatial and temporal summations within the
+<code class="xref py py-class docutils literal notranslate"><span class="pre">pylops.waveeqprocessing.MDC</span></code> operator. In case
+<code class="docutils literal notranslate"><span class="pre">prescaled=True</span></code>, the <code class="docutils literal notranslate"><span class="pre">R</span></code> is assumed to have been pre-scaled by
+the user.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Raises</dt>
+<dd class="field-even"><dl class="simple">
+<dt>TypeError</dt><dd><p>If <code class="docutils literal notranslate"><span class="pre">t</span></code> is not <a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v1.21)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">numpy.ndarray</span></code></a>.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>Rayleigh-Marchenko redatuming is a method that allows to produce correct
+subsurface-to-surface responses given the availability of up- and down-
+separated particle velocity data and a macro-velocity model <a class="reference internal" href="#r7341605674c1-1" id="id1">[1]</a>.</p>
+<p>The Rayleigh-Marchenko equations can be written in a compact matrix
+form and solved by means of iterative solvers such as LSQR:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{bmatrix}
+   -\Theta \mathbf{V}_z^- \mathbf{f_d^+}  \\
+   -\Theta \mathbf{V}_z^{+*} \mathbf{f_d^+}
+\end{bmatrix} =
+\begin{bmatrix}
+   \Theta \mathbf{V}_z^+     &amp;   \Theta \mathbf{V}_z^-  \\
+   \Theta \mathbf{V}_z^{-*} &amp; \Theta \mathbf{V}_z^{+*}
+\end{bmatrix}
+\begin{bmatrix}
+   \mathbf{f^-}  \\
+   \mathbf{f_m^+}
+\end{bmatrix}\end{split}\]</div>
+<p>Finally the subsurface Green’s functions can be obtained applying the
+following operator to the retrieved focusing functions</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{bmatrix}
+   -\mathbf{p}^-  \\
+   \mathbf{p}^{+*}
+\end{bmatrix} =
+\begin{bmatrix}
+   \mathbf{V}_z^+    &amp;   \mathbf{V}_z^-  \\
+   \mathbf{V}_z^{-*} &amp; \mathbf{V}_z^{+*}
+\end{bmatrix}
+\begin{bmatrix}
+   \mathbf{f^-}  \\
+   \mathbf{f^+}
+\end{bmatrix}\end{split}\]</div>
+<dl class="citation">
+<dt class="label" id="r7341605674c1-1"><span class="brackets"><a class="fn-backref" href="#id1">1</a></span></dt>
+<dd><p>Ravasi, M., “Rayleigh-Marchenko redatuming for target-oriented,
+true-amplitude imaging”, Geophysics, vol. 82, pp. S439-S452. 2017.</p>
+</dd>
+</dl>
+<dl class="field-list">
+<dt class="field-odd">Attributes</dt>
+<dd class="field-odd"><dl>
+<dt><strong>ns</strong><span class="classifier"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.9)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">int</span></code></a></span></dt><dd><p>Number of samples along source axis</p>
+</dd>
+<dt><strong>nr</strong><span class="classifier"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.9)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">int</span></code></a></span></dt><dd><p>Number of samples along receiver axis</p>
+</dd>
+<dt><strong>shape</strong><span class="classifier"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(in Python v3.9)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">tuple</span></code></a></span></dt><dd><p>Operator shape</p>
+</dd>
+<dt><strong>explicit</strong><span class="classifier"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.9)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">bool</span></code></a></span></dt><dd><p>Operator contains a matrix that can be solved explicitly
+(True) or not (False)</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<p class="rubric">Methods</p>
+<table class="longtable table autosummary">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">__init__</span></code>(VZplus, VZminus[, dt, nt, dr, …])</p></td>
+<td><p>Initialize self.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">apply_multiplepoints</span></code>(travsrc, travrec[, G0, …])</p></td>
+<td><p>Rayleigh-Marchenko redatuming for multiple points</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">apply_onepoint</span></code>(travsrc, travrec[, G0, nfft, …])</p></td>
+<td><p>Rayleigh-Marchenko redatuming for one point</p></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<div style='clear:both'></div><div class="section" id="examples-using-pymarchenko-raymarchenko-rayleighmarchenko">
+<h2>Examples using <code class="docutils literal notranslate"><span class="pre">pymarchenko.raymarchenko.RayleighMarchenko</span></code><a class="headerlink" href="#examples-using-pymarchenko-raymarchenko-rayleighmarchenko" title="Permalink to this headline">¶</a></h2>
+<div class="sphx-glr-thumbcontainer" tooltip="3. Rayleigh-Marchenko redatuming"><div class="figure align-default" id="id2">
+<img alt="3. Rayleigh-Marchenko redatuming" src="../../_images/sphx_glr_raymarchenko_thumb.png" />
+<p class="caption"><span class="caption-text"><a class="reference internal" href="../../tutorials/raymarchenko.html#sphx-glr-tutorials-raymarchenko-py"><span class="std std-ref">3. Rayleigh-Marchenko redatuming</span></a></span><a class="headerlink" href="#id2" title="Permalink to this image">¶</a></p>
+</div>
+</div><div style='clear:both'></div></div>
+</div>
+
+
+              </div>
+              
+              
+              <div class='prev-next-bottom'>
+                
+    <a class='left-prev' id="prev-link" href="pymarchenko.marchenko.Marchenko.html" title="previous page">pymarchenko.marchenko.Marchenko</a>
+    <a class='right-next' id="next-link" href="pymarchenko.mme.MME.html" title="next page">pymarchenko.mme.MME</a>
+
+              </div>
+              
+          </main>
+          
+
+      </div>
+    </div>
+  
+  <script src="../../_static/js/index.1c5a1a01449ed65a7b51.js"></script>
+
+  <footer class="footer mt-5 mt-md-0">
+  <div class="container">
+    
+    <div class="footer-item">
+      <p class="copyright">
+    &copy; Copyright 2021, DIG-Kaust.<br/>
+</p>
+    </div>
+    
+    <div class="footer-item">
+      <p class="sphinx-version">
+Created using <a href="http://sphinx-doc.org/">Sphinx</a> 3.4.3.<br/>
+</p>
+    </div>
+    
+  </div>
+</footer>
+  </body>
+</html>

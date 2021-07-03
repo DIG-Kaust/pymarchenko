@@ -1,0 +1,335 @@
+
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
+        <title>pymarchenko.imaging &#8212; PyMarchenko</title>
+    
+
+    
+  <link href="../../_static/css/theme.css" rel="stylesheet" />
+  <link href="../../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
+
+    
+  <link rel="stylesheet"
+    href="../../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/basic.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/style.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/gallery.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/gallery-binder.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/gallery-dataframe.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/gallery-rendered-html.css" />
+    
+  <link rel="preload" as="script" href="../../_static/js/index.1c5a1a01449ed65a7b51.js">
+
+    <script id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true, "ignoreClass": "document", "processClass": "math|output_area"}})</script>
+    <link rel="shortcut icon" href="../../_static/favicon.ico"/>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    
+    <script src="../../_static/require.js"></script>
+
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+    <nav class="navbar navbar-light navbar-expand-lg bg-light fixed-top bd-navbar" id="navbar-main"><div class="container-xl">
+
+  <div id="navbar-start">
+    
+    
+<a class="navbar-brand" href="../../index.html">
+<p class="title">PyMarchenko</p>
+</a>
+
+    
+  </div>
+
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-collapsible" aria-controls="navbar-collapsible" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  
+  <div id="navbar-collapsible" class="col-lg-9 collapse navbar-collapse">
+    <div id="navbar-center" class="mr-auto">
+      
+      <div class="navbar-center-item">
+        <ul id="navbar-main-elements" class="navbar-nav">
+    <li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../../installation.html">
+  Installation
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../../tutorials/index.html">
+  Tutorials
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../../api/index.html">
+  PyMarchenko API
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../../contributing.html">
+  Contributing
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../../credits.html">
+  Credits
+ </a>
+</li>
+
+    
+</ul>
+      </div>
+      
+    </div>
+
+    <div id="navbar-end">
+      
+      <div class="navbar-end-item">
+        <ul id="navbar-icon-links" class="navbar-nav" aria-label="Icon Links">
+        <li class="nav-item">
+          <a class="nav-link" href="https://github.com/DIG-Kaust/pymarchenko" rel="noopener" target="_blank" title="GitHub">
+            <span><i class="fab fa-github-square"></i></span>
+            <label class="sr-only">GitHub</label>
+          </a>
+        </li>
+      </ul>
+      </div>
+      
+    </div>
+  </div>
+</div>
+    </nav>
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+            
+            <!-- Only show if we have sidebars configured, else just a small margin  -->
+            <div class="col-12 col-md-3 bd-sidebar"><form class="bd-search d-flex align-items-center" action="../../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs ..." aria-label="Search the docs ..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+  <div class="bd-toc-item active">
+    
+  </div>
+</nav>
+            </div>
+            
+          
+
+          
+          <div class="d-none d-xl-block col-xl-2 bd-toc">
+            
+          </div>
+          
+
+          
+          
+            
+          
+          <main class="col-12 col-md-9 col-xl-7 py-md-5 pl-md-5 pr-md-4 bd-content" role="main">
+              
+              <div>
+                
+  <h1>Source code for pymarchenko.imaging</h1><div class="highlight"><pre>
+<span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">time</span>
+
+<span class="kn">from</span> <span class="nn">multiprocessing</span> <span class="kn">import</span> <span class="n">set_start_method</span>
+<span class="kn">from</span> <span class="nn">multiprocessing</span> <span class="kn">import</span> <span class="n">get_context</span>
+<span class="kn">from</span> <span class="nn">scipy.signal</span> <span class="kn">import</span> <span class="n">convolve</span><span class="p">,</span> <span class="n">filtfilt</span>
+<span class="kn">from</span> <span class="nn">pylops.waveeqprocessing.marchenko</span> <span class="kn">import</span> <span class="n">directwave</span><span class="p">,</span> <span class="n">Marchenko</span>
+<span class="kn">from</span> <span class="nn">pylops.waveeqprocessing.mdd</span> <span class="kn">import</span> <span class="n">MDD</span>
+<span class="kn">from</span> <span class="nn">pymarchenko.anglegather</span> <span class="kn">import</span> <span class="n">AngleGather</span>
+
+
+<span class="k">def</span> <span class="nf">_imaging_depth_level</span><span class="p">(</span><span class="n">vsx</span><span class="p">,</span> <span class="n">vsz</span><span class="p">,</span> <span class="n">r</span><span class="p">,</span> <span class="n">s</span><span class="p">,</span> <span class="n">dr</span><span class="p">,</span> <span class="n">dt</span><span class="p">,</span> <span class="n">nt</span><span class="p">,</span> <span class="n">vel</span><span class="p">,</span>
+                         <span class="n">toff</span><span class="p">,</span> <span class="n">nsmooth</span><span class="p">,</span> <span class="n">wav</span><span class="p">,</span> <span class="n">wav_c</span><span class="p">,</span> <span class="n">niter</span><span class="p">,</span> <span class="n">nfmax</span><span class="p">,</span>
+                         <span class="n">igaths</span><span class="p">,</span> <span class="n">nalpha</span><span class="p">,</span>
+                         <span class="n">data</span><span class="p">,</span> <span class="n">kind</span><span class="o">=</span><span class="s1">&#39;mck&#39;</span><span class="p">,</span> <span class="n">jt</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">ivsz</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">verb</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">ivsz</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="n">verb</span><span class="o">==</span><span class="kc">True</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Working on depth level </span><span class="si">%d</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="n">ivsz</span><span class="p">)</span>
+
+    <span class="n">nr</span><span class="p">,</span> <span class="n">ns</span> <span class="o">=</span> <span class="n">r</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">s</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+    <span class="n">nvsx</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">vsx</span><span class="p">)</span>
+    <span class="n">dvsx</span> <span class="o">=</span> <span class="n">vsx</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">vsx</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">ngath</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">igaths</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">kind</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;mck&#39;</span><span class="p">,</span> <span class="s1">&#39;nmck&#39;</span><span class="p">]:</span>
+        <span class="n">directVS</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">((</span><span class="n">vsx</span> <span class="o">-</span> <span class="n">r</span><span class="p">[</span><span class="mi">0</span><span class="p">][:,</span> <span class="n">np</span><span class="o">.</span><span class="n">newaxis</span><span class="p">])</span> <span class="o">**</span> <span class="mi">2</span> <span class="o">+</span>
+                           <span class="p">(</span><span class="n">vsz</span> <span class="o">-</span> <span class="n">r</span><span class="p">[</span><span class="mi">1</span><span class="p">][:,</span> <span class="n">np</span><span class="o">.</span><span class="n">newaxis</span><span class="p">])</span> <span class="o">**</span> <span class="mi">2</span><span class="p">)</span> <span class="o">/</span> <span class="n">vel</span>
+
+        <span class="n">G0</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">nr</span><span class="p">,</span> <span class="n">nvsx</span><span class="p">,</span> <span class="n">nt</span><span class="p">))</span>
+        <span class="k">for</span> <span class="n">ivs</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">nvsx</span><span class="p">):</span>
+            <span class="n">G0</span><span class="p">[:,</span> <span class="n">ivs</span><span class="p">]</span> <span class="o">=</span> <span class="n">directwave</span><span class="p">(</span><span class="n">wav</span><span class="p">,</span> <span class="n">directVS</span><span class="p">[:,</span> <span class="n">ivs</span><span class="p">],</span> <span class="n">nt</span><span class="p">,</span> <span class="n">dt</span><span class="p">,</span>
+                                    <span class="n">nfft</span><span class="o">=</span><span class="nb">int</span><span class="p">(</span><span class="mi">2</span> <span class="o">**</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">ceil</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">log2</span><span class="p">(</span><span class="n">nt</span><span class="p">)))))</span><span class="o">.</span><span class="n">T</span>
+
+        <span class="n">MarchenkoWM</span> <span class="o">=</span> <span class="n">Marchenko</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;R&#39;</span><span class="p">],</span> <span class="n">dt</span><span class="o">=</span><span class="n">dt</span><span class="p">,</span> <span class="n">dr</span><span class="o">=</span><span class="n">dr</span><span class="p">,</span> <span class="n">nfmax</span><span class="o">=</span><span class="n">nfmax</span><span class="p">,</span> <span class="n">wav</span><span class="o">=</span><span class="n">wav</span><span class="p">,</span>
+                                <span class="n">toff</span><span class="o">=</span><span class="n">toff</span><span class="p">,</span> <span class="n">nsmooth</span><span class="o">=</span><span class="n">nsmooth</span><span class="p">)</span>
+        <span class="n">f1_inv_minus</span><span class="p">,</span> <span class="n">f1_inv_plus</span><span class="p">,</span> <span class="n">p0_minus</span><span class="p">,</span> <span class="n">g_inv_minus</span><span class="p">,</span> <span class="n">g_inv_plus</span> <span class="o">=</span> \
+            <span class="n">MarchenkoWM</span><span class="o">.</span><span class="n">apply_multiplepoints</span><span class="p">(</span><span class="n">directVS</span><span class="p">,</span> <span class="n">nfft</span><span class="o">=</span><span class="mi">2</span> <span class="o">**</span> <span class="mi">11</span><span class="p">,</span> <span class="n">rtm</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+                                             <span class="n">greens</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+                                             <span class="n">dottest</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+                                             <span class="o">**</span><span class="nb">dict</span><span class="p">(</span><span class="n">iter_lim</span><span class="o">=</span><span class="n">niter</span><span class="p">,</span>
+                                                    <span class="n">show</span><span class="o">=</span><span class="kc">False</span><span class="p">))</span>
+
+    <span class="k">elif</span> <span class="n">kind</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;rmck&#39;</span><span class="p">,</span> <span class="p">]:</span>
+        <span class="k">pass</span>
+
+    <span class="c1"># MDD</span>
+    <span class="n">_</span><span class="p">,</span> <span class="n">Rss</span> <span class="o">=</span> <span class="n">MDD</span><span class="p">(</span><span class="n">G0</span><span class="p">[:,</span> <span class="p">:,</span> <span class="p">::</span><span class="n">jt</span><span class="p">],</span> <span class="n">p0_minus</span><span class="p">[:,</span> <span class="p">:,</span> <span class="n">nt</span> <span class="o">-</span> <span class="mi">1</span><span class="p">:][:,</span> <span class="p">:,</span> <span class="p">::</span><span class="n">jt</span><span class="p">],</span>
+                 <span class="n">dt</span><span class="o">=</span><span class="n">jt</span> <span class="o">*</span> <span class="n">dt</span><span class="p">,</span> <span class="n">dr</span><span class="o">=</span><span class="n">dvsx</span><span class="p">,</span> <span class="n">twosided</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">adjoint</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">psf</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+                 <span class="n">wav</span><span class="o">=</span><span class="n">wav</span><span class="p">[</span><span class="n">wav_c</span> <span class="o">-</span> <span class="mi">60</span><span class="p">:</span><span class="n">wav_c</span> <span class="o">+</span> <span class="mi">60</span><span class="p">],</span>
+                 <span class="n">nfmax</span><span class="o">=</span><span class="n">nfmax</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="s1">&#39;complex64&#39;</span><span class="p">,</span> <span class="n">dottest</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+                 <span class="o">**</span><span class="nb">dict</span><span class="p">(</span><span class="n">iter_lim</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">show</span><span class="o">=</span><span class="mi">0</span><span class="p">))</span>
+
+    <span class="n">Rmck</span> <span class="o">=</span> <span class="n">MDD</span><span class="p">(</span><span class="n">g_inv_plus</span><span class="p">[:,</span> <span class="p">:,</span> <span class="n">nt</span> <span class="o">-</span> <span class="mi">1</span><span class="p">:][:,</span> <span class="p">:,</span> <span class="p">::</span><span class="n">jt</span><span class="p">],</span>
+               <span class="n">g_inv_minus</span><span class="p">[:,</span> <span class="p">:,</span> <span class="n">nt</span> <span class="o">-</span> <span class="mi">1</span><span class="p">:][:,</span> <span class="p">:,</span> <span class="p">::</span><span class="n">jt</span><span class="p">],</span>
+               <span class="n">dt</span><span class="o">=</span><span class="n">jt</span> <span class="o">*</span> <span class="n">dt</span><span class="p">,</span> <span class="n">dr</span><span class="o">=</span><span class="n">dvsx</span><span class="p">,</span> <span class="n">twosided</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">adjoint</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">psf</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+               <span class="n">wav</span><span class="o">=</span><span class="n">wav</span><span class="p">[</span><span class="n">wav_c</span> <span class="o">-</span> <span class="mi">60</span><span class="p">:</span><span class="n">wav_c</span> <span class="o">+</span> <span class="mi">60</span><span class="p">],</span>
+               <span class="n">nfmax</span><span class="o">=</span><span class="n">nfmax</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="s1">&#39;complex64&#39;</span><span class="p">,</span> <span class="n">dottest</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+               <span class="o">**</span><span class="nb">dict</span><span class="p">(</span><span class="n">iter_lim</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">show</span><span class="o">=</span><span class="mi">0</span><span class="p">))</span>
+
+    <span class="c1"># Images</span>
+    <span class="n">iss</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">diag</span><span class="p">(</span><span class="n">Rss</span><span class="p">[:,</span> <span class="p">:,</span> <span class="n">nt</span> <span class="o">-</span> <span class="mi">1</span><span class="p">])</span>
+    <span class="n">imck</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">diag</span><span class="p">(</span><span class="n">Rmck</span><span class="p">[:,</span> <span class="p">:,</span> <span class="n">nt</span> <span class="o">-</span> <span class="mi">1</span><span class="p">])</span>
+
+    <span class="c1"># Angle gathers</span>
+    <span class="n">ass</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">ngath</span><span class="p">,</span> <span class="n">nalpha</span><span class="p">))</span>
+    <span class="n">amck</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">ngath</span><span class="p">,</span> <span class="n">nalpha</span><span class="p">))</span>
+    <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">igath</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">igaths</span><span class="p">):</span>
+        <span class="n">ass</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">angle</span><span class="p">,</span> <span class="n">Ra</span> <span class="o">=</span> <span class="n">AngleGather</span><span class="p">(</span><span class="n">Rss</span><span class="o">.</span><span class="n">transpose</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="n">nvsx</span><span class="p">,</span> <span class="n">nalpha</span><span class="p">,</span>
+                                        <span class="n">dt</span> <span class="o">*</span> <span class="n">jt</span><span class="p">,</span> <span class="n">dvsx</span><span class="p">,</span> <span class="n">igath</span><span class="p">,</span> <span class="n">vel</span><span class="p">,</span>
+                                        <span class="n">plotflag</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+        <span class="n">amck</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">angle</span><span class="p">,</span> <span class="n">Ra</span> <span class="o">=</span> <span class="n">AngleGather</span><span class="p">(</span><span class="n">Rmck</span><span class="o">.</span><span class="n">transpose</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="n">nvsx</span><span class="p">,</span> <span class="n">nalpha</span><span class="p">,</span>
+                                         <span class="n">dt</span> <span class="o">*</span> <span class="n">jt</span><span class="p">,</span> <span class="n">dvsx</span><span class="p">,</span> <span class="n">igath</span><span class="p">,</span> <span class="n">vel</span><span class="p">,</span>
+                                         <span class="n">plotflag</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">iss</span><span class="p">,</span> <span class="n">imck</span><span class="p">,</span> <span class="n">ass</span><span class="p">,</span> <span class="n">amck</span>
+
+
+<div class="viewcode-block" id="MarchenkoImaging"><a class="viewcode-back" href="../../api/generated/pymarchenko.imaging.MarchenkoImaging.html#pymarchenko.imaging.MarchenkoImaging">[docs]</a><span class="k">def</span> <span class="nf">MarchenkoImaging</span><span class="p">(</span><span class="n">vsx</span><span class="p">,</span> <span class="n">vsz</span><span class="p">,</span> <span class="n">r</span><span class="p">,</span> <span class="n">s</span><span class="p">,</span> <span class="n">dr</span><span class="p">,</span> <span class="n">dt</span><span class="p">,</span> <span class="n">nt</span><span class="p">,</span> <span class="n">vel</span><span class="p">,</span>
+                     <span class="n">toff</span><span class="p">,</span> <span class="n">nsmooth</span><span class="p">,</span> <span class="n">wav</span><span class="p">,</span> <span class="n">wav_c</span><span class="p">,</span> <span class="n">nfmax</span><span class="p">,</span> <span class="n">igaths</span><span class="p">,</span> <span class="n">nalpha</span><span class="p">,</span> <span class="n">jt</span><span class="p">,</span>
+                     <span class="n">data</span><span class="p">,</span> <span class="n">kind</span><span class="o">=</span><span class="s1">&#39;mck&#39;</span><span class="p">,</span> <span class="n">niter</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">nproc</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">nthreads</span><span class="o">=</span><span class="mi">1</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Marchenko imaging</span>
+
+<span class="sd">    Perform one of Marchenko&#39;s redatuming techiniques and apply multi-dimensional</span>
+<span class="sd">    deconvolution to the retrieved Green&#39;s functions to obtain the local</span>
+<span class="sd">    reflection response. This routine can be run for multiple depth levels</span>
+<span class="sd">    and both images and angle-gathers can be produced as outputs</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    </span>
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    iss : :obj:`numpy.ndarray`</span>
+<span class="sd">        Single-scattering image</span>
+<span class="sd">    imck : :obj:`numpy.ndarray`</span>
+<span class="sd">        Marchenko image</span>
+<span class="sd">    ass : :obj:`numpy.ndarray`, optional</span>
+<span class="sd">        Single-scattering angle gathers</span>
+<span class="sd">    amck : :obj:`numpy.ndarray`, optional</span>
+<span class="sd">        Marchenko angle gathers</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="c1"># Set threads</span>
+    <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s2">&quot;OMP_NUM_THREADS&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">nthreads</span><span class="p">)</span>
+    <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s2">&quot;MKL_NUM_THREADS&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">nthreads</span><span class="p">)</span>
+
+    <span class="c1"># Imaging loop (single processor)</span>
+    <span class="n">nvsx</span><span class="p">,</span> <span class="n">nvsz</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">vsx</span><span class="p">),</span> <span class="nb">len</span><span class="p">(</span><span class="n">vsz</span><span class="p">)</span>
+
+    <span class="n">t0</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+    <span class="k">if</span> <span class="n">nproc</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+        <span class="n">results</span> <span class="o">=</span> <span class="p">[</span><span class="n">_imaging_depth_level</span><span class="p">(</span><span class="n">vsx</span><span class="p">,</span> <span class="n">vsz</span><span class="p">[</span><span class="n">ivsz</span><span class="p">],</span> <span class="n">r</span><span class="p">,</span> <span class="n">s</span><span class="p">,</span> <span class="n">dr</span><span class="p">,</span> <span class="n">dt</span><span class="p">,</span> <span class="n">nt</span><span class="p">,</span> <span class="n">vel</span><span class="p">,</span>
+                                        <span class="n">toff</span><span class="p">,</span> <span class="n">nsmooth</span><span class="p">,</span> <span class="n">wav</span><span class="p">,</span> <span class="n">wav_c</span><span class="p">,</span> <span class="n">niter</span><span class="p">,</span> <span class="n">nfmax</span><span class="p">,</span>
+                                        <span class="n">igaths</span><span class="p">,</span> <span class="n">nalpha</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span>
+                                        <span class="n">kind</span><span class="o">=</span><span class="n">kind</span><span class="p">,</span> <span class="n">jt</span><span class="o">=</span><span class="n">jt</span><span class="p">,</span> <span class="n">ivsz</span><span class="o">=</span><span class="n">ivsz</span><span class="p">)</span>
+                   <span class="k">for</span> <span class="n">ivsz</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">nvsz</span><span class="p">)]</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">set_start_method</span><span class="p">(</span><span class="s2">&quot;spawn&quot;</span><span class="p">)</span>
+        <span class="k">with</span> <span class="n">get_context</span><span class="p">(</span><span class="s2">&quot;spawn&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">Pool</span><span class="p">(</span><span class="n">processes</span><span class="o">=</span><span class="n">nproc</span><span class="p">)</span> <span class="k">as</span> <span class="n">pool</span><span class="p">:</span>
+            <span class="n">results</span> <span class="o">=</span> <span class="n">pool</span><span class="o">.</span><span class="n">starmap</span><span class="p">(</span><span class="n">_imaging_depth_level</span><span class="p">,</span>
+                                   <span class="p">[(</span><span class="n">vsx</span><span class="p">,</span> <span class="n">vsz</span><span class="p">[</span><span class="n">ivsz</span><span class="p">],</span> <span class="n">r</span><span class="p">,</span> <span class="n">s</span><span class="p">,</span> <span class="n">dr</span><span class="p">,</span> <span class="n">dt</span><span class="p">,</span> <span class="n">nt</span><span class="p">,</span> <span class="n">vel</span><span class="p">,</span>
+                                     <span class="n">toff</span><span class="p">,</span> <span class="n">nsmooth</span><span class="p">,</span> <span class="n">wav</span><span class="p">,</span> <span class="n">wav_c</span><span class="p">,</span> <span class="n">niter</span><span class="p">,</span> <span class="n">nfmax</span><span class="p">,</span>
+                                     <span class="n">igaths</span><span class="p">,</span> <span class="n">nalpha</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">kind</span><span class="p">,</span> <span class="n">jt</span><span class="p">,</span> <span class="n">ivsz</span><span class="p">)</span> <span class="k">for</span> <span class="n">ivsz</span>
+                                    <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">nvsz</span><span class="p">)])</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Elapsed time (mins): &#39;</span><span class="p">,</span> <span class="p">(</span><span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span> <span class="o">-</span> <span class="n">t0</span><span class="p">)</span> <span class="o">/</span> <span class="mf">60.</span><span class="p">)</span>
+
+    <span class="n">iss</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">vstack</span><span class="p">([</span><span class="n">results</span><span class="p">[</span><span class="n">ivsz</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> <span class="k">for</span> <span class="n">ivsz</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">nvsz</span><span class="p">)])</span>
+    <span class="n">imck</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">vstack</span><span class="p">([</span><span class="n">results</span><span class="p">[</span><span class="n">ivsz</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span> <span class="k">for</span> <span class="n">ivsz</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">nvsz</span><span class="p">)])</span>
+    <span class="n">ass</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">([</span><span class="n">results</span><span class="p">[</span><span class="n">ivsz</span><span class="p">][</span><span class="mi">2</span><span class="p">][:,</span> <span class="n">np</span><span class="o">.</span><span class="n">newaxis</span><span class="p">,</span> <span class="p">:]</span>
+                          <span class="k">for</span> <span class="n">ivsz</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">nvsz</span><span class="p">)],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">amck</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">([</span><span class="n">results</span><span class="p">[</span><span class="n">ivsz</span><span class="p">][</span><span class="mi">3</span><span class="p">][:,</span> <span class="n">np</span><span class="o">.</span><span class="n">newaxis</span><span class="p">,</span> <span class="p">:]</span>
+                           <span class="k">for</span> <span class="n">ivsz</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">nvsz</span><span class="p">)],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">iss</span><span class="p">,</span> <span class="n">imck</span><span class="p">,</span> <span class="n">ass</span><span class="p">,</span> <span class="n">amck</span></div>
+</pre></div>
+
+              </div>
+              
+              
+              <div class='prev-next-bottom'>
+                
+
+              </div>
+              
+          </main>
+          
+
+      </div>
+    </div>
+  
+  <script src="../../_static/js/index.1c5a1a01449ed65a7b51.js"></script>
+
+  <footer class="footer mt-5 mt-md-0">
+  <div class="container">
+    
+    <div class="footer-item">
+      <p class="copyright">
+    &copy; Copyright 2021, DIG-Kaust.<br/>
+</p>
+    </div>
+    
+    <div class="footer-item">
+      <p class="sphinx-version">
+Created using <a href="http://sphinx-doc.org/">Sphinx</a> 3.4.3.<br/>
+</p>
+    </div>
+    
+  </div>
+</footer>
+  </body>
+</html>
