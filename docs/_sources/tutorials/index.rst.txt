@@ -54,6 +54,27 @@ Tutorials
 
 .. raw:: html
 
+    <div class="sphx-glr-thumbcontainer" tooltip="2. Marchenko redatuming with missing sources">
+
+.. only:: html
+
+ .. figure:: /tutorials/images/thumb/sphx_glr_missingmck_thumb.png
+     :alt: 2. Marchenko redatuming with missing sources
+
+     :ref:`sphx_glr_tutorials_missingmck.py`
+
+.. raw:: html
+
+    </div>
+
+
+.. toctree::
+   :hidden:
+
+   /tutorials/missingmck
+
+.. raw:: html
+
     <div class="sphx-glr-thumbcontainer" tooltip="3. Rayleigh-Marchenko redatuming">
 
 .. only:: html

@@ -249,10 +249,8 @@ for a single subsurface point ``vs``.
 
  .. code-block:: none
 
-    (141299, 141299) (141299, 141299) <141299x141299 Identity with dtype=float64>
-    <282598x282598 VStack with dtype=float64>
-    Dot test passed, v^T(Opu)=-1030.351592 - u^T(Op^Tv)=-1030.351592
-    Dot test passed, v^T(Opu)=-169.319637 - u^T(Op^Tv)=-169.319637
+    Dot test passed, v^T(Opu)=-440.877597 - u^T(Op^Tv)=-440.877597
+    Dot test passed, v^T(Opu)=357.697361 - u^T(Op^Tv)=357.697361
  
     LSQR            Least-squares solution of  Ax = b
     The matrix A has 282598 rows and 282598 columns
@@ -279,7 +277,7 @@ for a single subsurface point ``vs``.
     istop =       7   r1norm = 6.7e+05   anorm = 4.4e+00   arnorm = 5.1e+05
     itn   =      10   r2norm = 6.7e+05   acond = 1.6e+01   xnorm  = 3.5e+07
  
-    Elapsed time (s): 2.75
+    Elapsed time (s): 2.73
 
 
 
@@ -415,18 +413,18 @@ used instead of
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 229-231
+.. GENERATED FROM PYTHON SOURCE LINES 229-230
 
 We now compute the direct arrival traveltime table and run inversion
-Direct arrival traveltime
 
-.. GENERATED FROM PYTHON SOURCE LINES 231-286
+.. GENERATED FROM PYTHON SOURCE LINES 230-286
 
 .. code-block:: default
 
-    directVS = np.sqrt((vs[0]-r[0][:, np.newaxis])**2 +
-                       (vs[1]-r[1][:, np.newaxis])**2)/vel
-    directVS_off = directVS - toff
+
+    # Direct arrival traveltime
+    trav = np.sqrt((vs[0]-r[0][:, np.newaxis])**2 +
+                   (vs[1]-r[1][:, np.newaxis])**2)/vel
 
     # Inversion
     MarchenkoWM = Marchenko(R, dt=dt, dr=dr, nfmax=nfmax, wav=wav,
@@ -434,7 +432,7 @@ Direct arrival traveltime
 
     t0 = time.time()
     f1_inv_minus, f1_inv_plus, p0_minus, g_inv_minus, g_inv_plus = \
-        MarchenkoWM.apply_multiplepoints(directVS, nfft=2**11, rtm=True,
+        MarchenkoWM.apply_multiplepoints(trav, nfft=2**11, rtm=True,
                                          greens=True, dottest=False,
                                          **dict(iter_lim=niter, show=True))
     g_inv_tot = g_inv_minus + g_inv_plus
@@ -519,7 +517,7 @@ Direct arrival traveltime
     istop =       7   r1norm = 6.8e+00   anorm = 4.4e+00   arnorm = 5.2e+00
     itn   =      10   r2norm = 6.8e+00   acond = 1.6e+01   xnorm  = 3.3e+02
  
-    Elapsed time (s): 47.74
+    Elapsed time (s): 49.17
 
 
 
@@ -547,7 +545,7 @@ instead of repeatedly applying
 
  .. code-block:: none
 
-    Speedup between single and multi: 2.93
+    Speedup between single and multi: 2.83
 
 
 
@@ -570,7 +568,7 @@ local reflectivity at the depth level of the virtual sources using
     # Direct wave
     G0sub = np.zeros((nr, nvs, nt))
     for ivs in range(nvs):
-        G0sub[:, ivs] = directwave(wav, directVS[:,ivs], nt, dt,
+        G0sub[:, ivs] = directwave(wav, trav[:,ivs], nt, dt,
                                    nfft=int(2**(np.ceil(np.log2(nt))))).T
 
     # MDD
@@ -617,7 +615,7 @@ local reflectivity at the depth level of the virtual sources using
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** ( 1 minutes  13.273 seconds)
+   **Total running time of the script:** ( 1 minutes  14.205 seconds)
 
 
 .. _sphx_glr_download_tutorials_marchenko.py:

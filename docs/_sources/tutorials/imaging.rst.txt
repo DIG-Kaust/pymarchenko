@@ -59,7 +59,7 @@ are produced.
 
 Let's start by defining some input parameters and loading the test data
 
-.. GENERATED FROM PYTHON SOURCE LINES 31-89
+.. GENERATED FROM PYTHON SOURCE LINES 31-90
 
 .. code-block:: default
 
@@ -120,6 +120,7 @@ Let's start by defining some input parameters and loading the test data
     plt.ylabel('y [m]')
     plt.title('Model and Geometry')
     plt.xlim(x[0], x[-1])
+    plt.tight_layout()
 
 
 
@@ -129,22 +130,14 @@ Let's start by defining some input parameters and loading the test data
     :class: sphx-glr-single-img
 
 
-.. rst-class:: sphx-glr-script-out
-
- Out:
-
- .. code-block:: none
-
-
-    (0.0, 3000.0)
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 90-91
+.. GENERATED FROM PYTHON SOURCE LINES 91-92
 
 Let's perform imaging now
 
-.. GENERATED FROM PYTHON SOURCE LINES 91-96
+.. GENERATED FROM PYTHON SOURCE LINES 92-97
 
 .. code-block:: default
 
@@ -163,26 +156,48 @@ Let's perform imaging now
 
  .. code-block:: none
 
-    Elapsed time (mins):  62.72843951781591
+    Elapsed time (mins):  61.609439885616304
 
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 97-98
+.. GENERATED FROM PYTHON SOURCE LINES 98-99
 
-Finally let's display the results
+Finally let's display the images
 
-.. GENERATED FROM PYTHON SOURCE LINES 98-116
+.. GENERATED FROM PYTHON SOURCE LINES 99-107
 
 .. code-block:: default
 
-    ngath = len(igaths)
+
     fig, axs = plt.subplots(1, 2, figsize=(17, 6))
     axs[0].imshow(iss, cmap='gray', vmin=-1e3, vmax=1e3, interpolation='sinc')
     axs[0].axis('tight')
     axs[1].imshow(imck, cmap='gray', vmin=-1e-2, vmax=1e-2, interpolation='sinc')
     axs[1].axis('tight')
+    fig.tight_layout()
 
+
+
+
+.. image:: /tutorials/images/sphx_glr_imaging_002.png
+    :alt: imaging
+    :class: sphx-glr-single-img
+
+
+
+
+
+.. GENERATED FROM PYTHON SOURCE LINES 108-109
+
+And the angle gathers
+
+.. GENERATED FROM PYTHON SOURCE LINES 109-122
+
+.. code-block:: default
+
+
+    ngath = len(igaths)
     fig, axs = plt.subplots(1, 2, figsize=(20, 4))
     axs[0].imshow(ass.transpose(0, 2, 1).reshape(ngath * nalpha, nvsz).T,
                   cmap='gray', vmin=-1e6, vmax=1e6,
@@ -197,20 +212,9 @@ Finally let's display the results
     fig.tight_layout()
 
 
-.. rst-class:: sphx-glr-horizontal
-
-
-    *
-
-      .. image:: /tutorials/images/sphx_glr_imaging_002.png
-          :alt: imaging
-          :class: sphx-glr-multi-img
-
-    *
-
-      .. image:: /tutorials/images/sphx_glr_imaging_003.png
-          :alt: Gathers RTM, Gathers Mck
-          :class: sphx-glr-multi-img
+.. image:: /tutorials/images/sphx_glr_imaging_003.png
+    :alt: Gathers RTM, Gathers Mck
+    :class: sphx-glr-single-img
 
 
 
@@ -219,7 +223,7 @@ Finally let's display the results
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** ( 62 minutes  45.136 seconds)
+   **Total running time of the script:** ( 61 minutes  38.308 seconds)
 
 
 .. _sphx_glr_download_tutorials_imaging.py:
