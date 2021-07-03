@@ -63,9 +63,9 @@ git checkout -b gh-pages
 git push -u origin gh-pages
 ```
 
-Every time you want to update the documentation run:
+Every time you want to update and deploy the documentation run:
 ```
-make docupdate
+make docpush
 ```
 This will automatically move to the `gh-pages` branch, build the documentation and push it in the equivalent remote branch.
 You can finally make a Pull Request for your local `gh-pages` branch to the `gh-pages` in the DIG-Kaust repository,
