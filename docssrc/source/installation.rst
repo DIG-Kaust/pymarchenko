@@ -41,7 +41,7 @@ Alternatively, to access the latest source from github:
 
 .. code-block:: bash
 
-   >> pip install https://github.com/DIG-Kaust/pymarchenko/archive/master.zip
+   >> pip install https://github.com/DIG-Kaust/pymarchenko/archive/main.zip
 
 or just clone the repository
 

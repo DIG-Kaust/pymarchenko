@@ -36,7 +36,7 @@ Coming soon!
 You can also directly install from the main repository (although this is not reccomended)
 
 ```
-pip install git+https://git@github.com/DIG-Kaust/pymarchenko.git@master
+pip install git+https://git@github.com/DIG-Kaust/pymarchenko.git@main
 ```
 
 ## Documentation
