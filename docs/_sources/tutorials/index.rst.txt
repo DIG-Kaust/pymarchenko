@@ -72,6 +72,48 @@ Tutorials
    :hidden:
 
    /tutorials/raymarchenko
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="4. Marchenko Multiple Elimination">
+
+.. only:: html
+
+ .. figure:: /tutorials/images/thumb/sphx_glr_mme_thumb.png
+     :alt: 4. Marchenko Multiple Elimination
+
+     :ref:`sphx_glr_tutorials_mme.py`
+
+.. raw:: html
+
+    </div>
+
+
+.. toctree::
+   :hidden:
+
+   /tutorials/mme
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="5. Imaging with Marchenko fields">
+
+.. only:: html
+
+ .. figure:: /tutorials/images/thumb/sphx_glr_imaging_thumb.png
+     :alt: 5. Imaging with Marchenko fields
+
+     :ref:`sphx_glr_tutorials_imaging.py`
+
+.. raw:: html
+
+    </div>
+
+
+.. toctree::
+   :hidden:
+
+   /tutorials/imaging
 .. raw:: html
 
     <div class="sphx-glr-clear"></div>

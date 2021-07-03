@@ -41,13 +41,13 @@ Alternatively, to access the latest source from github:
 
 .. code-block:: bash
 
-   >> pip install https://github.com/mrava87/pymarchenko/archive/master.zip
+   >> pip install https://github.com/DIG-Kaust/pymarchenko/archive/master.zip
 
 or just clone the repository
 
 .. code-block:: bash
 
-   >> git clone https://github.com/mrava87/pymarchenko.git
+   >> git clone https://github.com/DIG-Kaust/pymarchenko.git
 
 or download the zip file from the repository (green button in the top right corner of the
 main github repo page) and install PyMarchenko from terminal using the command:

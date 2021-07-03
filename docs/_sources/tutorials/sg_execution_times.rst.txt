@@ -5,12 +5,16 @@
 
 Computation times
 =================
-**01:30.981** total execution time for **tutorials** files:
+**75:11.209** total execution time for **tutorials** files:
 
 +-----------------------------------------------------------------+-----------+--------+
-| :ref:`sphx_glr_tutorials_marchenko.py` (``marchenko.py``)       | 01:13.273 | 0.0 MB |
+| :ref:`sphx_glr_tutorials_imaging.py` (``imaging.py``)           | 62:45.136 | 0.0 MB |
 +-----------------------------------------------------------------+-----------+--------+
-| :ref:`sphx_glr_tutorials_raymarchenko.py` (``raymarchenko.py``) | 00:14.607 | 0.0 MB |
+| :ref:`sphx_glr_tutorials_mme.py` (``mme.py``)                   | 12:26.073 | 0.0 MB |
 +-----------------------------------------------------------------+-----------+--------+
-| :ref:`sphx_glr_tutorials_neumarchenko.py` (``neumarchenko.py``) | 00:03.101 | 0.0 MB |
+| :ref:`sphx_glr_tutorials_marchenko.py` (``marchenko.py``)       | 00:00.000 | 0.0 MB |
++-----------------------------------------------------------------+-----------+--------+
+| :ref:`sphx_glr_tutorials_neumarchenko.py` (``neumarchenko.py``) | 00:00.000 | 0.0 MB |
++-----------------------------------------------------------------+-----------+--------+
+| :ref:`sphx_glr_tutorials_raymarchenko.py` (``raymarchenko.py``) | 00:00.000 | 0.0 MB |
 +-----------------------------------------------------------------+-----------+--------+

@@ -195,9 +195,24 @@
               
               <div class="toc-item">
                 
+<div class="tocsection onthispage pt-5 pb-3">
+    <i class="fas fa-list"></i> On this page
+</div>
 
 <nav id="bd-toc-nav">
-    
+    <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#examples-using-pymarchenko-mme-mme">
+   Examples using
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     pymarchenko.mme.MME
+    </span>
+   </code>
+  </a>
+ </li>
+</ul>
+
 </nav>
               </div>
               
@@ -228,14 +243,14 @@ Neumann iterative substitution.</p>
 <dl class="field-list">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><dl>
-<dt><strong>R</strong><span class="classifier"><a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v1.21)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">numpy.ndarray</span></code></a></span></dt><dd><p>Multi-dimensional reflection response in time or frequency
+<dt><strong>R</strong><span class="classifier"><code class="xref py py-obj docutils literal notranslate"><span class="pre">numpy.ndarray</span></code></span></dt><dd><p>Multi-dimensional reflection response in time or frequency
 domain of size <span class="math notranslate nohighlight">\([n_s \times n_r \times n_t/n_{fmax}]\)</span>. If
 provided in time, <cite>R</cite> should not be of complex type. If
 provided in frequency, <cite>R</cite> should contain the positive time axis
 followed by the negative one. Note that the reflection response
 should have already been multiplied by 2.</p>
 </dd>
-<dt><strong>wav</strong><span class="classifier"><a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v1.21)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">numpy.ndarray</span></code></a></span></dt><dd><p>Wavelet to apply to the reflection response shot gather used as
+<dt><strong>wav</strong><span class="classifier"><code class="xref py py-obj docutils literal notranslate"><span class="pre">numpy.ndarray</span></code></span></dt><dd><p>Wavelet to apply to the reflection response shot gather used as
 initial guess</p>
 </dd>
 <dt><strong>wav_c</strong><span class="classifier"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.9)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">int</span></code></a>, optional</span></dt><dd><p>Index of center of wavelet. If <code class="docutils literal notranslate"><span class="pre">None</span></code> the middle sample is used.</p>
@@ -269,7 +284,7 @@ the user.</p>
 </dd>
 <dt class="field-even">Raises</dt>
 <dd class="field-even"><dl class="simple">
-<dt>TypeError</dt><dd><p>If <code class="docutils literal notranslate"><span class="pre">t</span></code> is not <a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v1.21)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">numpy.ndarray</span></code></a>.</p>
+<dt>TypeError</dt><dd><p>If <code class="docutils literal notranslate"><span class="pre">t</span></code> is not <code class="xref py py-obj docutils literal notranslate"><span class="pre">numpy.ndarray</span></code>.</p>
 </dd>
 </dl>
 </dd>
@@ -348,7 +363,14 @@ consequences for imaging”, Geophysics, vol. 84, pp. Q27–Q36. 2019.</p>
 </table>
 </dd></dl>
 
-<div style='clear:both'></div><div style='clear:both'></div></div>
+<div style='clear:both'></div><div class="section" id="examples-using-pymarchenko-mme-mme">
+<h2>Examples using <code class="docutils literal notranslate"><span class="pre">pymarchenko.mme.MME</span></code><a class="headerlink" href="#examples-using-pymarchenko-mme-mme" title="Permalink to this headline">¶</a></h2>
+<div class="sphx-glr-thumbcontainer" tooltip="4. Marchenko Multiple Elimination"><div class="figure align-default" id="id2">
+<img alt="4. Marchenko Multiple Elimination" src="../../_images/sphx_glr_mme_thumb.png" />
+<p class="caption"><span class="caption-text"><a class="reference internal" href="../../tutorials/mme.html#sphx-glr-tutorials-mme-py"><span class="std std-ref">4. Marchenko Multiple Elimination</span></a></span><a class="headerlink" href="#id2" title="Permalink to this image">¶</a></p>
+</div>
+</div><div style='clear:both'></div></div>
+</div>
 
 
               </div>
