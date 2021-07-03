@@ -227,10 +227,10 @@ plt.xlim(x[0], x[-1])
 
 ##############################################################################
 # We now compute the direct arrival traveltime table and run inversion
+
 # Direct arrival traveltime
-directVS = np.sqrt((vs[0]-r[0][:, np.newaxis])**2 +
-                   (vs[1]-r[1][:, np.newaxis])**2)/vel
-directVS_off = directVS - toff
+trav = np.sqrt((vs[0]-r[0][:, np.newaxis])**2 +
+               (vs[1]-r[1][:, np.newaxis])**2)/vel
 
 # Inversion
 MarchenkoWM = Marchenko(R, dt=dt, dr=dr, nfmax=nfmax, wav=wav,
@@ -238,7 +238,7 @@ MarchenkoWM = Marchenko(R, dt=dt, dr=dr, nfmax=nfmax, wav=wav,
 
 t0 = time.time()
 f1_inv_minus, f1_inv_plus, p0_minus, g_inv_minus, g_inv_plus = \
-    MarchenkoWM.apply_multiplepoints(directVS, nfft=2**11, rtm=True,
+    MarchenkoWM.apply_multiplepoints(trav, nfft=2**11, rtm=True,
                                      greens=True, dottest=False,
                                      **dict(iter_lim=niter, show=True))
 g_inv_tot = g_inv_minus + g_inv_plus
@@ -302,7 +302,7 @@ g_inv_plus *= tap
 # Direct wave
 G0sub = np.zeros((nr, nvs, nt))
 for ivs in range(nvs):
-    G0sub[:, ivs] = directwave(wav, directVS[:,ivs], nt, dt,
+    G0sub[:, ivs] = directwave(wav, trav[:,ivs], nt, dt,
                                nfft=int(2**(np.ceil(np.log2(nt))))).T
 
 # MDD
