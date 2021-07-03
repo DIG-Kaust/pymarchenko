@@ -85,6 +85,7 @@ plt.xlabel('x [m]')
 plt.ylabel('y [m]')
 plt.title('Model and Geometry')
 plt.xlim(x[0], x[-1])
+plt.tight_layout()
 
 ##############################################################################
 # Let's perform imaging now
@@ -94,14 +95,19 @@ iss, imck, ass, amck = \
                      dict(R=R), kind='mck', niter=10, nproc=4)
 
 ##############################################################################
-# Finally let's display the results
-ngath = len(igaths)
+# Finally let's display the images
+
 fig, axs = plt.subplots(1, 2, figsize=(17, 6))
 axs[0].imshow(iss, cmap='gray', vmin=-1e3, vmax=1e3, interpolation='sinc')
 axs[0].axis('tight')
 axs[1].imshow(imck, cmap='gray', vmin=-1e-2, vmax=1e-2, interpolation='sinc')
 axs[1].axis('tight')
+fig.tight_layout()
 
+##############################################################################
+# And the angle gathers
+
+ngath = len(igaths)
 fig, axs = plt.subplots(1, 2, figsize=(20, 4))
 axs[0].imshow(ass.transpose(0, 2, 1).reshape(ngath * nalpha, nvsz).T,
               cmap='gray', vmin=-1e6, vmax=1e6,
