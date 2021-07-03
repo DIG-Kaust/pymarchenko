@@ -18,7 +18,7 @@ warnings.filterwarnings('ignore')
 plt.close('all')
 
 ###############################################################################
-# Let's start by defining some input parameters and loading the test data
+# Let's start by defining some input parameters and loading the geometry
 
 # Input parameters
 inputfile = '../testdata/marchenko/input.npz'
@@ -48,23 +48,6 @@ vs = inputdata['vs']
 rho = inputdata['rho']
 z, x = inputdata['z'], inputdata['x']
 
-# Reflection data (R[s, r, t]) and subsurface fields
-R = inputdata['R'][:, :, :-100]
-R = np.swapaxes(R, 0, 1) # just because of how the data was saved
-
-Gsub = inputdata['Gsub'][:-100]
-G0sub = inputdata['G0sub'][:-100]
-wav = inputdata['wav']
-wav_c = np.argmax(wav)
-
-t = inputdata['t'][:-100]
-ot, dt, nt = t[0], t[1]-t[0], len(t)
-
-Gsub = np.apply_along_axis(convolve, 0, Gsub, wav, mode='full')
-Gsub = Gsub[wav_c:][:nt]
-G0sub = np.apply_along_axis(convolve, 0, G0sub, wav, mode='full')
-G0sub = G0sub[wav_c:][:nt]
-
 plt.figure(figsize=(10, 5))
 plt.imshow(rho, cmap='gray', extent=(x[0], x[-1], z[-1], z[0]))
 plt.scatter(s[0, 5::10], s[1, 5::10], marker='*', s=150, c='r', edgecolors='k')
@@ -75,6 +58,18 @@ plt.xlabel('x [m]')
 plt.ylabel('y [m]')
 plt.title('Model and Geometry')
 plt.xlim(x[0], x[-1])
+plt.tight_layout()
+
+###############################################################################
+# Let's now load and display the reflection response
+
+# Time axis
+t = inputdata['t'][:-100]
+ot, dt, nt = t[0], t[1]-t[0], len(t)
+
+# Reflection data (R[s, r, t]) and subsurface fields
+R = inputdata['R'][:, :, :-100]
+R = np.swapaxes(R, 0, 1) # just because of how the data was saved
 
 fig, axs = plt.subplots(1, 3, sharey=True, figsize=(12, 7))
 axs[0].imshow(R[0].T, cmap='gray', vmin=-1e-2, vmax=1e-2,
@@ -98,6 +93,20 @@ axs[2].set_xlabel(r'$x_R$')
 axs[2].axis('tight')
 axs[2].set_ylim(1.5, 0)
 fig.tight_layout()
+
+###############################################################################
+# And the true and background subsurface fields
+
+# Subsurface fields
+Gsub = inputdata['Gsub'][:-100]
+G0sub = inputdata['G0sub'][:-100]
+wav = inputdata['wav']
+wav_c = np.argmax(wav)
+
+Gsub = np.apply_along_axis(convolve, 0, Gsub, wav, mode='full')
+Gsub = Gsub[wav_c:][:nt]
+G0sub = np.apply_along_axis(convolve, 0, G0sub, wav, mode='full')
+G0sub = G0sub[wav_c:][:nt]
 
 fig, axs = plt.subplots(1, 2, sharey=True, figsize=(8, 6))
 axs[0].imshow(Gsub, cmap='gray', vmin=-1e6, vmax=1e6,
@@ -158,6 +167,9 @@ axs[2].set_ylabel(r'$t$')
 axs[2].axis('tight')
 axs[2].set_ylim(1.2, 0)
 fig.tight_layout()
+
+##############################################################################
+# And compare the total Green's function with the directly modelled one
 
 fig = plt.figure(figsize=(12, 7))
 ax1 = plt.subplot2grid((1, 5), (0, 0), colspan=2)

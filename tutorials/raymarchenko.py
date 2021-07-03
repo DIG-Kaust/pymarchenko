@@ -20,7 +20,7 @@ warnings.filterwarnings('ignore')
 plt.close('all')
 
 ###############################################################################
-# Let's start by defining some input parameters and loading the test data
+# Let's start by defining some input parameters and loading the geometry
 
 # Input parameters
 inputfile = '../testdata/raymarchenko/input.npz'
@@ -52,33 +52,6 @@ vs = inputdata['vs']
 rho = inputdata['rho']
 z, x = inputdata['z'], inputdata['x']
 
-# Reflection data (R[s, r, t]) and subsurface fields
-Vzu = inputdata['Vzu']
-Vzd = inputdata['Vzd']
-
-Gsub = inputdata['Gsub']
-G0sub = inputdata['G0sub']
-wav = inputdata['wav']
-wav_c = np.argmax(wav)
-
-t = inputdata['t']
-ot, dt, nt = t[0], t[1]-t[0], len(t)
-
-Gsub = np.apply_along_axis(convolve, 0, Gsub, wav, mode='full')
-Gsub = Gsub[wav_c:][:nt]
-G0sub = np.apply_along_axis(convolve, 0, G0sub, wav, mode='full')
-G0sub = G0sub[wav_c:][:nt]
-
-# Convolve data and reference Green's function with wavelet
-if convolvedata:
-    Vzu = dt * np.apply_along_axis(convolve, -1, Vzu, wav, mode='full')
-    Vzu = Vzu[..., wav_c:][..., :nt]
-    Vzd = dt * np.apply_along_axis(convolve, -1, Vzd, wav, mode='full')
-    Vzd = Vzd[..., wav_c:][..., :nt]
-
-    Gsub = dt * np.apply_along_axis(convolve, 0, Gsub, wav, mode='full')
-    Gsub = Gsub[wav_c:][:nt]
-
 plt.figure(figsize=(10, 5))
 plt.imshow(rho, cmap='gray', extent=(x[0], x[-1], z[-1], z[0]))
 plt.scatter(s[0, 5::10], s[1, 5::10], marker='*', s=150, c='r', edgecolors='k')
@@ -89,6 +62,26 @@ plt.xlabel('x [m]')
 plt.ylabel('y [m]')
 plt.title('Model and Geometry')
 plt.xlim(x[0], x[-1])
+plt.tight_layout()
+
+###############################################################################
+# Let's now load and display the up and downgoing particle velocity data and
+# subsurface fields
+
+# Time axis
+t = inputdata['t']
+ot, dt, nt = t[0], t[1]-t[0], len(t)
+
+# Reflection data (R[s, r, t]) and subsurface fields
+Vzu = inputdata['Vzu']
+Vzd = inputdata['Vzd']
+
+# Convolve data with wavelet
+if convolvedata:
+    Vzu = dt * np.apply_along_axis(convolve, -1, Vzu, wav, mode='full')
+    Vzu = Vzu[..., wav_c:][..., :nt]
+    Vzd = dt * np.apply_along_axis(convolve, -1, Vzd, wav, mode='full')
+    Vzd = Vzd[..., wav_c:][..., :nt]
 
 fig, axs = plt.subplots(1, 3, sharey=True, figsize=(15, 9))
 axs[0].imshow(Vzu[ns//2].T+Vzd[ns//2].T, cmap='gray', vmin=-1e-1, vmax=1e-1,
@@ -111,6 +104,24 @@ axs[2].set_xlabel(r'$x_R$')
 axs[2].axis('tight')
 axs[2].set_ylim(1.5, 0)
 fig.tight_layout()
+
+###############################################################################
+# And subsurface fields
+
+Gsub = inputdata['Gsub']
+G0sub = inputdata['G0sub']
+wav = inputdata['wav']
+wav_c = np.argmax(wav)
+
+Gsub = np.apply_along_axis(convolve, 0, Gsub, wav, mode='full')
+Gsub = Gsub[wav_c:][:nt]
+G0sub = np.apply_along_axis(convolve, 0, G0sub, wav, mode='full')
+G0sub = G0sub[wav_c:][:nt]
+
+# Convolve reference Green's function with wavelet
+if convolvedata:
+    Gsub = dt * np.apply_along_axis(convolve, 0, Gsub, wav, mode='full')
+    Gsub = Gsub[wav_c:][:nt]
 
 fig, axs = plt.subplots(1, 2, sharey=True, figsize=(8, 6))
 axs[0].imshow(Gsub, cmap='gray', vmin=-1e7, vmax=1e7,
@@ -173,6 +184,9 @@ axs[2].set_ylabel(r'$t$')
 axs[2].axis('tight')
 axs[2].set_ylim(2, 0)
 fig.tight_layout()
+
+##############################################################################
+# And compare the total Green's function with the directly modelled one
 
 fig = plt.figure(figsize=(12, 7))
 ax1 = plt.subplot2grid((1, 5), (0, 0), colspan=2)

@@ -24,10 +24,7 @@ os.environ["OMP_NUM_THREADS"] = "1"
 os.environ["MKL_NUM_THREADS"] = "1"
 
 ###############################################################################
-# Let's start by defining some input parameters and loading the test data
-
-###############################################################################
-# Let's start by defining some input parameters and loading the test data
+# Let's start by defining some input parameters and loading the geometry
 
 # Input parameters
 inputfile = '../testdata/marchenko/input.npz'
@@ -57,15 +54,6 @@ vs = inputdata['vs']
 rho = inputdata['rho']
 z, x = inputdata['z'], inputdata['x']
 
-# Reflection data (R[s, r, t])
-R = inputdata['R'][:, :, :-100]
-R = np.swapaxes(R, 0, 1) # just because of how the data was saved
-wav = inputdata['wav']
-wav_c = np.argmax(wav)
-
-t = inputdata['t'][:-100]
-ot, dt, nt = t[0], t[1]-t[0], len(t)
-
 plt.figure(figsize=(10, 5))
 plt.imshow(rho, cmap='gray', extent=(x[0], x[-1], z[-1], z[0]))
 plt.scatter(s[0, 5::10], s[1, 5::10], marker='*', s=150, c='r', edgecolors='k')
@@ -76,6 +64,20 @@ plt.xlabel('x [m]')
 plt.ylabel('y [m]')
 plt.title('Model and Geometry')
 plt.xlim(x[0], x[-1])
+plt.tight_layout()
+
+###############################################################################
+# Let's now load and display the reflection response
+
+# Time axis
+t = inputdata['t'][:-100]
+ot, dt, nt = t[0], t[1]-t[0], len(t)
+
+# Reflection data (R[s, r, t])
+R = inputdata['R'][:, :, :-100]
+R = np.swapaxes(R, 0, 1) # just because of how the data was saved
+wav = inputdata['wav']
+wav_c = np.argmax(wav)
 
 fig, axs = plt.subplots(1, 3, sharey=True, figsize=(12, 7))
 axs[0].imshow(R[0].T, cmap='gray', vmin=-1e-2, vmax=1e-2,
