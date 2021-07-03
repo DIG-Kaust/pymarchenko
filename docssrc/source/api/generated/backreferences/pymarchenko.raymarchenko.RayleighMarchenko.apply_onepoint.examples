@@ -1,0 +1,23 @@
+
+
+Examples using ``pymarchenko.raymarchenko.RayleighMarchenko.apply_onepoint``
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="3. Rayleigh-Marchenko redatuming">
+
+.. only:: html
+
+ .. figure:: /tutorials/images/thumb/sphx_glr_raymarchenko_thumb.png
+     :alt: 3. Rayleigh-Marchenko redatuming
+
+     :ref:`sphx_glr_tutorials_raymarchenko.py`
+
+.. raw:: html
+
+    </div>
+
+.. only:: not html
+
+ * :ref:`sphx_glr_tutorials_raymarchenko.py`

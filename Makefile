@@ -34,9 +34,12 @@ tests:
 	$(PYTHON) setup.py test
 
 doc:
-	cd docs  && rm -rf source/api/generated && rm -rf source/gallery &&\
+	cd docssrc  && rm -rf source/api/generated && rm -rf source/gallery &&\
 	rm -rf source/tutorials && rm -rf source/examples &&\
 	rm -rf build && make html && cd ..
 
 docupdate:
-	cd docs && make html && cd ..
+	cd docssrc && make html && cd ..
+
+docgithub:
+	cd docssrc && make github && cd ..

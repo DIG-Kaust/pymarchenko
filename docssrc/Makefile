@@ -9,7 +9,7 @@ SPHINXOPTS    =
 SPHINXBUILD   = sphinx-build
 SPHINXPROJ    = PyMarchenko
 SOURCEDIR     = source
-BUILDDIR      = build
+BUILDDIR      = ../docs
 
 # Put it first so that "make" without argument is like "make help".
 help:
@@ -25,4 +25,4 @@ help:
 # Make for github pages
 github:
 	@make html
-	@cp -a build/html/. ../docbuild
+	@cp -a build/html/. ../docs
