@@ -18,7 +18,7 @@
 .. _sphx_glr_tutorials_mme.py:
 
 
-4. Marchenko Multiple Elimination
+5. Marchenko Multiple Elimination
 =================================
 This example performs internal multiple elimination using the
 :py:class:`pymarchenko.mme.MME` routine. The MME algorithm can also compensate
@@ -231,7 +231,7 @@ We can now compare the original dataset with the demultipled one
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** ( 12 minutes  26.073 seconds)
+   **Total running time of the script:** ( 12 minutes  16.932 seconds)
 
 
 .. _sphx_glr_download_tutorials_mme.py:

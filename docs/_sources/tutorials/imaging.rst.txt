@@ -18,7 +18,7 @@
 .. _sphx_glr_tutorials_imaging.py:
 
 
-5. Imaging with Marchenko fields
+6. Imaging with Marchenko fields
 ================================
 This example shows how to perform target-oriented imaging via the
 documentation and shows how to set-up and run the
@@ -156,7 +156,7 @@ Let's perform imaging now
 
  .. code-block:: none
 
-    Elapsed time (mins):  61.609439885616304
+    Elapsed time (mins):  56.39417240222295
 
 
 
@@ -223,7 +223,7 @@ And the angle gathers
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** ( 61 minutes  38.308 seconds)
+   **Total running time of the script:** ( 56 minutes  25.003 seconds)
 
 
 .. _sphx_glr_download_tutorials_imaging.py:

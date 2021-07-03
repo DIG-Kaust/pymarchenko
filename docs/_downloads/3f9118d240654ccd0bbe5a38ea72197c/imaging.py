@@ -1,5 +1,5 @@
 """
-5. Imaging with Marchenko fields
+6. Imaging with Marchenko fields
 ================================
 This example shows how to perform target-oriented imaging via the
 documentation and shows how to set-up and run the

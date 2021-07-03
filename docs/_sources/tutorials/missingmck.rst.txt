@@ -18,7 +18,7 @@
 .. _sphx_glr_tutorials_missingmck.py:
 
 
-2. Marchenko redatuming with missing sources
+3. Marchenko redatuming with missing sources
 ============================================
 This example shows how the :py:class:`pymarchenko.marchenko.Marchenko`
 routine can handle acquisition geometries with missing sources. We will first
@@ -466,7 +466,7 @@ a sparsity promoting solver like :func:`pylops.optimization.sparsity.FISTA`
        399  -0.00000e+00   5.165e+10   3.499e+12   7.642e+03
        400  -0.00000e+00   5.164e+10   3.498e+12   7.616e+03
 
-    Iterations = 400        Total time (s) = 214.83
+    Iterations = 400        Total time (s) = 244.04
     ---------------------------------------------------------
 
 
@@ -536,7 +536,7 @@ And the up- and down- Green's functions
 
 
     fig, axs = plt.subplots(2, 3, sharey=True, figsize=(14, 12))
-    axs[0][0].imshow(g_inv_minus.T, cmap='gray', vmin=-5e5, vmax=5e5,
+    axs[0][0].imshow(g_inv_minus[iava, :].T, cmap='gray', vmin=-5e5, vmax=5e5,
                      extent=(r[0, 0], r[0, -1], t2[-1], t2[0]))
     axs[0][0].set_title(r'$g^-$')
     axs[0][0].axis('tight')
@@ -551,7 +551,7 @@ And the up- and down- Green's functions
     axs[0][2].set_title(r'$g^- L1$')
     axs[0][2].axis('tight')
     axs[0][2].set_ylim(1.2, 0)
-    axs[1][0].imshow(g_inv_plus.T, cmap='gray', vmin=-5e5, vmax=5e5,
+    axs[1][0].imshow(g_inv_plus[iava, :].T, cmap='gray', vmin=-5e5, vmax=5e5,
                      extent=(r[0, 0], r[0, -1], t2[-1], t2[0]))
     axs[1][0].set_title(r'$g^+$')
     axs[1][0].axis('tight')
@@ -583,7 +583,7 @@ And the up- and down- Green's functions
 
 And finally the total Green's functions
 
-.. GENERATED FROM PYTHON SOURCE LINES 286-319
+.. GENERATED FROM PYTHON SOURCE LINES 286-320
 
 .. code-block:: default
 
@@ -623,6 +623,7 @@ And finally the total Green's functions
 
 
 
+
 .. image:: /tutorials/images/sphx_glr_missingmck_006.png
     :alt: $G_{true}$, $G_{est} L2$, $G_{est}$ L1 radon
     :class: sphx-glr-single-img
@@ -634,7 +635,7 @@ And finally the total Green's functions
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** ( 3 minutes  45.382 seconds)
+   **Total running time of the script:** ( 4 minutes  14.908 seconds)
 
 
 .. _sphx_glr_download_tutorials_missingmck.py:

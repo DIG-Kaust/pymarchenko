@@ -1,5 +1,5 @@
 """
-4. Marchenko Multiple Elimination
+5. Marchenko Multiple Elimination
 =================================
 This example performs internal multiple elimination using the
 :py:class:`pymarchenko.mme.MME` routine. The MME algorithm can also compensate

@@ -249,8 +249,8 @@ for a single subsurface point ``vs``.
 
  .. code-block:: none
 
-    Dot test passed, v^T(Opu)=-440.877597 - u^T(Op^Tv)=-440.877597
-    Dot test passed, v^T(Opu)=357.697361 - u^T(Op^Tv)=357.697361
+    Dot test passed, v^T(Opu)=-879.415075 - u^T(Op^Tv)=-879.415075
+    Dot test passed, v^T(Opu)=74.046029 - u^T(Op^Tv)=74.046029
  
     LSQR            Least-squares solution of  Ax = b
     The matrix A has 282598 rows and 282598 columns
@@ -277,7 +277,7 @@ for a single subsurface point ``vs``.
     istop =       7   r1norm = 6.7e+05   anorm = 4.4e+00   arnorm = 5.1e+05
     itn   =      10   r2norm = 6.7e+05   acond = 1.6e+01   xnorm  = 3.5e+07
  
-    Elapsed time (s): 2.73
+    Elapsed time (s): 2.77
 
 
 
@@ -517,7 +517,7 @@ We now compute the direct arrival traveltime table and run inversion
     istop =       7   r1norm = 6.8e+00   anorm = 4.4e+00   arnorm = 5.2e+00
     itn   =      10   r2norm = 6.8e+00   acond = 1.6e+01   xnorm  = 3.3e+02
  
-    Elapsed time (s): 49.17
+    Elapsed time (s): 46.87
 
 
 
@@ -545,7 +545,7 @@ instead of repeatedly applying
 
  .. code-block:: none
 
-    Speedup between single and multi: 2.83
+    Speedup between single and multi: 3.02
 
 
 
@@ -615,7 +615,7 @@ local reflectivity at the depth level of the virtual sources using
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** ( 1 minutes  14.205 seconds)
+   **Total running time of the script:** ( 1 minutes  11.670 seconds)
 
 
 .. _sphx_glr_download_tutorials_marchenko.py:

@@ -54,12 +54,12 @@ Tutorials
 
 .. raw:: html
 
-    <div class="sphx-glr-thumbcontainer" tooltip="2. Marchenko redatuming with missing sources">
+    <div class="sphx-glr-thumbcontainer" tooltip="3. Marchenko redatuming with missing sources">
 
 .. only:: html
 
  .. figure:: /tutorials/images/thumb/sphx_glr_missingmck_thumb.png
-     :alt: 2. Marchenko redatuming with missing sources
+     :alt: 3. Marchenko redatuming with missing sources
 
      :ref:`sphx_glr_tutorials_missingmck.py`
 
@@ -75,12 +75,12 @@ Tutorials
 
 .. raw:: html
 
-    <div class="sphx-glr-thumbcontainer" tooltip="3. Rayleigh-Marchenko redatuming">
+    <div class="sphx-glr-thumbcontainer" tooltip="4. Rayleigh-Marchenko redatuming">
 
 .. only:: html
 
  .. figure:: /tutorials/images/thumb/sphx_glr_raymarchenko_thumb.png
-     :alt: 3. Rayleigh-Marchenko redatuming
+     :alt: 4. Rayleigh-Marchenko redatuming
 
      :ref:`sphx_glr_tutorials_raymarchenko.py`
 
@@ -96,12 +96,12 @@ Tutorials
 
 .. raw:: html
 
-    <div class="sphx-glr-thumbcontainer" tooltip="4. Marchenko Multiple Elimination">
+    <div class="sphx-glr-thumbcontainer" tooltip="5. Marchenko Multiple Elimination">
 
 .. only:: html
 
  .. figure:: /tutorials/images/thumb/sphx_glr_mme_thumb.png
-     :alt: 4. Marchenko Multiple Elimination
+     :alt: 5. Marchenko Multiple Elimination
 
      :ref:`sphx_glr_tutorials_mme.py`
 
@@ -117,12 +117,12 @@ Tutorials
 
 .. raw:: html
 
-    <div class="sphx-glr-thumbcontainer" tooltip="5. Imaging with Marchenko fields">
+    <div class="sphx-glr-thumbcontainer" tooltip="6. Imaging with Marchenko fields">
 
 .. only:: html
 
  .. figure:: /tutorials/images/thumb/sphx_glr_imaging_thumb.png
-     :alt: 5. Imaging with Marchenko fields
+     :alt: 6. Imaging with Marchenko fields
 
      :ref:`sphx_glr_tutorials_imaging.py`
 
