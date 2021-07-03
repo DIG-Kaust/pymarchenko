@@ -43,3 +43,9 @@ docupdate:
 
 docgithub:
 	cd docssrc && make github && cd ..
+
+docpush:
+	git checkout gh-pages && cd docssrc && make github && cd ../docs/html &&\
+	git add . && git commit -m "Updated documentation" &&\
+	git push origin gh-pages && git checkout main
+
