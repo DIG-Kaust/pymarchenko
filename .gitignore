@@ -137,6 +137,8 @@ data
 # Other non-commitable files
 TODO
 .idea
+.DS_Store
 docs/source/gallery/
 docs/source/api/generated/
 docs/source/tutorials
+doctrees/

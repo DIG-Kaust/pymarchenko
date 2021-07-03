@@ -72,6 +72,10 @@ plt.tight_layout()
 t = inputdata['t']
 ot, dt, nt = t[0], t[1]-t[0], len(t)
 
+# Wavelet
+wav = inputdata['wav']
+wav_c = np.argmax(wav)
+
 # Reflection data (R[s, r, t]) and subsurface fields
 Vzu = inputdata['Vzu']
 Vzd = inputdata['Vzd']
@@ -110,8 +114,6 @@ fig.tight_layout()
 
 Gsub = inputdata['Gsub']
 G0sub = inputdata['G0sub']
-wav = inputdata['wav']
-wav_c = np.argmax(wav)
 
 Gsub = np.apply_along_axis(convolve, 0, Gsub, wav, mode='full')
 Gsub = Gsub[wav_c:][:nt]

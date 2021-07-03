@@ -10,6 +10,7 @@ from pylops import Diagonal, Identity, Block, BlockDiag, Restriction
 from pylops.waveeqprocessing.mdd import MDC
 from pylops.waveeqprocessing.marchenko import directwave
 from pylops.optimization.solver import cgls
+from pylops.optimization.sparsity import FISTA
 from pylops.utils.backend import get_array_module, get_module_name, \
     to_cupy_conditional
 
@@ -63,6 +64,11 @@ class Marchenko():
         :class:`pylops.basicoperators.Restriction` operator is used instead of
         the :class:`pylops.basicoperators.Identity` operator along the main
         diagonal of the Marchenko operator
+    S : :obj:`pylops.LinearOperator`, optional
+        Sparsifying transform to be provided to solve the Marchenko equations
+        via the :func:`pylops.optimization.sparsity.FISTA` solver in the case
+        of missing sources. If ``S=None``, least-squares inversion is used
+        instead.
 
     Attributes
     ----------
@@ -110,7 +116,7 @@ class Marchenko():
            \mathbf{f_m^+}
         \end{bmatrix}
 
-    Finally the subsurface Green's functions can be obtained applying the
+    Subsequently the subsurface Green's functions can be obtained applying the
     following operator to the retrieved focusing functions
 
     .. math::
@@ -131,6 +137,32 @@ class Marchenko():
     Here :math:`\mathbf{R}` is the monopole-to-particle velocity seismic
     response (already multiplied by 2).
 
+    Finally this routine can also be used to solve the Marchenko equations in
+    the case of missing sources (provided that the available sources are
+    co-located with receivers at indices ``isava``):
+
+    .. math::
+        \begin{bmatrix}
+           \Theta \mathbf{R} \mathbf{f_d^+}  \\
+           \mathbf{0}
+        \end{bmatrix} =
+        \begin{bmatrix}
+           \mathbf{S}  &   \Theta \mathbf{R}   \\
+           \Theta \mathbf{R^*} & \mathbf{S}
+        \end{bmatrix}
+        \begin{bmatrix}
+           \mathbf{f^-}  \\
+           \mathbf{f_m^+}
+        \end{bmatrix}
+
+    where :math:`\mathbf{S}` is a :class:`pylops.basicoperators.Restriction`
+    operator. Note that in order to succesfully reconstruct focusing functions
+    that do not present gaps at the location of missing sources, additional
+    prior information must be provided in the form of sparsifying transforms
+    and the equation must be solved via sparsity-promoting inversion. This
+    can be triggered here by providing an appropriate ``Sop``
+
+
     .. [1] Wapenaar, K., Thorbecke, J., Van der Neut, J., Broggini, F.,
         Slob, E., and Snieder, R., "Marchenko imaging", Geophysics, vol. 79,
         pp. WA39-WA57. 2014.
@@ -140,11 +172,16 @@ class Marchenko():
        Marchenko equations", Geophysical Journal International, vol. 203,
        pp. 792-813. 2015.
 
+    .. [3] Haindl, C., Ravasi, M., and Broggini, F., K. "Handling gaps in
+       acquisition geometries — Improving Marchenko-based imaging using
+       sparsity-promoting inversion and joint inversion of time-lapse data",
+       Geophysics, vol. 86, pp. S143-S154. 2021.
+
     """
     def __init__(self, R, dt=0.004, nt=None, dr=1.,
                  nfmax=None, wav=None, toff=0.0, nsmooth=10,
                  dtype='float64', saveRt=True, prescaled=False,
-                 isava=None):
+                 isava=None, S=None):
         # Save inputs into class
         self.dt = dt
         self.dr = dr
@@ -154,6 +191,7 @@ class Marchenko():
         self.saveRt = saveRt
         self.prescaled = prescaled
         self.isava = isava
+        self.S = S
         self.dtype = dtype
         self.explicit = False
         self.ncp = get_array_module(R)
@@ -194,6 +232,8 @@ class Marchenko():
         else:
             self.Iop = Restriction(self.nr * self.nt2, isava,
                                    dims=(self.nt2, self.nr), dir=1)
+        if S is not None:
+            self.Sop = BlockDiag([S, S])
 
     def apply_onepoint(self, trav, G0=None, nfft=None, rtm=False, greens=False,
                        dottest=False, fast=None, usematmul=False,
@@ -230,7 +270,9 @@ class Marchenko():
             Arbitrary keyword arguments for chosen solver
             (:py:func:`scipy.sparse.linalg.lsqr` and
             :py:func:`pylops.optimization.solver.cgls` are used as default
-            for numpy and cupy `data`, respectively)
+            for numpy and cupy `data`, respectively.
+            :py:func:`pylops.optimization.sparsity.FISTA` is used when a
+            sparsifying transform ``S`` is provided).
 
         Returns
         ----------
@@ -276,9 +318,6 @@ class Marchenko():
             Wsop = Diagonal(w[self.isava].T.ravel())
         else:
             Wsop = Wop
-        print(Wsop.shape, Rop.shape, self.Iop)
-        print(Block([[self.Iop, -1 * Wsop * Rop],
-                     [-1 * Wsop * R1op, self.Iop]]))
         Mop = Block([[self.Iop, -1 * Wsop * Rop],
                      [-1 * Wsop * R1op, self.Iop]]) * BlockDiag([Wop, Wop])
         Gop = Block([[self.Iop, -1 * Rop],
@@ -321,12 +360,16 @@ class Marchenko():
                             self.ncp.zeros((self.nt2, self.ns), self.dtype)))
 
         # Invert for focusing functions
-        if self.ncp == np:
-            f1_inv = lsqr(Mop, d.ravel(), **kwargs_solver)[0]
+        if self.S is None:
+            if self.ncp == np:
+                f1_inv = lsqr(Mop, d.ravel(), **kwargs_solver)[0]
+            else:
+                f1_inv = cgls(Mop, d.ravel(),
+                              x0=self.ncp.zeros(2*(2*self.nt-1)*self.nr, dtype=self.dtype),
+                              **kwargs_solver)[0]
         else:
-            f1_inv = cgls(Mop, d.ravel(),
-                          x0=self.ncp.zeros(2*(2*self.nt-1)*self.nr, dtype=self.dtype),
-                          **kwargs_solver)[0]
+            f1_inv = FISTA(Mop * self.Sop, d.ravel(), **kwargs_solver)[0]
+            f1_inv = self.Sop * f1_inv
 
         f1_inv = f1_inv.reshape(2 * self.nt2, self.nr)
         f1_inv_tot = f1_inv + np.concatenate((self.ncp.zeros((self.nt2,
