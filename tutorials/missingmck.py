@@ -3,7 +3,7 @@
 ============================================
 This example shows how the :py:class:`pymarchenko.marchenko.Marchenko`
 routine can handle acquisition geometries with missing sources. We will first
-see that using least-squares inversion leads to retreiving focusing functions
+see that using least-squares inversion leads to retrieving focusing functions
 that present gaps due to the missing sources. We further leverage sparsity-
 promoting inversion and show that focusing functions can be retrieved that are
 almost of the same quality as those constructed with the full acquisition
@@ -112,7 +112,7 @@ axs[2].set_ylim(1.5, 0)
 fig.tight_layout()
 
 ###############################################################################
-# And the true and background subsurface fields
+# and the true and background subsurface fields
 
 # Subsurface fields
 Gsub = inputdata['Gsub'][:-100]
@@ -181,7 +181,7 @@ g_inv_tot_ls = g_inv_minus_ls + g_inv_plus_ls
 # Finally, we define a sparsifying transform and set up the inversion using
 # a sparsity promoting solver like :func:`pylops.optimization.sparsity.FISTA`
 
-# Slidling Radon as sparsifying transform
+# Sliding Radon as sparsifying transform
 nwin = 25
 nwins = 6
 nover = 10
@@ -246,7 +246,7 @@ axs[1][2].set_ylim(1, -1)
 fig.tight_layout()
 
 ##############################################################################
-# And the up- and down- Green's functions
+# and the up- and down- Green's functions
 
 fig, axs = plt.subplots(2, 3, sharey=True, figsize=(14, 12))
 axs[0][0].imshow(g_inv_minus[iava, :].T, cmap='gray', vmin=-5e5, vmax=5e5,
@@ -282,7 +282,7 @@ axs[1][2].set_ylim(1.2, 0)
 fig.tight_layout()
 
 ##############################################################################
-# And finally the total Green's functions
+# and finally the total Green's functions
 
 fig = plt.figure(figsize=(18,9))
 ax1 = plt.subplot2grid((1, 7), (0, 0), colspan=2)

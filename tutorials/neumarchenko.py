@@ -95,7 +95,7 @@ axs[2].set_ylim(1.5, 0)
 fig.tight_layout()
 
 ###############################################################################
-# And the true and background subsurface fields
+# and the true and background subsurface fields
 
 # Subsurface fields
 Gsub = inputdata['Gsub'][:-100]
@@ -127,8 +127,8 @@ fig.tight_layout()
 
 ##############################################################################
 # Let's now create an object of the
-# :py:class:`pylops.waveeqprocessing.Marchenko` class and apply redatuming
-# for a single subsurface point ``vs``.
+# :py:class:`pymarchenko.neumarchenko.NeumannMarchenko` class and apply
+# redatuming for a single subsurface point ``vs``.
 
 # Direct arrival traveltime
 trav = np.sqrt((vs[0]-r[0])**2+(vs[1]-r[1])**2)/vel
@@ -169,7 +169,7 @@ axs[2].set_ylim(1.2, 0)
 fig.tight_layout()
 
 ##############################################################################
-# And compare the total Green's function with the directly modelled one
+# and compare the total Green's function with the directly modelled one
 
 fig = plt.figure(figsize=(12, 7))
 ax1 = plt.subplot2grid((1, 5), (0, 0), colspan=2)

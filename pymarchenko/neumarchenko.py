@@ -17,7 +17,7 @@ logging.basicConfig(format='%(levelname)s: %(message)s', level=logging.WARNING)
 
 
 class NeumannMarchenko():
-    r"""Marchenko redatuming
+    r"""Iterative Marchenko redatuming
 
     Solve multi-dimensional Marchenko redatuming problem using
     Neumann iterative substitution.
@@ -27,8 +27,8 @@ class NeumannMarchenko():
     R : :obj:`numpy.ndarray`
         Multi-dimensional reflection response in time or frequency
         domain of size :math:`[n_s \times n_r \times n_t/n_{fmax}]`. If
-        provided in time, `R` should not be of complex type. If
-        provided in frequency, `R` should contain the positive time axis
+        provided in time, ``R`` should not be of complex type. If
+        provided in frequency, ``R`` should contain the positive time axis
         followed by the negative one. Note that the reflection response
         should have already been multiplied by 2.
     dt : :obj:`float`, optional

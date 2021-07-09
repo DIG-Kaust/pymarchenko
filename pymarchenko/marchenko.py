@@ -28,8 +28,8 @@ class Marchenko():
     R : :obj:`numpy.ndarray`
         Multi-dimensional reflection response in time or frequency
         domain of size :math:`[n_s \times n_r \times n_t/n_{fmax}]`. If
-        provided in time, `R` should not be of complex type. If
-        provided in frequency, `R` should contain the positive time axis
+        provided in time, ``R`` should not be of complex type. If
+        provided in frequency, ``R`` should contain the positive time axis
         followed by the negative one. Note that the reflection response
         should have already been multiplied by 2.
     dt : :obj:`float`, optional
@@ -61,8 +61,8 @@ class Marchenko():
         the user.
     isava : :obj:`list`, optional
         Indices of available sources. If not ``None``, a
-        :class:`pylops.basicoperators.Restriction` operator is used instead of
-        the :class:`pylops.basicoperators.Identity` operator along the main
+        :class:`pylops.Restriction` operator is used instead of
+        the :class:`pylops.Identity` operator along the main
         diagonal of the Marchenko operator
     S : :obj:`pylops.LinearOperator`, optional
         Sparsifying transform to be provided to solve the Marchenko equations
@@ -155,12 +155,12 @@ class Marchenko():
            \mathbf{f_m^+}
         \end{bmatrix}
 
-    where :math:`\mathbf{S}` is a :class:`pylops.basicoperators.Restriction`
+    where :math:`\mathbf{S}` is a :class:`pylops.Restriction`
     operator. Note that in order to succesfully reconstruct focusing functions
     that do not present gaps at the location of missing sources, additional
     prior information must be provided in the form of sparsifying transforms
     and the equation must be solved via sparsity-promoting inversion. This
-    can be triggered here by providing an appropriate ``Sop``
+    is achieived by providing an appropriate ``Sop`` operator.
 
 
     .. [1] Wapenaar, K., Thorbecke, J., Van der Neut, J., Broggini, F.,

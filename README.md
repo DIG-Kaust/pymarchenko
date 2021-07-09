@@ -2,9 +2,9 @@
 
 This Python library provides a bag of Marchenko algorithms implemented on top of [PyLops](https://pylops.readthedocs.io).
 
-Whilst a basic implementation of the [Marchenko](https://pylops.readthedocs.io/en/latest/api/generated/pylops.waveeqprocessing.Marchenko.html#pylops.waveeqprocessing.Marchenko).
-algorithm is implemented direcly in PyLops, a number of variants have been developed over the years. This library aims to collect
-all of them in the same place and give access to them with the same API to ease switching between them and prototyping of new
+Whilst a basic implementation of the [Marchenko](https://pylops.readthedocs.io/en/latest/api/generated/pylops.waveeqprocessing.Marchenko.html#pylops.waveeqprocessing.Marchenko)
+algorithm is available directly in PyLops, a number of variants have been developed over the years. This library aims at collecting
+all of them in the same place and give access to them with a unique consistent API to ease switching between them and prototyping new
 algorithms.
 
 ## Objective
@@ -16,7 +16,7 @@ Currently we provide the following implementations:
 - Internal multiple elimination via Marchenko equations (Zhang et al., 2019)
 - Marchenko redatuming with irregular sources (Haindl et al., 2021)
 
-Alongside with the core algorithms, the following auxiliary tools are also provided:
+Alongside the core algorithms, these following auxiliary tools are also provided:
 
 - Target-oriented receiver-side redatuming via MDD
 - Marchenko imaging (combined source-side Marchenko redatuming and receiver-side MDD redatuming)
@@ -55,7 +55,7 @@ simply typing
 make docupdate
 ```
 
-Since the tutorials are too heavy to be created by hosting documentation webservices like Readthedocs, the documentation
+Since the tutorials are too heavy to be created by documentation web-services like Readthedocs, our documentation
 is hosted on Github-Pages and run locally on a separate branch. To get started create the following branch both locally
 and in your remote fork:
 ```
