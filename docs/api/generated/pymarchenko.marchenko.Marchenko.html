@@ -245,8 +245,8 @@
 <dd class="field-odd"><dl>
 <dt><strong>R</strong><span class="classifier"><a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v1.21)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">numpy.ndarray</span></code></a></span></dt><dd><p>Multi-dimensional reflection response in time or frequency
 domain of size <span class="math notranslate nohighlight">\([n_s \times n_r \times n_t/n_{fmax}]\)</span>. If
-provided in time, <cite>R</cite> should not be of complex type. If
-provided in frequency, <cite>R</cite> should contain the positive time axis
+provided in time, <code class="docutils literal notranslate"><span class="pre">R</span></code> should not be of complex type. If
+provided in frequency, <code class="docutils literal notranslate"><span class="pre">R</span></code> should contain the positive time axis
 followed by the negative one. Note that the reflection response
 should have already been multiplied by 2.</p>
 </dd>
@@ -278,8 +278,8 @@ when performing spatial and temporal summations within the
 the user.</p>
 </dd>
 <dt><strong>isava</strong><span class="classifier"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.9)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">list</span></code></a>, optional</span></dt><dd><p>Indices of available sources. If not <code class="docutils literal notranslate"><span class="pre">None</span></code>, a
-<code class="xref py py-class docutils literal notranslate"><span class="pre">pylops.basicoperators.Restriction</span></code> operator is used instead of
-the <code class="xref py py-class docutils literal notranslate"><span class="pre">pylops.basicoperators.Identity</span></code> operator along the main
+<a class="reference external" href="https://pylops.readthedocs.io/en/latest/api/generated/pylops.Restriction.html#pylops.Restriction" title="(in PyLops vdev)"><code class="xref py py-class docutils literal notranslate"><span class="pre">pylops.Restriction</span></code></a> operator is used instead of
+the <a class="reference external" href="https://pylops.readthedocs.io/en/latest/api/generated/pylops.Identity.html#pylops.Identity" title="(in PyLops vdev)"><code class="xref py py-class docutils literal notranslate"><span class="pre">pylops.Identity</span></code></a> operator along the main
 diagonal of the Marchenko operator</p>
 </dd>
 <dt><strong>S</strong><span class="classifier"><a class="reference external" href="https://pylops.readthedocs.io/en/latest/api/generated/pylops.LinearOperator.html#pylops.LinearOperator" title="(in PyLops vdev)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">pylops.LinearOperator</span></code></a>, optional</span></dt><dd><p>Sparsifying transform to be provided to solve the Marchenko equations
@@ -359,12 +359,12 @@ co-located with receivers at indices <code class="docutils literal notranslate">
    \mathbf{f^-}  \\
    \mathbf{f_m^+}
 \end{bmatrix}\end{split}\]</div>
-<p>where <span class="math notranslate nohighlight">\(\mathbf{S}\)</span> is a <code class="xref py py-class docutils literal notranslate"><span class="pre">pylops.basicoperators.Restriction</span></code>
+<p>where <span class="math notranslate nohighlight">\(\mathbf{S}\)</span> is a <a class="reference external" href="https://pylops.readthedocs.io/en/latest/api/generated/pylops.Restriction.html#pylops.Restriction" title="(in PyLops vdev)"><code class="xref py py-class docutils literal notranslate"><span class="pre">pylops.Restriction</span></code></a>
 operator. Note that in order to succesfully reconstruct focusing functions
 that do not present gaps at the location of missing sources, additional
 prior information must be provided in the form of sparsifying transforms
 and the equation must be solved via sparsity-promoting inversion. This
-can be triggered here by providing an appropriate <code class="docutils literal notranslate"><span class="pre">Sop</span></code></p>
+is achieived by providing an appropriate <code class="docutils literal notranslate"><span class="pre">Sop</span></code> operator.</p>
 <dl class="citation">
 <dt class="label" id="r45c6d2d98973-1"><span class="brackets"><a class="fn-backref" href="#id1">1</a></span></dt>
 <dd><p>Wapenaar, K., Thorbecke, J., Van der Neut, J., Broggini, F.,
@@ -421,9 +421,9 @@ Geophysics, vol. 86, pp. S143-S154. 2021.</p>
 
 <div style='clear:both'></div><div class="section" id="examples-using-pymarchenko-marchenko-marchenko">
 <h2>Examples using <code class="docutils literal notranslate"><span class="pre">pymarchenko.marchenko.Marchenko</span></code><a class="headerlink" href="#examples-using-pymarchenko-marchenko-marchenko" title="Permalink to this headline">¶</a></h2>
-<div class="sphx-glr-thumbcontainer" tooltip="2. Marchenko redatuming by inversion"><div class="figure align-default" id="id3">
-<img alt="2. Marchenko redatuming by inversion" src="../../_images/sphx_glr_marchenko_thumb.png" />
-<p class="caption"><span class="caption-text"><a class="reference internal" href="../../tutorials/marchenko.html#sphx-glr-tutorials-marchenko-py"><span class="std std-ref">2. Marchenko redatuming by inversion</span></a></span><a class="headerlink" href="#id3" title="Permalink to this image">¶</a></p>
+<div class="sphx-glr-thumbcontainer" tooltip="3. Marchenko redatuming with missing sources"><div class="figure align-default" id="id3">
+<img alt="3. Marchenko redatuming with missing sources" src="../../_images/sphx_glr_missingmck_thumb.png" />
+<p class="caption"><span class="caption-text"><a class="reference internal" href="../../tutorials/missingmck.html#sphx-glr-tutorials-missingmck-py"><span class="std std-ref">3. Marchenko redatuming with missing sources</span></a></span><a class="headerlink" href="#id3" title="Permalink to this image">¶</a></p>
 </div>
 </div><div style='clear:both'></div></div>
 </div>

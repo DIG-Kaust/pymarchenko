@@ -159,7 +159,7 @@ Let's now load and display the reflection response
 
 .. GENERATED FROM PYTHON SOURCE LINES 98-99
 
-And the true and background subsurface fields
+and the true and background subsurface fields
 
 .. GENERATED FROM PYTHON SOURCE LINES 99-128
 
@@ -208,8 +208,8 @@ And the true and background subsurface fields
 .. GENERATED FROM PYTHON SOURCE LINES 129-132
 
 Let's now create an object of the
-:py:class:`pylops.waveeqprocessing.Marchenko` class and apply redatuming
-for a single subsurface point ``vs``.
+:py:class:`pymarchenko.neumarchenko.NeumannMarchenko` class and apply
+redatuming for a single subsurface point ``vs``.
 
 .. GENERATED FROM PYTHON SOURCE LINES 132-144
 
@@ -280,7 +280,7 @@ with standard redatuming
 
 .. GENERATED FROM PYTHON SOURCE LINES 172-173
 
-And compare the total Green's function with the directly modelled one
+and compare the total Green's function with the directly modelled one
 
 .. GENERATED FROM PYTHON SOURCE LINES 173-196
 
@@ -323,7 +323,7 @@ And compare the total Green's function with the directly modelled one
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** ( 0 minutes  3.101 seconds)
+   **Total running time of the script:** ( 0 minutes  3.267 seconds)
 
 
 .. _sphx_glr_download_tutorials_neumarchenko.py:

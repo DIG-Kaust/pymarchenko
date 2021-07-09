@@ -183,7 +183,7 @@
 
 
 <div class="viewcode-block" id="NeumannMarchenko"><a class="viewcode-back" href="../../api/generated/pymarchenko.neumarchenko.NeumannMarchenko.html#pymarchenko.neumarchenko.NeumannMarchenko">[docs]</a><span class="k">class</span> <span class="nc">NeumannMarchenko</span><span class="p">():</span>
-    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Marchenko redatuming</span>
+    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Iterative Marchenko redatuming</span>
 
 <span class="sd">    Solve multi-dimensional Marchenko redatuming problem using</span>
 <span class="sd">    Neumann iterative substitution.</span>
@@ -193,8 +193,8 @@
 <span class="sd">    R : :obj:`numpy.ndarray`</span>
 <span class="sd">        Multi-dimensional reflection response in time or frequency</span>
 <span class="sd">        domain of size :math:`[n_s \times n_r \times n_t/n_{fmax}]`. If</span>
-<span class="sd">        provided in time, `R` should not be of complex type. If</span>
-<span class="sd">        provided in frequency, `R` should contain the positive time axis</span>
+<span class="sd">        provided in time, ``R`` should not be of complex type. If</span>
+<span class="sd">        provided in frequency, ``R`` should contain the positive time axis</span>
 <span class="sd">        followed by the negative one. Note that the reflection response</span>
 <span class="sd">        should have already been multiplied by 2.</span>
 <span class="sd">    dt : :obj:`float`, optional</span>

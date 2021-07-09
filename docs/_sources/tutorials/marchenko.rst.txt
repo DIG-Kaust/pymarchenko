@@ -22,7 +22,7 @@
 ====================================
 This example is an extended version of the original tutorial from the PyLops
 documentation and shows how to set-up and run the
-:py:class:`pylops.waveeqprocessing.Marchenko` inversion using synthetic data
+:py:class:`pymarchenko.marchenko.Marchenko` inversion using synthetic data
 for both single and multiple virtual points.
 
 .. GENERATED FROM PYTHON SOURCE LINES 10-26
@@ -168,7 +168,7 @@ Let's now load and display the reflection response
 
 .. GENERATED FROM PYTHON SOURCE LINES 107-108
 
-And the true and background subsurface fields
+and the true and background subsurface fields
 
 .. GENERATED FROM PYTHON SOURCE LINES 108-137
 
@@ -217,7 +217,7 @@ And the true and background subsurface fields
 .. GENERATED FROM PYTHON SOURCE LINES 138-141
 
 Let's now create an object of the
-:py:class:`pylops.waveeqprocessing.Marchenko` class and apply redatuming
+:py:class:`pymarchenko.marchenko.Marchenko` class and apply redatuming
 for a single subsurface point ``vs``.
 
 .. GENERATED FROM PYTHON SOURCE LINES 141-156
@@ -249,8 +249,8 @@ for a single subsurface point ``vs``.
 
  .. code-block:: none
 
-    Dot test passed, v^T(Opu)=-879.415075 - u^T(Op^Tv)=-879.415075
-    Dot test passed, v^T(Opu)=74.046029 - u^T(Op^Tv)=74.046029
+    Dot test passed, v^T(Opu)=-258.843683 - u^T(Op^Tv)=-258.843683
+    Dot test passed, v^T(Opu)=-40.300795 - u^T(Op^Tv)=-40.300795
  
     LSQR            Least-squares solution of  Ax = b
     The matrix A has 282598 rows and 282598 columns
@@ -277,7 +277,7 @@ for a single subsurface point ``vs``.
     istop =       7   r1norm = 6.7e+05   anorm = 4.4e+00   arnorm = 5.1e+05
     itn   =      10   r2norm = 6.7e+05   acond = 1.6e+01   xnorm  = 3.5e+07
  
-    Elapsed time (s): 2.77
+    Elapsed time (s): 2.76
 
 
 
@@ -328,7 +328,7 @@ with standard redatuming
 
 .. GENERATED FROM PYTHON SOURCE LINES 184-185
 
-And compare the total Green's function with the directly modelled one
+and compare the total Green's function with the directly modelled one
 
 .. GENERATED FROM PYTHON SOURCE LINES 185-209
 
@@ -373,9 +373,9 @@ And compare the total Green's function with the directly modelled one
 
 Finally, we show that when interested in creating subsurface wavefields
 for a group of subsurface points the
-:py:func:`pylops.waveeqprocessing.Marchenko.apply_multiplepoints` should be
+:py:func:`pymarchenko.marchenko..Marchenko.apply_multiplepoints` should be
 used instead of
-:py:func:`pylops.waveeqprocessing.Marchenko.apply_onepoint`.
+:py:func:`pymarchenko.marchenko..Marchenko.apply_onepoint`.
 
 .. GENERATED FROM PYTHON SOURCE LINES 215-228
 
@@ -517,7 +517,7 @@ We now compute the direct arrival traveltime table and run inversion
     istop =       7   r1norm = 6.8e+00   anorm = 4.4e+00   arnorm = 5.2e+00
     itn   =      10   r2norm = 6.8e+00   acond = 1.6e+01   xnorm  = 3.3e+02
  
-    Elapsed time (s): 46.87
+    Elapsed time (s): 47.47
 
 
 
@@ -525,9 +525,9 @@ We now compute the direct arrival traveltime table and run inversion
 .. GENERATED FROM PYTHON SOURCE LINES 287-291
 
 Let's evaluate how faster is to actually use
-:py:func:`pylops.waveeqprocessing.Marchenko.apply_multiplepoints`
+:py:func:`pymarchenko.marchenko..Marchenko.apply_multiplepoints`
 instead of repeatedly applying
-:py:func:`pylops.waveeqprocessing.Marchenko.apply_onepoint`.
+:py:func:`pymarchenko.marchenko..Marchenko.apply_onepoint`.
 
 .. GENERATED FROM PYTHON SOURCE LINES 291-293
 
@@ -545,7 +545,7 @@ instead of repeatedly applying
 
  .. code-block:: none
 
-    Speedup between single and multi: 3.02
+    Speedup between single and multi: 2.96
 
 
 
@@ -596,7 +596,7 @@ local reflectivity at the depth level of the virtual sources using
                   vmin=-0.7*np.max(np.abs(Rmck[nvs//2, :, nt:])),
                   vmax=0.7*np.max(np.abs(Rmck[nvs//2, :, nt:])),
                   extent=(vs[0][0], vs[0][-1], t[-1], t[0]))
-    axs[1].set_title('R Mck')
+    axs[1].set_title('R Marchenko')
     axs[1].set_xlabel(r'$x_{VS}$')
     axs[1].axis('tight')
     axs[1].set_ylim(0.7, 0.)
@@ -605,7 +605,7 @@ local reflectivity at the depth level of the virtual sources using
 
 
 .. image:: /tutorials/images/sphx_glr_marchenko_008.png
-    :alt: R single-scattering, R Mck
+    :alt: R single-scattering, R Marchenko
     :class: sphx-glr-single-img
 
 
@@ -615,7 +615,7 @@ local reflectivity at the depth level of the virtual sources using
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** ( 1 minutes  11.670 seconds)
+   **Total running time of the script:** ( 1 minutes  12.312 seconds)
 
 
 .. _sphx_glr_download_tutorials_marchenko.py:

@@ -245,11 +245,15 @@
 <dd class="field-odd"><dl>
 <dt><strong>VZplus</strong><span class="classifier"><a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v1.21)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">numpy.ndarray</span></code></a></span></dt><dd><p>Multi-dimensional downgoing particle velocity data in time or frequency
 domain of size <span class="math notranslate nohighlight">\([n_s \times n_r \times n_t/n_{fmax}]\)</span>. If
-provided in time, <cite>VZplus</cite> should not be of complex type.</p>
+provided in time, <code class="docutils literal notranslate"><span class="pre">VZplus</span></code> should not be of complex type. If
+provided in frequency, <code class="docutils literal notranslate"><span class="pre">VZpl</span></code> should contain the positive time axis
+followed by the negative one.</p>
 </dd>
 <dt><strong>VZminus</strong><span class="classifier"><a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v1.21)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">numpy.ndarray</span></code></a></span></dt><dd><p>Multi-dimensional upgoing particle velocity data in time or frequency
 domain of size <span class="math notranslate nohighlight">\([n_s \times n_r \times n_t/n_{fmax}]\)</span>. If
-provided in time, <cite>VZplus</cite> should not be of complex type.</p>
+provided in time, <code class="docutils literal notranslate"><span class="pre">VZminus</span></code> should not be of complex type. If
+provided in frequency, <code class="docutils literal notranslate"><span class="pre">VZminus</span></code> should contain the positive time axis
+followed by the negative one.</p>
 </dd>
 <dt><strong>dt</strong><span class="classifier"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.9)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">float</span></code></a>, optional</span></dt><dd><p>Sampling of time integration axis</p>
 </dd>
@@ -267,16 +271,16 @@ provided in time, <cite>VZplus</cite> should not be of complex type.</p>
 </dd>
 <dt><strong>dtype</strong><span class="classifier"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.9)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">bool</span></code></a>, optional</span></dt><dd><p>Type of elements in input array.</p>
 </dd>
-<dt><strong>saveVt</strong><span class="classifier"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.9)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">bool</span></code></a>, optional</span></dt><dd><p>Save <code class="docutils literal notranslate"><span class="pre">VZ</span></code> and <code class="docutils literal notranslate"><span class="pre">VZ^H</span></code> to speed up the computation of adjoint of
+<dt><strong>saveVt</strong><span class="classifier"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.9)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">bool</span></code></a>, optional</span></dt><dd><p>Save <code class="docutils literal notranslate"><span class="pre">VZplus</span></code> and <code class="docutils literal notranslate"><span class="pre">VZplus^H</span></code> (and <code class="docutils literal notranslate"><span class="pre">VZminus</span></code> and <code class="docutils literal notranslate"><span class="pre">VZminus^H</span></code>)
+to speed up the computation of adjoint of
 <a class="reference external" href="https://pylops.readthedocs.io/en/latest/api/generated/pylops.signalprocessing.Fredholm1.html#pylops.signalprocessing.Fredholm1" title="(in PyLops vdev)"><code class="xref py py-class docutils literal notranslate"><span class="pre">pylops.signalprocessing.Fredholm1</span></code></a> (<code class="docutils literal notranslate"><span class="pre">True</span></code>) or create
-<code class="docutils literal notranslate"><span class="pre">VZ^H</span></code> on-the-fly (<code class="docutils literal notranslate"><span class="pre">False</span></code>) Note that <code class="docutils literal notranslate"><span class="pre">saveVt=True</span></code> will be
-faster but double the amount of required memory</p>
+<code class="docutils literal notranslate"><span class="pre">VZplus^H</span></code> and <code class="docutils literal notranslate"><span class="pre">VZminus^H</span></code> on-the-fly (<code class="docutils literal notranslate"><span class="pre">False</span></code>)
+Note that <code class="docutils literal notranslate"><span class="pre">saveVt=True</span></code> will be faster but double the amount of
+required memory</p>
 </dd>
-<dt><strong>prescaled</strong><span class="classifier"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.9)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">bool</span></code></a>, optional</span></dt><dd><p>Apply scaling to <code class="docutils literal notranslate"><span class="pre">R</span></code> (<code class="docutils literal notranslate"><span class="pre">False</span></code>) or not (<code class="docutils literal notranslate"><span class="pre">False</span></code>)
-when performing spatial and temporal summations within the
-<code class="xref py py-class docutils literal notranslate"><span class="pre">pylops.waveeqprocessing.MDC</span></code> operator. In case
-<code class="docutils literal notranslate"><span class="pre">prescaled=True</span></code>, the <code class="docutils literal notranslate"><span class="pre">R</span></code> is assumed to have been pre-scaled by
-the user.</p>
+<dt><strong>prescaled</strong><span class="classifier"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.9)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">bool</span></code></a>, optional</span></dt><dd><p>Apply scaling to <code class="docutils literal notranslate"><span class="pre">Vzplus</span></code> and <code class="docutils literal notranslate"><span class="pre">VZminus</span></code> (<code class="docutils literal notranslate"><span class="pre">False</span></code>) or
+not (<code class="docutils literal notranslate"><span class="pre">False</span></code>) when performing spatial and temporal summations within
+the <code class="xref py py-class docutils literal notranslate"><span class="pre">pylops.waveeqprocessing.MDC</span></code> operator.</p>
 </dd>
 </dl>
 </dd>

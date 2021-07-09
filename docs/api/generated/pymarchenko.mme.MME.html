@@ -237,8 +237,8 @@
 <dl class="py class">
 <dt id="pymarchenko.mme.MME">
 <em class="property">class </em><code class="sig-prename descclassname">pymarchenko.mme.</code><code class="sig-name descname">MME</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">R</span></em>, <em class="sig-param"><span class="n">wav</span></em>, <em class="sig-param"><span class="n">wav_c</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">dt</span><span class="o">=</span><span class="default_value">0.004</span></em>, <em class="sig-param"><span class="n">nt</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">dr</span><span class="o">=</span><span class="default_value">1.0</span></em>, <em class="sig-param"><span class="n">nfmax</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">toff</span><span class="o">=</span><span class="default_value">0.0</span></em>, <em class="sig-param"><span class="n">nsmooth</span><span class="o">=</span><span class="default_value">10</span></em>, <em class="sig-param"><span class="n">dtype</span><span class="o">=</span><span class="default_value">'float64'</span></em>, <em class="sig-param"><span class="n">saveRt</span><span class="o">=</span><span class="default_value">True</span></em>, <em class="sig-param"><span class="n">prescaled</span><span class="o">=</span><span class="default_value">False</span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/pymarchenko/mme.html#MME"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pymarchenko.mme.MME" title="Permalink to this definition">¶</a></dt>
-<dd><p>Marchenko multi elimination redatuming</p>
-<p>Solve multi-dimensional Marchenko Multiple Elimination problem  using
+<dd><p>Marchenko Multiple Elimination</p>
+<p>Solve multi-dimensional Marchenko Multiple Elimination problem using
 Neumann iterative substitution.</p>
 <dl class="field-list">
 <dt class="field-odd">Parameters</dt>
@@ -292,7 +292,7 @@ the user.</p>
 <p class="rubric">Notes</p>
 <p>Marchenko Multiple Elimination is a method that allows to produce a
 primary-only reflection data by repeated filtering of the data with
-itself and and windowing <a class="reference internal" href="#rb6254a8172bb-1" id="id1">[1]</a>.</p>
+itself and windowing <a class="reference internal" href="#rb6254a8172bb-1" id="id1">[1]</a>.</p>
 <p>The projected Marchenko equations can be written in compact matrix-vector
 notation as:</p>
 <div class="math notranslate nohighlight">
@@ -303,13 +303,13 @@ notation as:</p>
 \[\mathbf{v^+} = \sum_{k=0}^\inf (\Theta \mathbf{R^*}\Theta \mathbf{R})^k
 \Theta \mathbf{R^*} \Theta R = \sum_{k=1}^\inf (\Theta \mathbf{R^*}
 \Theta \mathbf{R})^k \delta\]</div>
-<p>where <span class="math notranslate nohighlight">\(R\)</span> is the reflection response (or $delta$ is a
+<p>where <span class="math notranslate nohighlight">\(R\)</span> is the reflection response (or <span class="math notranslate nohighlight">\(\delta\)</span> is a
 spatio-temporal delta) and <span class="math notranslate nohighlight">\(\Theta\)</span> is the window. The MME algorithm
-requires a small time offset $toff$ (on the order of the wavelet lenght)
-to be subtracted to the window time, whilst the TMME requires such time
-offset to be added.</p>
-<p>At this point the projected demultipled data $U^-$ is computed and
-its values at time sample $t=2t_d$ is extracted:</p>
+requires a small time offset <code class="docutils literal notranslate"><span class="pre">toff</span></code> (on the order of the wavelet
+lenght) to be subtracted to the window time, whilst the TMME requires such
+time offset to be added.</p>
+<p>At this point the projected demultipled data <span class="math notranslate nohighlight">\(\mathbf{U^-}\)</span> is
+computed and its values at time sample <span class="math notranslate nohighlight">\(t=2t_d\)</span> is extracted:</p>
 <div class="math notranslate nohighlight">
 \[\mathbf{U^-} = \mathbf{R} + \mathbf{R} \mathbf{v^+} = \mathbf{R} +
 \mathbf{R} \sum_{k=1}^\inf (\Theta \mathbf{R^*}\Theta \mathbf{R})^k

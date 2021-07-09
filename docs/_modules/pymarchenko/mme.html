@@ -183,9 +183,9 @@
 
 
 <div class="viewcode-block" id="MME"><a class="viewcode-back" href="../../api/generated/pymarchenko.mme.MME.html#pymarchenko.mme.MME">[docs]</a><span class="k">class</span> <span class="nc">MME</span><span class="p">():</span>
-    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Marchenko multi elimination redatuming</span>
+    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Marchenko Multiple Elimination</span>
 
-<span class="sd">    Solve multi-dimensional Marchenko Multiple Elimination problem  using</span>
+<span class="sd">    Solve multi-dimensional Marchenko Multiple Elimination problem using</span>
 <span class="sd">    Neumann iterative substitution.</span>
 
 <span class="sd">    Parameters</span>
@@ -249,7 +249,7 @@
 <span class="sd">    -----</span>
 <span class="sd">    Marchenko Multiple Elimination is a method that allows to produce a</span>
 <span class="sd">    primary-only reflection data by repeated filtering of the data with</span>
-<span class="sd">    itself and and windowing [1]_.</span>
+<span class="sd">    itself and windowing [1]_.</span>
 
 <span class="sd">    The projected Marchenko equations can be written in compact matrix-vector</span>
 <span class="sd">    notation as:</span>
@@ -265,14 +265,14 @@
 <span class="sd">        \Theta \mathbf{R^*} \Theta R = \sum_{k=1}^\inf (\Theta \mathbf{R^*}</span>
 <span class="sd">        \Theta \mathbf{R})^k \delta</span>
 
-<span class="sd">    where :math:`R` is the reflection response (or $\delta$ is a</span>
+<span class="sd">    where :math:`R` is the reflection response (or :math:`\delta` is a</span>
 <span class="sd">    spatio-temporal delta) and :math:`\Theta` is the window. The MME algorithm</span>
-<span class="sd">    requires a small time offset $toff$ (on the order of the wavelet lenght)</span>
-<span class="sd">    to be subtracted to the window time, whilst the TMME requires such time</span>
-<span class="sd">    offset to be added.</span>
+<span class="sd">    requires a small time offset ``toff`` (on the order of the wavelet</span>
+<span class="sd">    lenght) to be subtracted to the window time, whilst the TMME requires such</span>
+<span class="sd">    time offset to be added.</span>
 
-<span class="sd">    At this point the projected demultipled data $U^-$ is computed and</span>
-<span class="sd">    its values at time sample $t=2t_d$ is extracted:</span>
+<span class="sd">    At this point the projected demultipled data :math:`\mathbf{U^-}` is</span>
+<span class="sd">    computed and its values at time sample :math:`t=2t_d` is extracted:</span>
 
 <span class="sd">    .. math::</span>
 <span class="sd">        \mathbf{U^-} = \mathbf{R} + \mathbf{R} \mathbf{v^+} = \mathbf{R} +</span>

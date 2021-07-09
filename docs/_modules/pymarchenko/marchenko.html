@@ -194,8 +194,8 @@
 <span class="sd">    R : :obj:`numpy.ndarray`</span>
 <span class="sd">        Multi-dimensional reflection response in time or frequency</span>
 <span class="sd">        domain of size :math:`[n_s \times n_r \times n_t/n_{fmax}]`. If</span>
-<span class="sd">        provided in time, `R` should not be of complex type. If</span>
-<span class="sd">        provided in frequency, `R` should contain the positive time axis</span>
+<span class="sd">        provided in time, ``R`` should not be of complex type. If</span>
+<span class="sd">        provided in frequency, ``R`` should contain the positive time axis</span>
 <span class="sd">        followed by the negative one. Note that the reflection response</span>
 <span class="sd">        should have already been multiplied by 2.</span>
 <span class="sd">    dt : :obj:`float`, optional</span>
@@ -227,8 +227,8 @@
 <span class="sd">        the user.</span>
 <span class="sd">    isava : :obj:`list`, optional</span>
 <span class="sd">        Indices of available sources. If not ``None``, a</span>
-<span class="sd">        :class:`pylops.basicoperators.Restriction` operator is used instead of</span>
-<span class="sd">        the :class:`pylops.basicoperators.Identity` operator along the main</span>
+<span class="sd">        :class:`pylops.Restriction` operator is used instead of</span>
+<span class="sd">        the :class:`pylops.Identity` operator along the main</span>
 <span class="sd">        diagonal of the Marchenko operator</span>
 <span class="sd">    S : :obj:`pylops.LinearOperator`, optional</span>
 <span class="sd">        Sparsifying transform to be provided to solve the Marchenko equations</span>
@@ -321,12 +321,12 @@
 <span class="sd">           \mathbf{f_m^+}</span>
 <span class="sd">        \end{bmatrix}</span>
 
-<span class="sd">    where :math:`\mathbf{S}` is a :class:`pylops.basicoperators.Restriction`</span>
+<span class="sd">    where :math:`\mathbf{S}` is a :class:`pylops.Restriction`</span>
 <span class="sd">    operator. Note that in order to succesfully reconstruct focusing functions</span>
 <span class="sd">    that do not present gaps at the location of missing sources, additional</span>
 <span class="sd">    prior information must be provided in the form of sparsifying transforms</span>
 <span class="sd">    and the equation must be solved via sparsity-promoting inversion. This</span>
-<span class="sd">    can be triggered here by providing an appropriate ``Sop``</span>
+<span class="sd">    is achieived by providing an appropriate ``Sop`` operator.</span>
 
 
 <span class="sd">    .. [1] Wapenaar, K., Thorbecke, J., Van der Neut, J., Broggini, F.,</span>
