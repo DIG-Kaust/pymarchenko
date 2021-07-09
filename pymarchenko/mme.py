@@ -17,9 +17,9 @@ logging.basicConfig(format='%(levelname)s: %(message)s', level=logging.WARNING)
 
 
 class MME():
-    r"""Marchenko multi elimination redatuming
+    r"""Marchenko Multiple Elimination
 
-    Solve multi-dimensional Marchenko Multiple Elimination problem  using
+    Solve multi-dimensional Marchenko Multiple Elimination problem using
     Neumann iterative substitution.
 
     Parameters
@@ -83,7 +83,7 @@ class MME():
     -----
     Marchenko Multiple Elimination is a method that allows to produce a
     primary-only reflection data by repeated filtering of the data with
-    itself and and windowing [1]_.
+    itself and windowing [1]_.
 
     The projected Marchenko equations can be written in compact matrix-vector
     notation as:
@@ -99,14 +99,14 @@ class MME():
         \Theta \mathbf{R^*} \Theta R = \sum_{k=1}^\inf (\Theta \mathbf{R^*}
         \Theta \mathbf{R})^k \delta
 
-    where :math:`R` is the reflection response (or $\delta$ is a
+    where :math:`R` is the reflection response (or :math:`\delta` is a
     spatio-temporal delta) and :math:`\Theta` is the window. The MME algorithm
-    requires a small time offset $toff$ (on the order of the wavelet lenght)
-    to be subtracted to the window time, whilst the TMME requires such time
-    offset to be added.
+    requires a small time offset ``toff`` (on the order of the wavelet
+    lenght) to be subtracted to the window time, whilst the TMME requires such
+    time offset to be added.
 
-    At this point the projected demultipled data $U^-$ is computed and
-    its values at time sample $t=2t_d$ is extracted:
+    At this point the projected demultipled data :math:`\mathbf{U^-}` is
+    computed and its values at time sample :math:`t=2t_d` is extracted:
 
     .. math::
         \mathbf{U^-} = \mathbf{R} + \mathbf{R} \mathbf{v^+} = \mathbf{R} +

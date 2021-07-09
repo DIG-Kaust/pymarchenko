@@ -25,17 +25,12 @@ is not just a pure stylistic choice but comes with some *hidden* advantages, suc
 Step-by-step installation for users
 -----------------------------------
 
-Python environment
-~~~~~~~~~~~~~~~~~~
-
 Activate your Python environment, and simply type the following command in your terminal
 to install the PyPi distribution:
 
 .. code-block:: bash
 
-   >> pip install pymarchenko
-
-Coming soon!
+   >> pip install pymarchenko (Coming soon!)
 
 Alternatively, to access the latest source from github:
 
@@ -59,6 +54,10 @@ main github repo page) and install PyMarchenko from terminal using the command:
 
 Step-by-step installation for developers
 ----------------------------------------
+
+Python environment
+~~~~~~~~~~~~~~~~~~
+
 Fork and clone the repository by executing the following in your terminal:
 
 .. code-block:: bash
@@ -91,3 +90,39 @@ a new *bash* shell by typing:
 .. code-block:: bash
 
    >> source activate pymarchenko
+
+
+Documentation
+~~~~~~~~~~~~~
+
+You can also build the documentation locally by typing the following command:
+
+.. code-block:: bash
+
+   >> make doc
+
+Once the documentation is created, you can make any change to the source code and rebuild the documentation by
+simply typing
+
+.. code-block:: bash
+
+   >> make docupdate
+
+Since the tutorials are too heavy to be created by documentation web-services like Readthedocs, our documentation
+is hosted on Github-Pages and run locally on a separate branch. To get started create the following branch both locally
+and in your remote fork:
+
+.. code-block:: bash
+
+   >> git checkout -b gh-pages
+   >> git push -u origin gh-pages
+
+Every time you want to update and deploy the documentation run:
+
+.. code-block:: bash
+
+   >> make docpush
+
+This will automatically move to the `gh-pages` branch, build the documentation and push it in the equivalent remote branch.
+You can finally make a Pull Request for your local `gh-pages` branch to the `gh-pages` in the DIG-Kaust repository,
+

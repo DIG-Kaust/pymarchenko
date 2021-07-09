@@ -27,11 +27,15 @@ class RayleighMarchenko():
     VZplus : :obj:`numpy.ndarray`
         Multi-dimensional downgoing particle velocity data in time or frequency
         domain of size :math:`[n_s \times n_r \times n_t/n_{fmax}]`. If
-        provided in time, `VZplus` should not be of complex type.
+        provided in time, ``VZplus`` should not be of complex type. If
+        provided in frequency, ``VZpl`` should contain the positive time axis
+        followed by the negative one.
     VZminus : :obj:`numpy.ndarray`
         Multi-dimensional upgoing particle velocity data in time or frequency
         domain of size :math:`[n_s \times n_r \times n_t/n_{fmax}]`. If
-        provided in time, `VZplus` should not be of complex type.
+        provided in time, ``VZminus`` should not be of complex type. If
+        provided in frequency, ``VZminus`` should contain the positive time axis
+        followed by the negative one.
     dt : :obj:`float`, optional
         Sampling of time integration axis
     nt : :obj:`float`, optional
@@ -49,16 +53,16 @@ class RayleighMarchenko():
     dtype : :obj:`bool`, optional
         Type of elements in input array.
     saveVt : :obj:`bool`, optional
-        Save ``VZ`` and ``VZ^H`` to speed up the computation of adjoint of
+        Save ``VZplus`` and ``VZplus^H`` (and ``VZminus`` and ``VZminus^H``)
+        to speed up the computation of adjoint of
         :class:`pylops.signalprocessing.Fredholm1` (``True``) or create
-        ``VZ^H`` on-the-fly (``False``) Note that ``saveVt=True`` will be
-        faster but double the amount of required memory
+        ``VZplus^H`` and ``VZminus^H`` on-the-fly (``False``)
+        Note that ``saveVt=True`` will be faster but double the amount of
+        required memory
     prescaled : :obj:`bool`, optional
-        Apply scaling to ``R`` (``False``) or not (``False``)
-        when performing spatial and temporal summations within the
-        :class:`pylops.waveeqprocessing.MDC` operator. In case
-        ``prescaled=True``, the ``R`` is assumed to have been pre-scaled by
-        the user.
+        Apply scaling to ``Vzplus`` and ``VZminus`` (``False``) or
+        not (``False``) when performing spatial and temporal summations within
+        the :class:`pylops.waveeqprocessing.MDC` operator.
 
     Attributes
     ----------

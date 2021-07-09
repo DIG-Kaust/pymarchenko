@@ -3,7 +3,7 @@
 ====================================
 This example is an extended version of the original tutorial from the PyLops
 documentation and shows how to set-up and run the
-:py:class:`pylops.waveeqprocessing.Marchenko` inversion using synthetic data
+:py:class:`pymarchenko.marchenko.Marchenko` inversion using synthetic data
 for both single and multiple virtual points.
 
 """
@@ -104,7 +104,7 @@ axs[2].set_ylim(1.5, 0)
 fig.tight_layout()
 
 ###############################################################################
-# And the true and background subsurface fields
+# and the true and background subsurface fields
 
 # Subsurface fields
 Gsub = inputdata['Gsub'][:-100]
@@ -136,7 +136,7 @@ fig.tight_layout()
 
 ##############################################################################
 # Let's now create an object of the
-# :py:class:`pylops.waveeqprocessing.Marchenko` class and apply redatuming
+# :py:class:`pymarchenko.marchenko.Marchenko` class and apply redatuming
 # for a single subsurface point ``vs``.
 
 # Direct arrival traveltime
@@ -181,7 +181,7 @@ axs[2].set_ylim(1.2, 0)
 fig.tight_layout()
 
 ##############################################################################
-# And compare the total Green's function with the directly modelled one
+# and compare the total Green's function with the directly modelled one
 
 fig = plt.figure(figsize=(12, 7))
 ax1 = plt.subplot2grid((1, 5), (0, 0), colspan=2)
@@ -209,9 +209,9 @@ fig.tight_layout()
 ##############################################################################
 # Finally, we show that when interested in creating subsurface wavefields
 # for a group of subsurface points the
-# :py:func:`pylops.waveeqprocessing.Marchenko.apply_multiplepoints` should be
+# :py:func:`pymarchenko.marchenko..Marchenko.apply_multiplepoints` should be
 # used instead of
-# :py:func:`pylops.waveeqprocessing.Marchenko.apply_onepoint`.
+# :py:func:`pymarchenko.marchenko..Marchenko.apply_onepoint`.
 nvs = 51
 dvsx = 20
 vs = [np.arange(nvs)*dvsx + 1000, np.ones(nvs)*1060]
@@ -285,9 +285,9 @@ fig.tight_layout()
 
 ##############################################################################
 # Let's evaluate how faster is to actually use
-# :py:func:`pylops.waveeqprocessing.Marchenko.apply_multiplepoints`
+# :py:func:`pymarchenko.marchenko..Marchenko.apply_multiplepoints`
 # instead of repeatedly applying
-# :py:func:`pylops.waveeqprocessing.Marchenko.apply_onepoint`.
+# :py:func:`pymarchenko.marchenko..Marchenko.apply_onepoint`.
 print('Speedup between single and multi: %.2f' % ((tone * nvs) / tmulti))
 
 ##############################################################################
@@ -330,7 +330,7 @@ axs[1].imshow(Rmck[nvs//2, :, nt:].T, cmap='gray',
               vmin=-0.7*np.max(np.abs(Rmck[nvs//2, :, nt:])),
               vmax=0.7*np.max(np.abs(Rmck[nvs//2, :, nt:])),
               extent=(vs[0][0], vs[0][-1], t[-1], t[0]))
-axs[1].set_title('R Mck')
+axs[1].set_title('R Marchenko')
 axs[1].set_xlabel(r'$x_{VS}$')
 axs[1].axis('tight')
 axs[1].set_ylim(0.7, 0.)
