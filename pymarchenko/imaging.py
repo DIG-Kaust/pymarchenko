@@ -5,8 +5,10 @@ import time
 from multiprocessing import set_start_method
 from multiprocessing import get_context
 from scipy.signal import convolve, filtfilt
-from pylops.waveeqprocessing.marchenko import directwave, Marchenko
+from pylops.waveeqprocessing.marchenko import directwave#, Marchenko
 from pylops.waveeqprocessing.mdd import MDD
+from pymarchenko.marchenko import Marchenko
+from pymarchenko.raymarchenko import RayleighMarchenko
 from pymarchenko.anglegather import AngleGather
 
 
@@ -31,17 +33,40 @@ def _imaging_depth_level(vsx, vsz, r, s, dr, dt, nt, vel,
             G0[:, ivs] = directwave(wav, directVS[:, ivs], nt, dt,
                                     nfft=int(2 ** (np.ceil(np.log2(nt))))).T
 
-        MarchenkoWM = Marchenko(data['R'], dt=dt, dr=dr, nfmax=nfmax, wav=wav,
-                                toff=toff, nsmooth=nsmooth)
+        mck = Marchenko(data['R'], dt=dt, dr=dr, nfmax=nfmax, wav=wav,
+                        toff=toff, nsmooth=nsmooth,
+                        saveRt=False, prescaled=False)
         f1_inv_minus, f1_inv_plus, p0_minus, g_inv_minus, g_inv_plus = \
-            MarchenkoWM.apply_multiplepoints(directVS, nfft=2 ** 11, rtm=True,
-                                             greens=True,
-                                             dottest=False,
-                                             **dict(iter_lim=niter,
-                                                    show=False))
+            mck.apply_multiplepoints(directVS, nfft=2 ** 11, rtm=True,
+                                     greens=True, dottest=False,
+                                     **dict(iter_lim=niter,
+                                            show=False))
 
     elif kind in ['rmck', ]:
-        pass
+        directVSr = np.sqrt((vsx - r[0][:, np.newaxis]) ** 2 +
+                            (vsz - r[1][:, np.newaxis]) ** 2) / vel
+        directVSs = np.sqrt((vsx - s[0][:, np.newaxis]) ** 2 +
+                            (vsz - s[1][:, np.newaxis]) ** 2) / vel
+
+        G0rec = np.zeros((nr, nvsx, nt))
+        for ivs in range(nvsx):
+            G0rec[:, ivs] = directwave(wav, directVSr[:, ivs], nt, dt,
+                                       nfft=int(2 ** (np.ceil(np.log2(nt))))).T
+
+        G0 = np.zeros((ns, nvsx, nt))
+        for ivs in range(nvsx):
+            G0[:, ivs] = directwave(wav, directVSs[:, ivs], nt, dt,
+                                    nfft=int(2 ** (np.ceil(np.log2(nt))))).T
+
+        rm = RayleighMarchenko(data['Vzd'], data['Vzu'], dt=dt, dr=dr,
+                               nfmax=nfmax, wav=wav, toff=toff,
+                               nsmooth=nsmooth, saveVt=False, prescaled=False)
+        f1_inv_minus, f1_inv_plus, p0_minus, g_inv_minus, g_inv_plus = \
+            rm.apply_multiplepoints(directVSs, directVSr, G0=G0rec,
+                                    rtm=True, greens=True,
+                                    dottest=False,
+                                    **dict(iter_lim=niter,
+                                           show=False))
 
     # MDD
     _, Rss = MDD(G0[:, :, ::jt], p0_minus[:, :, nt - 1:][:, :, ::jt],
