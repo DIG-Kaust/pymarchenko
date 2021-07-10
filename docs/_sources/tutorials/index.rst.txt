@@ -135,6 +135,27 @@ Tutorials
    :hidden:
 
    /tutorials/imaging
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="7. Imaging with Rayleigh-Marchenko fields">
+
+.. only:: html
+
+ .. figure:: /tutorials/images/thumb/sphx_glr_raymckimaging_thumb.png
+     :alt: 7. Imaging with Rayleigh-Marchenko fields
+
+     :ref:`sphx_glr_tutorials_raymckimaging.py`
+
+.. raw:: html
+
+    </div>
+
+
+.. toctree::
+   :hidden:
+
+   /tutorials/raymckimaging
 .. raw:: html
 
     <div class="sphx-glr-clear"></div>

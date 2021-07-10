@@ -168,8 +168,9 @@
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
 
 
-<div class="viewcode-block" id="AngleGather"><a class="viewcode-back" href="../../api/generated/pymarchenko.anglegather.AngleGather.html#pymarchenko.anglegather.AngleGather">[docs]</a><span class="k">def</span> <span class="nf">AngleGather</span><span class="p">(</span><span class="n">d</span><span class="p">,</span> <span class="n">nfft_k</span><span class="p">,</span> <span class="n">nalpha</span><span class="p">,</span> <span class="n">dt</span><span class="p">,</span> <span class="n">ds</span><span class="p">,</span> <span class="n">ir</span><span class="p">,</span> <span class="n">cp</span><span class="p">,</span> <span class="n">nfft_f</span><span class="o">=</span><span class="mi">2</span><span class="o">**</span><span class="mi">10</span><span class="p">,</span> <span class="n">ifin</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">plotflag</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Angle gathers creation</span>
+<div class="viewcode-block" id="AngleGather"><a class="viewcode-back" href="../../api/generated/pymarchenko.anglegather.AngleGather.html#pymarchenko.anglegather.AngleGather">[docs]</a><span class="k">def</span> <span class="nf">AngleGather</span><span class="p">(</span><span class="n">d</span><span class="p">,</span> <span class="n">nfft_k</span><span class="p">,</span> <span class="n">nalpha</span><span class="p">,</span> <span class="n">dt</span><span class="p">,</span> <span class="n">ds</span><span class="p">,</span> <span class="n">ir</span><span class="p">,</span> <span class="n">cp</span><span class="p">,</span>
+				<span class="n">nfft_f</span><span class="o">=</span><span class="mi">2</span><span class="o">**</span><span class="mi">10</span><span class="p">,</span> <span class="n">ifin</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">plotflag</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Angle gathers creation</span>
 
 <span class="sd">    Create angle gathers from a local reflectivity response</span>
 <span class="sd">    </span>
@@ -191,7 +192,8 @@
 <span class="sd">    ir : :obj:`int`</span>
 <span class="sd">        Index of selected receiver</span>
 <span class="sd">    cp : :obj:`float`</span>
-<span class="sd">        Local velocity along source line to be used for offset-to-angle conversion </span>
+<span class="sd">        Local velocity along source line to be used for offset-to-angle</span>
+<span class="sd">        conversion</span>
 <span class="sd">    nfft_k : :obj:`int`, optional</span>
 <span class="sd">        Number of samples in frequency axis</span>
 <span class="sd">    ifin : :obj:`int`, optional</span>
