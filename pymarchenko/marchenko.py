@@ -34,7 +34,7 @@ class Marchenko():
         should have already been multiplied by 2.
     dt : :obj:`float`, optional
         Sampling of time integration axis
-    nt : :obj:`float`, optional
+    nt : :obj:`int`, optional
         Number of samples in time (not required if ``R`` is in time)
     dr : :obj:`float`, optional
         Sampling of receiver integration axis
@@ -236,8 +236,7 @@ class Marchenko():
             self.Sop = BlockDiag([S, S])
 
     def apply_onepoint(self, trav, G0=None, nfft=None, rtm=False, greens=False,
-                       dottest=False, fast=None, usematmul=False,
-                       **kwargs_solver):
+                       dottest=False, usematmul=False, **kwargs_solver):
         r"""Marchenko redatuming for one point
 
         Solve the Marchenko redatuming inverse problem for a single point
@@ -386,12 +385,12 @@ class Marchenko():
                                       np.fliplr(g_inv[self.nt2:].T)
         # Bring back to time axis with negative part
         f1_inv_minus = np.fft.ifftshift(f1_inv_minus, axes=1)
-        f1_inv_plus = np.fft.ifftshift(f1_inv_plus, axes=1)
+        f1_inv_plus = np.fft.fftshift(f1_inv_plus, axes=1)
         if rtm:
             p0_minus = np.fft.ifftshift(p0_minus, axes=1)
         if greens:
             g_inv_minus = np.fft.ifftshift(g_inv_minus, axes=1)
-            g_inv_plus = np.fft.ifftshift(g_inv_plus, axes=1)
+            g_inv_plus = np.fft.fftshift(g_inv_plus, axes=1)
 
         if rtm and greens:
             return f1_inv_minus, f1_inv_plus, p0_minus, g_inv_minus, g_inv_plus
@@ -403,8 +402,8 @@ class Marchenko():
             return f1_inv_minus, f1_inv_plus
 
     def apply_multiplepoints(self, trav, G0=None, nfft=None,
-                             rtm=False, greens=False,
-                             dottest=False, usematmul=False, **kwargs_solver):
+                             rtm=False, greens=False, dottest=False,
+                             usematmul=False, **kwargs_solver):
         r"""Marchenko redatuming for multiple points
 
         Solve the Marchenko redatuming inverse problem for multiple
@@ -556,12 +555,12 @@ class Marchenko():
 
         # Bring back to time axis with negative part
         f1_inv_minus = np.fft.ifftshift(f1_inv_minus, axes=-1)
-        f1_inv_plus = np.fft.ifftshift(f1_inv_plus, axes=-1)
+        f1_inv_plus = np.fft.fftshift(f1_inv_plus, axes=-1)
         if rtm:
             p0_minus = np.fft.ifftshift(p0_minus, axes=-1)
         if greens:
             g_inv_minus = np.fft.ifftshift(g_inv_minus, axes=-1)
-            g_inv_plus = np.fft.ifftshift(g_inv_plus, axes=-1)
+            g_inv_plus = np.fft.fftshift(g_inv_plus, axes=-1)
 
         if rtm and greens:
             return f1_inv_minus, f1_inv_plus, p0_minus, g_inv_minus, g_inv_plus
