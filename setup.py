@@ -28,7 +28,6 @@ setup(
     author='mrava',
     author_email='matteoravasi@gmail.com',
     install_requires=['numpy >= 1.15.0', 'scipy', 'pylops'],
-    extras_require={'advanced': ['llvmlite', 'numba']},
     packages=find_packages(exclude=['pytests']),
     use_scm_version=dict(root = '.',
                          relative_to = __file__,
