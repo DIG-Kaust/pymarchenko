@@ -28,6 +28,7 @@
     
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/basic.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/plot_directive.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/style.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/gallery.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/gallery-binder.css" />
@@ -239,7 +240,7 @@
 <em class="property">class </em><code class="sig-prename descclassname">pymarchenko.marchenko.</code><code class="sig-name descname">Marchenko</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">R</span></em>, <em class="sig-param"><span class="n">dt</span><span class="o">=</span><span class="default_value">0.004</span></em>, <em class="sig-param"><span class="n">nt</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">dr</span><span class="o">=</span><span class="default_value">1.0</span></em>, <em class="sig-param"><span class="n">nfmax</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">wav</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">toff</span><span class="o">=</span><span class="default_value">0.0</span></em>, <em class="sig-param"><span class="n">nsmooth</span><span class="o">=</span><span class="default_value">10</span></em>, <em class="sig-param"><span class="n">dtype</span><span class="o">=</span><span class="default_value">'float64'</span></em>, <em class="sig-param"><span class="n">saveRt</span><span class="o">=</span><span class="default_value">True</span></em>, <em class="sig-param"><span class="n">prescaled</span><span class="o">=</span><span class="default_value">False</span></em>, <em class="sig-param"><span class="n">isava</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">S</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/pymarchenko/marchenko.html#Marchenko"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pymarchenko.marchenko.Marchenko" title="Permalink to this definition">¶</a></dt>
 <dd><p>Marchenko redatuming</p>
 <p>Solve multi-dimensional Marchenko redatuming problem using
-<a class="reference external" href="https://docs.scipy.org/doc/scipy/reference/reference/generated/scipy.sparse.linalg.lsqr.html#scipy.sparse.linalg.lsqr" title="(in SciPy v1.7.0)"><code class="xref py py-func docutils literal notranslate"><span class="pre">scipy.sparse.linalg.lsqr</span></code></a> iterative solver.</p>
+<a class="reference external" href="https://docs.scipy.org/doc/scipy/reference/reference/generated/scipy.sparse.linalg.lsqr.html#scipy.sparse.linalg.lsqr" title="(in SciPy v1.7.1)"><code class="xref py py-func docutils literal notranslate"><span class="pre">scipy.sparse.linalg.lsqr</span></code></a> iterative solver.</p>
 <dl class="field-list">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><dl>
@@ -252,7 +253,7 @@ should have already been multiplied by 2.</p>
 </dd>
 <dt><strong>dt</strong><span class="classifier"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.9)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">float</span></code></a>, optional</span></dt><dd><p>Sampling of time integration axis</p>
 </dd>
-<dt><strong>nt</strong><span class="classifier"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.9)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">float</span></code></a>, optional</span></dt><dd><p>Number of samples in time (not required if <code class="docutils literal notranslate"><span class="pre">R</span></code> is in time)</p>
+<dt><strong>nt</strong><span class="classifier"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.9)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">int</span></code></a>, optional</span></dt><dd><p>Number of samples in time (not required if <code class="docutils literal notranslate"><span class="pre">R</span></code> is in time)</p>
 </dd>
 <dt><strong>dr</strong><span class="classifier"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.9)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">float</span></code></a>, optional</span></dt><dd><p>Sampling of receiver integration axis</p>
 </dd>

@@ -28,6 +28,7 @@
     
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/basic.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/plot_directive.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/style.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/gallery.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/gallery-binder.css" />
@@ -200,7 +201,7 @@
 <span class="sd">        should have already been multiplied by 2.</span>
 <span class="sd">    dt : :obj:`float`, optional</span>
 <span class="sd">        Sampling of time integration axis</span>
-<span class="sd">    nt : :obj:`float`, optional</span>
+<span class="sd">    nt : :obj:`int`, optional</span>
 <span class="sd">        Number of samples in time (not required if ``R`` is in time)</span>
 <span class="sd">    dr : :obj:`float`, optional</span>
 <span class="sd">        Sampling of receiver integration axis</span>
@@ -402,8 +403,7 @@
             <span class="bp">self</span><span class="o">.</span><span class="n">Sop</span> <span class="o">=</span> <span class="n">BlockDiag</span><span class="p">([</span><span class="n">S</span><span class="p">,</span> <span class="n">S</span><span class="p">])</span>
 
     <span class="k">def</span> <span class="nf">apply_onepoint</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">trav</span><span class="p">,</span> <span class="n">G0</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">nfft</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">rtm</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">greens</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
-                       <span class="n">dottest</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">fast</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">usematmul</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
-                       <span class="o">**</span><span class="n">kwargs_solver</span><span class="p">):</span>
+                       <span class="n">dottest</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">usematmul</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs_solver</span><span class="p">):</span>
         <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Marchenko redatuming for one point</span>
 
 <span class="sd">        Solve the Marchenko redatuming inverse problem for a single point</span>
@@ -552,12 +552,12 @@
                                       <span class="n">np</span><span class="o">.</span><span class="n">fliplr</span><span class="p">(</span><span class="n">g_inv</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">nt2</span><span class="p">:]</span><span class="o">.</span><span class="n">T</span><span class="p">)</span>
         <span class="c1"># Bring back to time axis with negative part</span>
         <span class="n">f1_inv_minus</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">fft</span><span class="o">.</span><span class="n">ifftshift</span><span class="p">(</span><span class="n">f1_inv_minus</span><span class="p">,</span> <span class="n">axes</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
-        <span class="n">f1_inv_plus</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">fft</span><span class="o">.</span><span class="n">ifftshift</span><span class="p">(</span><span class="n">f1_inv_plus</span><span class="p">,</span> <span class="n">axes</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+        <span class="n">f1_inv_plus</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">fft</span><span class="o">.</span><span class="n">fftshift</span><span class="p">(</span><span class="n">f1_inv_plus</span><span class="p">,</span> <span class="n">axes</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
         <span class="k">if</span> <span class="n">rtm</span><span class="p">:</span>
             <span class="n">p0_minus</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">fft</span><span class="o">.</span><span class="n">ifftshift</span><span class="p">(</span><span class="n">p0_minus</span><span class="p">,</span> <span class="n">axes</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
         <span class="k">if</span> <span class="n">greens</span><span class="p">:</span>
             <span class="n">g_inv_minus</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">fft</span><span class="o">.</span><span class="n">ifftshift</span><span class="p">(</span><span class="n">g_inv_minus</span><span class="p">,</span> <span class="n">axes</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
-            <span class="n">g_inv_plus</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">fft</span><span class="o">.</span><span class="n">ifftshift</span><span class="p">(</span><span class="n">g_inv_plus</span><span class="p">,</span> <span class="n">axes</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+            <span class="n">g_inv_plus</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">fft</span><span class="o">.</span><span class="n">fftshift</span><span class="p">(</span><span class="n">g_inv_plus</span><span class="p">,</span> <span class="n">axes</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
 
         <span class="k">if</span> <span class="n">rtm</span> <span class="ow">and</span> <span class="n">greens</span><span class="p">:</span>
             <span class="k">return</span> <span class="n">f1_inv_minus</span><span class="p">,</span> <span class="n">f1_inv_plus</span><span class="p">,</span> <span class="n">p0_minus</span><span class="p">,</span> <span class="n">g_inv_minus</span><span class="p">,</span> <span class="n">g_inv_plus</span>
@@ -569,8 +569,8 @@
             <span class="k">return</span> <span class="n">f1_inv_minus</span><span class="p">,</span> <span class="n">f1_inv_plus</span>
 
     <span class="k">def</span> <span class="nf">apply_multiplepoints</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">trav</span><span class="p">,</span> <span class="n">G0</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">nfft</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
-                             <span class="n">rtm</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">greens</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
-                             <span class="n">dottest</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">usematmul</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs_solver</span><span class="p">):</span>
+                             <span class="n">rtm</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">greens</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">dottest</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+                             <span class="n">usematmul</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs_solver</span><span class="p">):</span>
         <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Marchenko redatuming for multiple points</span>
 
 <span class="sd">        Solve the Marchenko redatuming inverse problem for multiple</span>
@@ -722,12 +722,12 @@
 
         <span class="c1"># Bring back to time axis with negative part</span>
         <span class="n">f1_inv_minus</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">fft</span><span class="o">.</span><span class="n">ifftshift</span><span class="p">(</span><span class="n">f1_inv_minus</span><span class="p">,</span> <span class="n">axes</span><span class="o">=-</span><span class="mi">1</span><span class="p">)</span>
-        <span class="n">f1_inv_plus</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">fft</span><span class="o">.</span><span class="n">ifftshift</span><span class="p">(</span><span class="n">f1_inv_plus</span><span class="p">,</span> <span class="n">axes</span><span class="o">=-</span><span class="mi">1</span><span class="p">)</span>
+        <span class="n">f1_inv_plus</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">fft</span><span class="o">.</span><span class="n">fftshift</span><span class="p">(</span><span class="n">f1_inv_plus</span><span class="p">,</span> <span class="n">axes</span><span class="o">=-</span><span class="mi">1</span><span class="p">)</span>
         <span class="k">if</span> <span class="n">rtm</span><span class="p">:</span>
             <span class="n">p0_minus</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">fft</span><span class="o">.</span><span class="n">ifftshift</span><span class="p">(</span><span class="n">p0_minus</span><span class="p">,</span> <span class="n">axes</span><span class="o">=-</span><span class="mi">1</span><span class="p">)</span>
         <span class="k">if</span> <span class="n">greens</span><span class="p">:</span>
             <span class="n">g_inv_minus</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">fft</span><span class="o">.</span><span class="n">ifftshift</span><span class="p">(</span><span class="n">g_inv_minus</span><span class="p">,</span> <span class="n">axes</span><span class="o">=-</span><span class="mi">1</span><span class="p">)</span>
-            <span class="n">g_inv_plus</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">fft</span><span class="o">.</span><span class="n">ifftshift</span><span class="p">(</span><span class="n">g_inv_plus</span><span class="p">,</span> <span class="n">axes</span><span class="o">=-</span><span class="mi">1</span><span class="p">)</span>
+            <span class="n">g_inv_plus</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">fft</span><span class="o">.</span><span class="n">fftshift</span><span class="p">(</span><span class="n">g_inv_plus</span><span class="p">,</span> <span class="n">axes</span><span class="o">=-</span><span class="mi">1</span><span class="p">)</span>
 
         <span class="k">if</span> <span class="n">rtm</span> <span class="ow">and</span> <span class="n">greens</span><span class="p">:</span>
             <span class="k">return</span> <span class="n">f1_inv_minus</span><span class="p">,</span> <span class="n">f1_inv_plus</span><span class="p">,</span> <span class="n">p0_minus</span><span class="p">,</span> <span class="n">g_inv_minus</span><span class="p">,</span> <span class="n">g_inv_plus</span>
