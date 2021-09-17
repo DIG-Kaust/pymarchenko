@@ -279,12 +279,12 @@ class NeumannMarchenko():
 
         # Bring back to time axis with negative part
         f1_sub_minus = np.fft.ifftshift(f1_sub_minus, axes=1)
-        f1_sub_plus = np.fft.ifftshift(f1_sub_plus, axes=1)
+        f1_sub_plus = np.fft.fftshift(f1_sub_plus, axes=1)
         if rtm:
             p0_minus = np.fft.ifftshift(p0_minus, axes=1)
         if greens:
             g_sub_minus = np.fft.ifftshift(g_sub_minus, axes=1)
-            g_sub_plus = np.fft.ifftshift(g_sub_plus, axes=1)
+            g_sub_plus = np.fft.fftshift(g_sub_plus, axes=1)
 
         if rtm and greens:
             return f1_sub_minus, f1_sub_plus, p0_minus, g_sub_minus, g_sub_plus
