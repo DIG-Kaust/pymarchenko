@@ -30,7 +30,7 @@ to install the PyPi distribution:
 
 .. code-block:: bash
 
-   >> pip install pymarchenko (Coming soon!)
+   >> pip install pymarchenko
 
 Alternatively, to access the latest source from github:
 

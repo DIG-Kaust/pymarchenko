@@ -29,7 +29,9 @@ You need **Python 3.6 or greater**.
 
 #### From PyPi
 
-Coming soon!
+```
+pip install pymarchenko
+```
 
 #### From Github
 
