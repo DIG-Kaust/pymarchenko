@@ -46,4 +46,5 @@ Utilities
 .. autosummary::
    :toctree: generated/
 
+    wavefieldsep.wavefield_separation
     anglegather.AngleGather
