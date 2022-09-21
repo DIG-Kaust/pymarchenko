@@ -89,7 +89,7 @@ a new *bash* shell by typing:
 
 .. code-block:: bash
 
-   >> source activate pymarchenko
+   >> conda activate pymarchenko
 
 
 Documentation
