@@ -138,7 +138,7 @@ def MarchenkoImaging(vsx, vsz, r, s, dr, dt, nt, vel,
                                         kind=kind, jt=jt, ivsz=ivsz)
                    for ivsz in range(nvsz)]
     else:
-        set_start_method("spawn")
+        #set_start_method("spawn")
         with get_context("spawn").Pool(processes=nproc) as pool:
             results = pool.starmap(_imaging_depth_level,
                                    [(vsx, vsz[ivsz], r, s, dr, dt, nt, vel,
