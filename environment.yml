@@ -3,6 +3,7 @@ channels:
   - defaults
 dependencies:
   - python>=3.6.4
+  - pip
   - numpy>=1.15.0
   - scipy>=1.1.0
   - pylops<=1.18.3
