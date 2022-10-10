@@ -43,5 +43,6 @@ Alongside the core algorithms, these following auxiliary tools are also provided
    :caption: Getting involved:
 
    Contributing <contributing.rst>
+   Changelog <changelog.rst>
    Credits <credits.rst>
 

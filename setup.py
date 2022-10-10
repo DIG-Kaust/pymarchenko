@@ -27,7 +27,7 @@ setup(
     ],
     author='mrava',
     author_email='matteoravasi@gmail.com',
-    install_requires=['numpy >= 1.15.0', 'scipy', 'pylops'],
+    install_requires=['numpy >= 1.15.0', 'scipy', 'pylops <= 1.18.3'],
     packages=find_packages(exclude=['pytests']),
     use_scm_version=dict(root = '.',
                          relative_to = __file__,
