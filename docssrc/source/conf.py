@@ -5,7 +5,7 @@ import datetime
 import sphinx_rtd_theme
 import sphinx_gallery
 from sphinx_gallery.sorting import ExampleTitleSortKey
-from pyproximal import __version__
+from pymarchenko import __version__
 
 # Sphinx needs to be able to import the package to use autodoc and get the version number
 sys.path.insert(0, os.path.abspath('../../pymarchenko'))
