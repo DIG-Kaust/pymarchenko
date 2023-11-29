@@ -49,3 +49,12 @@ docpush:
 	cd ../docs && git add . && git commit -m "Updated documentation" &&\
 	git push origin gh-pages && git checkout main
 
+servedoc:
+	$(PYTHON) -m http.server --directory docs/build/html/
+
+lint:
+	flake8 docs/ examples/ pyproximal/ pytests/ tutorials/
+
+typeannot:
+	mypy pyproximal/
+

@@ -53,9 +53,9 @@ numpydoc_class_members_toctree = False
 
 sphinx_gallery_conf = {
     # path to your examples scripts
-    'examples_dirs': ['../../examples', '../../tutorials',],
+    'examples_dirs': ['../../tutorials',],
     # path where to save gallery generated examples
-    'gallery_dirs': ['gallery', 'tutorials'],
+    'gallery_dirs': ['tutorials',],
     'filename_pattern': '\.py',
     # Remove the "Download all examples" button from the top level gallery
     'download_all_examples': False,
@@ -134,8 +134,7 @@ html_context = {
     # links
     'doc_path': 'docs/source',
     'galleries': sphinx_gallery_conf['gallery_dirs'],
-    'gallery_dir': dict(zip(sphinx_gallery_conf['gallery_dirs'],
-                            sphinx_gallery_conf['examples_dirs'])),
+    'gallery_dir': sphinx_gallery_conf['gallery_dirs'],
     'github_project': 'PyLops',
     'github_repo': 'pymarchenko',
     'github_version': 'main',

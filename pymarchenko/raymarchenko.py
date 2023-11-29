@@ -9,7 +9,7 @@ from pylops.utils import dottest as Dottest
 from pylops import Diagonal, Identity, Block, BlockDiag
 from pylops.waveeqprocessing.mdd import MDC
 from pylops.waveeqprocessing.marchenko import directwave
-from pylops.optimization.solver import cgls
+from pylops.optimization.basic import cgls
 from pylops.utils.backend import get_array_module, get_module_name, \
     to_cupy_conditional
 
@@ -264,21 +264,21 @@ class RayleighMarchenko():
 
         # Create operators
         Vzuop = MDC(self.VZminus_fft, self.nt2, nv=1, dt=self.dt, dr=self.dr,
-                    twosided=False, conj=False, transpose=False,
+                    twosided=False, conj=False,
                     saveGt=self.saveVt, prescaled=self.prescaled,
-                    usematmul=usematmul, dtype=self.dtype)
+                    usematmul=usematmul)
         Vzu1op = MDC(self.VZminus_fft, self.nt2, nv=1, dt=self.dt, dr=self.dr,
-                     twosided=False, conj=True, transpose=False,
+                     twosided=False, conj=True,
                      saveGt=self.saveVt, prescaled=self.prescaled,
-                     usematmul=usematmul, dtype=self.dtype)
+                     usematmul=usematmul)
         Vzdop = MDC(self.VZplus_fft, self.nt2, nv=1, dt=self.dt, dr=self.dr,
-                    twosided=False, conj=False, transpose=False,
+                    twosided=False, conj=False,
                     saveGt=self.saveVt, prescaled=self.prescaled,
-                    usematmul=usematmul, dtype=self.dtype)
+                    usematmul=usematmul)
         Vzd1op = MDC(self.VZplus_fft, self.nt2, nv=1, dt=self.dt, dr=self.dr,
-                     twosided=False, conj=True, transpose=False,
+                     twosided=False, conj=True,
                      saveGt=self.saveVt, prescaled=self.prescaled,
-                     usematmul=usematmul, dtype=self.dtype)
+                     usematmul=usematmul)
 
         Wfop = Diagonal(wr.T.flatten())
         Wgop = Diagonal(ws.T.flatten())
@@ -449,21 +449,21 @@ class RayleighMarchenko():
 
         # Create operators
         Vzuop = MDC(self.VZminus_fft, self.nt2, nv=nvs, dt=self.dt, dr=self.dr,
-                    twosided=False, conj=False, transpose=False,
+                    twosided=False, conj=False,
                     saveGt=self.saveVt, prescaled=self.prescaled,
-                    usematmul=usematmul, dtype=self.dtype)
+                    usematmul=usematmul)
         Vzu1op = MDC(self.VZminus_fft, self.nt2, nv=nvs, dt=self.dt, dr=self.dr,
-                     twosided=False, conj=True, transpose=False,
+                     twosided=False, conj=True,
                      saveGt=self.saveVt, prescaled=self.prescaled,
-                     usematmul=usematmul, dtype=self.dtype)
+                     usematmul=usematmul)
         Vzdop = MDC(self.VZplus_fft, self.nt2, nv=nvs, dt=self.dt, dr=self.dr,
-                    twosided=False, conj=False, transpose=False,
+                    twosided=False, conj=False,
                     saveGt=self.saveVt, prescaled=self.prescaled,
-                    usematmul=usematmul, dtype=self.dtype)
+                    usematmul=usematmul)
         Vzd1op = MDC(self.VZplus_fft, self.nt2, nv=nvs, dt=self.dt, dr=self.dr,
-                     twosided=False, conj=True, transpose=False,
+                     twosided=False, conj=True,
                      saveGt=self.saveVt, prescaled=self.prescaled,
-                     usematmul=usematmul, dtype=self.dtype)
+                     usematmul=usematmul)
         Wfop = Diagonal(wr.transpose(2, 0, 1).flatten())
         Wgop = Diagonal(ws.transpose(2, 0, 1).flatten())
 

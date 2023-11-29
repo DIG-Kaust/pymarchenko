@@ -9,8 +9,8 @@ from pylops.utils import dottest as Dottest
 from pylops import Diagonal, Identity, Block, BlockDiag, Restriction
 from pylops.waveeqprocessing.mdd import MDC
 from pylops.waveeqprocessing.marchenko import directwave
-from pylops.optimization.solver import cgls
-from pylops.optimization.sparsity import FISTA
+from pylops.optimization.basic import cgls
+from pylops.optimization.sparsity import fista
 from pylops.utils.backend import get_array_module, get_module_name, \
     to_cupy_conditional
 
@@ -230,8 +230,7 @@ class Marchenko():
         if self.isava is None:
             self.Iop = Identity(self.nr * self.nt2)
         else:
-            self.Iop = Restriction(self.nr * self.nt2, isava,
-                                   dims=(self.nt2, self.nr), dir=1)
+            self.Iop = Restriction((self.nt2, self.nr), isava, axis=1)
         if S is not None:
             self.Sop = BlockDiag([S, S])
 
@@ -268,9 +267,9 @@ class Marchenko():
         **kwargs_solver
             Arbitrary keyword arguments for chosen solver
             (:py:func:`scipy.sparse.linalg.lsqr` and
-            :py:func:`pylops.optimization.solver.cgls` are used as default
+            :py:func:`pylops.optimization.basic.cgls` are used as default
             for numpy and cupy `data`, respectively.
-            :py:func:`pylops.optimization.sparsity.FISTA` is used when a
+            :py:func:`pylops.optimization.sparsity.fista` is used when a
             sparsifying transform ``S`` is provided).
 
         Returns
@@ -305,13 +304,13 @@ class Marchenko():
 
         # Create operators
         Rop = MDC(self.Rtwosided_fft, self.nt2, nv=1, dt=self.dt, dr=self.dr,
-                  twosided=False, conj=False, transpose=False,
+                  twosided=False, conj=False,
                   saveGt=self.saveRt, prescaled=self.prescaled,
-                  usematmul=usematmul, dtype=self.dtype)
+                  usematmul=usematmul)
         R1op = MDC(self.Rtwosided_fft, self.nt2, nv=1, dt=self.dt, dr=self.dr,
-                   twosided=False, conj=True, transpose=False,
+                   twosided=False, conj=True,
                    saveGt=self.saveRt, prescaled=self.prescaled,
-                   usematmul=usematmul, dtype=self.dtype)
+                   usematmul=usematmul)
         Wop = Diagonal(w.T.ravel())
         if self.isava is not None:
             Wsop = Diagonal(w[self.isava].T.ravel())
@@ -367,7 +366,7 @@ class Marchenko():
                               x0=self.ncp.zeros(2*(2*self.nt-1)*self.nr, dtype=self.dtype),
                               **kwargs_solver)[0]
         else:
-            f1_inv = FISTA(Mop * self.Sop, d.ravel(), **kwargs_solver)[0]
+            f1_inv = fista(Mop * self.Sop, d.ravel(), **kwargs_solver)[0]
             f1_inv = self.Sop * f1_inv
 
         f1_inv = f1_inv.reshape(2 * self.nt2, self.nr)
@@ -475,12 +474,12 @@ class Marchenko():
         # Create operators
         Rop = MDC(self.Rtwosided_fft, self.nt2, nv=nvs,
                   dt=self.dt, dr=self.dr, twosided=False,
-                  conj=False, transpose=False, prescaled=self.prescaled,
-                  usematmul=usematmul, dtype=self.dtype)
+                  conj=False, prescaled=self.prescaled,
+                  usematmul=usematmul)
         R1op = MDC(self.Rtwosided_fft, self.nt2, nv=nvs,
                    dt=self.dt, dr=self.dr, twosided=False,
-                   conj=True, transpose=False, prescaled=self.prescaled,
-                   usematmul=usematmul, dtype=self.dtype)
+                   conj=True, prescaled=self.prescaled,
+                   usematmul=usematmul)
         Wop = Diagonal(w.transpose(2, 0, 1).ravel())
         Iop = Identity(self.nr * nvs * self.nt2)
         Mop = Block([[Iop, -1 * Wop * Rop],

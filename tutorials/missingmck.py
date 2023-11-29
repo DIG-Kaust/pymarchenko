@@ -194,8 +194,7 @@ dimss = (nwins*npx, dimsd[1])
 Top = Transpose((nt2, nr), axes=(1, 0), dtype=np.float64)
 RadOp = Radon2D(t2, np.linspace(-dr*nwin//2, dr*nwin//2, nwin),
                 px, centeredh=True, kind='linear', engine='numba')
-Slidop = Sliding2D(RadOp, dimss, dimsd, nwin, nover,
-                   tapertype='cosine', design=False)
+Slidop = Sliding2D(RadOp, dimss, dimsd, nwin, nover, tapertype='cosine')
 
 MarchenkoWM = Marchenko(R[iava], dt=dt, dr=dr, nfmax=nfmax, wav=wav,
                         toff=toff, nsmooth=nsmooth, isava=iava,
@@ -205,7 +204,7 @@ f1_inv_minus_l1, f1_inv_plus_l1, p0_minus_l1, g_inv_minus_l1, g_inv_plus_l1 = \
     MarchenkoWM.apply_onepoint(trav, G0=G0sub.T, rtm=True,
                                greens=True, dottest=False,
                                **dict(eps=1e4, niter=400,
-                                      alpha = 1.05e-3, returninfo=False,
+                                      alpha=1.05e-3,
                                       show=True))
 g_inv_tot_l1 = g_inv_minus_l1 + g_inv_plus_l1
 
