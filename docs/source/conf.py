@@ -2,7 +2,6 @@
 import sys
 import os
 import datetime
-import sphinx_rtd_theme
 import sphinx_gallery
 from sphinx_gallery.sorting import ExampleTitleSortKey
 from pymarchenko import __version__
