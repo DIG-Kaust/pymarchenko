@@ -57,19 +57,6 @@ simply typing
 make docupdate
 ```
 
-Since the tutorials are too heavy to be created by documentation web-services like Readthedocs, our documentation
-is hosted on Github-Pages and run locally on a separate branch. To get started create the following branch both locally
-and in your remote fork:
-```
-git checkout -b gh-pages
-git push -u origin gh-pages
-```
-
-Every time you want to update and deploy the documentation run:
-```
-make docpush
-```
-This will automatically move to the `gh-pages` branch, build the documentation and push it in the equivalent remote branch.
-You can finally make a Pull Request for your local `gh-pages` branch to the `gh-pages` in the DIG-Kaust repository,
-
+Our documentation is hosted on Github-Pages and created with a Github-Action triggered every time a commit is made
+to the main branch.
 
