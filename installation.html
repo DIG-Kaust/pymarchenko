@@ -513,19 +513,8 @@ simply typing</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>&gt;&gt;<span class="w"> </span>make<span class="w"> </span>docupdate
 </pre></div>
 </div>
-<p>Since the tutorials are too heavy to be created by documentation web-services like Readthedocs, our documentation
-is hosted on Github-Pages and run locally on a separate branch. To get started create the following branch both locally
-and in your remote fork:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>&gt;&gt;<span class="w"> </span>git<span class="w"> </span>checkout<span class="w"> </span>-b<span class="w"> </span>gh-pages
-&gt;&gt;<span class="w"> </span>git<span class="w"> </span>push<span class="w"> </span>-u<span class="w"> </span>origin<span class="w"> </span>gh-pages
-</pre></div>
-</div>
-<p>Every time you want to update and deploy the documentation run:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>&gt;&gt;<span class="w"> </span>make<span class="w"> </span>docpush
-</pre></div>
-</div>
-<p>This will automatically move to the <cite>gh-pages</cite> branch, build the documentation and push it in the equivalent remote branch.
-You can finally make a Pull Request for your local <cite>gh-pages</cite> branch to the <cite>gh-pages</cite> in the DIG-Kaust repository,</p>
+<p>Our documentation is hosted on Github-Pages and created with a Github-Action triggered every time a commit is made
+to the main branch.</p>
 </section>
 </section>
 </section>

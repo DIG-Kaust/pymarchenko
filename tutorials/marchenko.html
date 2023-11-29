@@ -607,8 +607,8 @@ for a single subsurface point <code class="docutils literal notranslate"><span c
 <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Elapsed time (s): </span><span class="si">%.2f</span><span class="s1">&#39;</span> <span class="o">%</span> <a href="https://docs.python.org/3/library/functions.html#float" title="builtins.float" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">tone</span></a><span class="p">)</span>
 </pre></div>
 </div>
-<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>Dot test passed, v^H(Opu)=338.1772634473615 - u^H(Op^Hv)=338.17726344736093
-Dot test passed, v^H(Opu)=404.44029784356525 - u^H(Op^Hv)=404.4402978435644
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>Dot test passed, v^H(Opu)=82.9937514135608 - u^H(Op^Hv)=82.99375141356023
+Dot test passed, v^H(Opu)=-185.35606083676302 - u^H(Op^Hv)=-185.35606083676294
 
 LSQR            Least-squares solution of  Ax = b
 The matrix A has 282598 rows and 282598 columns
@@ -635,7 +635,7 @@ The iteration limit has been reached
 istop =       7   r1norm = 6.7e+05   anorm = 4.4e+00   arnorm = 5.1e+05
 itn   =      10   r2norm = 6.7e+05   acond = 1.6e+01   xnorm  = 3.5e+07
 
-Elapsed time (s): 2.46
+Elapsed time (s): 2.38
 </pre></div>
 </div>
 <p>We can now compare the result of Marchenko redatuming via LSQR
@@ -794,7 +794,7 @@ The iteration limit has been reached
 istop =       7   r1norm = 6.8e+00   anorm = 4.4e+00   arnorm = 5.2e+00
 itn   =      10   r2norm = 6.8e+00   acond = 1.6e+01   xnorm  = 3.3e+02
 
-Elapsed time (s): 39.59
+Elapsed time (s): 39.57
 </pre></div>
 </div>
 <p>Let’s evaluate how faster is to actually use
@@ -804,7 +804,7 @@ instead of repeatedly applying
 <div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Speedup between single and multi: </span><span class="si">%.2f</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="p">((</span><a href="https://docs.python.org/3/library/functions.html#float" title="builtins.float" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">tone</span></a> <span class="o">*</span> <a href="https://docs.python.org/3/library/functions.html#int" title="builtins.int" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">nvs</span></a><span class="p">)</span> <span class="o">/</span> <a href="https://docs.python.org/3/library/functions.html#float" title="builtins.float" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">tmulti</span></a><span class="p">))</span>
 </pre></div>
 </div>
-<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>Speedup between single and multi: 3.17
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>Speedup between single and multi: 3.07
 </pre></div>
 </div>
 <p>Finally we can take this example one step further and try to recover the
@@ -852,7 +852,7 @@ local reflectivity at the depth level of the virtual sources using
 <a href="https://matplotlib.org/stable/api/figure_api.html#matplotlib.figure.Figure.tight_layout" title="matplotlib.figure.Figure.tight_layout" class="sphx-glr-backref-module-matplotlib-figure sphx-glr-backref-type-py-method"><span class="n">fig</span><span class="o">.</span><span class="n">tight_layout</span></a><span class="p">()</span>
 </pre></div>
 </div>
-<img src="../_images/sphx_glr_marchenko_008.png" srcset="../_images/sphx_glr_marchenko_008.png" alt="R single-scattering, R Marchenko" class = "sphx-glr-single-img"/><p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (1 minutes 2.689 seconds)</p>
+<img src="../_images/sphx_glr_marchenko_008.png" srcset="../_images/sphx_glr_marchenko_008.png" alt="R single-scattering, R Marchenko" class = "sphx-glr-single-img"/><p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (1 minutes 2.512 seconds)</p>
 <div class="sphx-glr-footer sphx-glr-footer-example docutils container" id="sphx-glr-download-tutorials-marchenko-py">
 <div class="sphx-glr-download sphx-glr-download-jupyter docutils container">
 <p><a class="reference download internal" download="" href="../_downloads/d4edeb99f8a02bd9b1844189a128297f/marchenko.ipynb"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Jupyter</span> <span class="pre">notebook:</span> <span class="pre">marchenko.ipynb</span></code></a></p>

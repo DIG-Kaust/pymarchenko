@@ -6,7 +6,7 @@
 
 Computation times
 =================
-**08:05.996** total execution time for 5 files **from tutorials**:
+**08:09.460** total execution time for 5 files **from tutorials**:
 
 .. container::
 
@@ -33,17 +33,17 @@ Computation times
      - Time
      - Mem (MB)
    * - :ref:`sphx_glr_tutorials_missingmck.py` (``missingmck.py``)
-     - 04:15.567
+     - 04:17.515
      - 0.0
    * - :ref:`sphx_glr_tutorials_mme.py` (``mme.py``)
-     - 02:31.070
+     - 02:32.707
      - 0.0
    * - :ref:`sphx_glr_tutorials_marchenko.py` (``marchenko.py``)
-     - 01:02.689
+     - 01:02.512
      - 0.0
    * - :ref:`sphx_glr_tutorials_raymarchenko.py` (``raymarchenko.py``)
-     - 00:13.491
+     - 00:13.591
      - 0.0
    * - :ref:`sphx_glr_tutorials_neumarchenko.py` (``neumarchenko.py``)
-     - 00:03.180
+     - 00:03.135
      - 0.0
