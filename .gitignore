@@ -139,5 +139,6 @@ TODO
 .idea
 .DS_Store
 docs/source/api/generated/
+docs/source/gallery
 docs/source/tutorials
 doctrees/
