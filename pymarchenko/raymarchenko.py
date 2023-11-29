@@ -242,9 +242,9 @@ class RayleighMarchenko():
         """
         # Create windows
         travsrc_off = travsrc - self.toff
-        travsrc_off = np.round(travsrc_off / self.dt).astype(np.int)
+        travsrc_off = np.round(travsrc_off / self.dt).astype(np.int32)
         travrec_off = travrec - self.toff
-        travrec_off = np.round(travrec_off / self.dt).astype(np.int)
+        travrec_off = np.round(travrec_off / self.dt).astype(np.int32)
 
         ws = np.zeros((self.ns, self.nt), dtype=self.dtype)
         wr = np.zeros((self.nr, self.nt), dtype=self.dtype)
@@ -426,9 +426,9 @@ class RayleighMarchenko():
 
         # Create window
         travsrc_off = travsrc - self.toff
-        travsrc_off = np.round(travsrc_off / self.dt).astype(np.int)
+        travsrc_off = np.round(travsrc_off / self.dt).astype(np.int32)
         travrec_off = travrec - self.toff
-        travrec_off = np.round(travrec_off / self.dt).astype(np.int)
+        travrec_off = np.round(travrec_off / self.dt).astype(np.int32)
 
         ws = np.zeros((self.ns, nvs, self.nt), dtype=self.dtype)
         wr = np.zeros((self.nr, nvs, self.nt), dtype=self.dtype)
