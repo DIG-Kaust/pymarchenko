@@ -1,0 +1,12 @@
+﻿pymarchenko.wavefieldsep.wavefield\_separation
+==============================================
+
+.. currentmodule:: pymarchenko.wavefieldsep
+
+.. autofunction:: wavefield_separation
+
+.. include:: backreferences/pymarchenko.wavefieldsep.wavefield_separation.examples
+
+.. raw:: html
+
+     <div style='clear:both'></div>

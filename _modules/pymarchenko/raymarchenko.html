@@ -1,0 +1,1070 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
+        <title>pymarchenko.raymarchenko &#8212; PyMarchenko</title>
+    
+
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+
+  
+  <link href="../../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=5b4479735964841361fd" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=80d5e7a1" />
+    <link rel="stylesheet" type="text/css" href="../../_static/plot_directive.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/style.css?v=e5b2244c" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery.css?v=61a4c737" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-binder.css?v=f4aeca0c" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-dataframe.css?v=2082cf3c" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-rendered-html.css?v=1277b6f3" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=5b4479735964841361fd" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd" />
+  <script src="../../_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=5b4479735964841361fd"></script>
+
+    <script src="../../_static/documentation_options.js?v=5929fcd5"></script>
+    <script src="../../_static/doctools.js?v=888ff710"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '_modules/pymarchenko/raymarchenko';</script>
+    <link rel="icon" href="../../_static/favicon.ico"/>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    
+    <script src="../../_static/require.js"></script>
+
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+<div class="bd-header__inner bd-page-width">
+  <label class="sidebar-toggle primary-toggle" for="__primary">
+    <span class="fa-solid fa-bars"></span>
+  </label>
+  
+  
+  <div class="col-lg-3 navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+
+<a class="navbar-brand logo" href="../../index.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">PyMarchenko</p>
+  
+</a></div>
+    
+  </div>
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav class="navbar-nav">
+  <p class="sidebar-header-items__title"
+     role="heading"
+     aria-level="1"
+     aria-label="Site Navigation">
+    Site Navigation
+  </p>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../installation.html">
+                        Installation
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../tutorials/index.html">
+                        Tutorials
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../api/index.html">
+                        PyMarchenko API
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../contributing.html">
+                        Contributing
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../changelog.html">
+                        Changelog
+                      </a>
+                    </li>
+                
+            <li class="nav-item dropdown">
+                <button class="btn dropdown-toggle nav-item" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-controls="pst-nav-more-links">
+                    More
+                </button>
+                <ul id="pst-nav-more-links" class="dropdown-menu">
+                    
+                    <li class="nav-item">
+                      <a class="nav-link dropdown-item nav-internal" href="../../credits.html">
+                        Credits
+                      </a>
+                    </li>
+                
+                </ul>
+            </li>
+            
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script>
+        </div>
+      
+      
+        <div class="navbar-item">
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script></div>
+      
+        <div class="navbar-item"><ul class="navbar-icon-links navbar-nav"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/DIG-Kaust/pymarchenko" title="GitHub" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fab fa-github-square fa-lg" aria-hidden="true"></i></span>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+</ul></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script>
+    </div>
+  
+
+  
+</div>
+
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar hide-on-wide">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          <div class="navbar-item">
+<nav class="navbar-nav">
+  <p class="sidebar-header-items__title"
+     role="heading"
+     aria-level="1"
+     aria-label="Site Navigation">
+    Site Navigation
+  </p>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../installation.html">
+                        Installation
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../tutorials/index.html">
+                        Tutorials
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../api/index.html">
+                        PyMarchenko API
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../contributing.html">
+                        Contributing
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../changelog.html">
+                        Changelog
+                      </a>
+                    </li>
+                
+            <li class="nav-item dropdown">
+                <button class="btn dropdown-toggle nav-item" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-controls="pst-nav-more-links-2">
+                    More
+                </button>
+                <ul id="pst-nav-more-links-2" class="dropdown-menu">
+                    
+                    <li class="nav-item">
+                      <a class="nav-link dropdown-item nav-internal" href="../../credits.html">
+                        Credits
+                      </a>
+                    </li>
+                
+                </ul>
+            </li>
+            
+  </ul>
+</nav></div>
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script></div>
+        
+          <div class="navbar-item"><ul class="navbar-icon-links navbar-nav"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/DIG-Kaust/pymarchenko" title="GitHub" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fab fa-github-square fa-lg" aria-hidden="true"></i></span>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+</ul></div>
+        
+      </div>
+    
+  </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+
+
+<nav aria-label="Breadcrumb">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="../../index.html" class="nav-link" aria-label="Home">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    
+    <li class="breadcrumb-item"><a href="../index.html" class="nav-link">Module code</a></li>
+    
+    <li class="breadcrumb-item active" aria-current="page">pymarchenko....</li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <h1>Source code for pymarchenko.raymarchenko</h1><div class="highlight"><pre>
+<span></span><span class="kn">import</span> <span class="nn">logging</span>
+<span class="kn">import</span> <span class="nn">warnings</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="kn">from</span> <span class="nn">scipy.signal</span> <span class="kn">import</span> <span class="n">filtfilt</span>
+<span class="kn">from</span> <span class="nn">scipy.sparse.linalg</span> <span class="kn">import</span> <span class="n">lsqr</span>
+<span class="kn">from</span> <span class="nn">scipy.special</span> <span class="kn">import</span> <span class="n">hankel2</span>
+<span class="kn">from</span> <span class="nn">pylops.utils</span> <span class="kn">import</span> <span class="n">dottest</span> <span class="k">as</span> <span class="n">Dottest</span>
+<span class="kn">from</span> <span class="nn">pylops</span> <span class="kn">import</span> <span class="n">Diagonal</span><span class="p">,</span> <span class="n">Identity</span><span class="p">,</span> <span class="n">Block</span><span class="p">,</span> <span class="n">BlockDiag</span>
+<span class="kn">from</span> <span class="nn">pylops.waveeqprocessing.mdd</span> <span class="kn">import</span> <span class="n">MDC</span>
+<span class="kn">from</span> <span class="nn">pylops.waveeqprocessing.marchenko</span> <span class="kn">import</span> <span class="n">directwave</span>
+<span class="kn">from</span> <span class="nn">pylops.optimization.basic</span> <span class="kn">import</span> <span class="n">cgls</span>
+<span class="kn">from</span> <span class="nn">pylops.utils.backend</span> <span class="kn">import</span> <span class="n">get_array_module</span><span class="p">,</span> <span class="n">get_module_name</span><span class="p">,</span> \
+    <span class="n">to_cupy_conditional</span>
+
+<span class="n">logging</span><span class="o">.</span><span class="n">basicConfig</span><span class="p">(</span><span class="nb">format</span><span class="o">=</span><span class="s1">&#39;</span><span class="si">%(levelname)s</span><span class="s1">: </span><span class="si">%(message)s</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">level</span><span class="o">=</span><span class="n">logging</span><span class="o">.</span><span class="n">WARNING</span><span class="p">)</span>
+
+
+<div class="viewcode-block" id="RayleighMarchenko">
+<a class="viewcode-back" href="../../api/generated/pymarchenko.raymarchenko.RayleighMarchenko.html#pymarchenko.raymarchenko.RayleighMarchenko">[docs]</a>
+<span class="k">class</span> <span class="nc">RayleighMarchenko</span><span class="p">():</span>
+<span class="w">    </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;Rayleigh-Marchenko redatuming</span>
+
+<span class="sd">    Solve multi-dimensional Rayleigh-Marchenko redatuming problem using</span>
+<span class="sd">    :py:func:`scipy.sparse.linalg.lsqr` iterative solver.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    VZplus : :obj:`numpy.ndarray`</span>
+<span class="sd">        Multi-dimensional downgoing particle velocity data in time or frequency</span>
+<span class="sd">        domain of size :math:`[n_s \times n_r \times n_t/n_{fmax}]`. If</span>
+<span class="sd">        provided in time, ``VZplus`` should not be of complex type. If</span>
+<span class="sd">        provided in frequency, ``VZpl`` should contain the positive time axis</span>
+<span class="sd">        followed by the negative one.</span>
+<span class="sd">    VZminus : :obj:`numpy.ndarray`</span>
+<span class="sd">        Multi-dimensional upgoing particle velocity data in time or frequency</span>
+<span class="sd">        domain of size :math:`[n_s \times n_r \times n_t/n_{fmax}]`. If</span>
+<span class="sd">        provided in time, ``VZminus`` should not be of complex type. If</span>
+<span class="sd">        provided in frequency, ``VZminus`` should contain the positive time axis</span>
+<span class="sd">        followed by the negative one.</span>
+<span class="sd">    dt : :obj:`float`, optional</span>
+<span class="sd">        Sampling of time integration axis</span>
+<span class="sd">    nt : :obj:`float`, optional</span>
+<span class="sd">        Number of samples in time (not required if ``R`` is in time)</span>
+<span class="sd">    dr : :obj:`float`, optional</span>
+<span class="sd">        Sampling of receiver integration axis</span>
+<span class="sd">    nfmax : :obj:`int`, optional</span>
+<span class="sd">        Index of max frequency to include in deconvolution process</span>
+<span class="sd">    wav : :obj:`numpy.ndarray`, optional</span>
+<span class="sd">        Wavelet to apply to direct arrival when created using ``trav``</span>
+<span class="sd">    toff : :obj:`float`, optional</span>
+<span class="sd">        Time-offset to apply to traveltime</span>
+<span class="sd">    nsmooth : :obj:`int`, optional</span>
+<span class="sd">        Number of samples of smoothing operator to apply to window</span>
+<span class="sd">    dtype : :obj:`bool`, optional</span>
+<span class="sd">        Type of elements in input array.</span>
+<span class="sd">    saveVt : :obj:`bool`, optional</span>
+<span class="sd">        Save ``VZplus`` and ``VZplus^H`` (and ``VZminus`` and ``VZminus^H``)</span>
+<span class="sd">        to speed up the computation of adjoint of</span>
+<span class="sd">        :class:`pylops.signalprocessing.Fredholm1` (``True``) or create</span>
+<span class="sd">        ``VZplus^H`` and ``VZminus^H`` on-the-fly (``False``)</span>
+<span class="sd">        Note that ``saveVt=True`` will be faster but double the amount of</span>
+<span class="sd">        required memory</span>
+<span class="sd">    prescaled : :obj:`bool`, optional</span>
+<span class="sd">        Apply scaling to ``Vzplus`` and ``VZminus`` (``False``) or</span>
+<span class="sd">        not (``False``) when performing spatial and temporal summations within</span>
+<span class="sd">        the :class:`pylops.waveeqprocessing.MDC` operator.</span>
+
+<span class="sd">    Attributes</span>
+<span class="sd">    ----------</span>
+<span class="sd">    ns : :obj:`int`</span>
+<span class="sd">        Number of samples along source axis</span>
+<span class="sd">    nr : :obj:`int`</span>
+<span class="sd">        Number of samples along receiver axis</span>
+<span class="sd">    shape : :obj:`tuple`</span>
+<span class="sd">        Operator shape</span>
+<span class="sd">    explicit : :obj:`bool`</span>
+<span class="sd">        Operator contains a matrix that can be solved explicitly</span>
+<span class="sd">        (True) or not (False)</span>
+
+<span class="sd">    Raises</span>
+<span class="sd">    ------</span>
+<span class="sd">    TypeError</span>
+<span class="sd">        If ``t`` is not :obj:`numpy.ndarray`.</span>
+
+<span class="sd">    Notes</span>
+<span class="sd">    -----</span>
+<span class="sd">    Rayleigh-Marchenko redatuming is a method that allows to produce correct</span>
+<span class="sd">    subsurface-to-surface responses given the availability of up- and down-</span>
+<span class="sd">    separated particle velocity data and a macro-velocity model [1]_.</span>
+
+<span class="sd">    The Rayleigh-Marchenko equations can be written in a compact matrix</span>
+<span class="sd">    form and solved by means of iterative solvers such as LSQR:</span>
+
+<span class="sd">    .. math::</span>
+<span class="sd">        \begin{bmatrix}</span>
+<span class="sd">           -\Theta \mathbf{V}_z^- \mathbf{f_d^+}  \\</span>
+<span class="sd">           -\Theta \mathbf{V}_z^{+*} \mathbf{f_d^+}</span>
+<span class="sd">        \end{bmatrix} =</span>
+<span class="sd">        \begin{bmatrix}</span>
+<span class="sd">           \Theta \mathbf{V}_z^+     &amp;   \Theta \mathbf{V}_z^-  \\</span>
+<span class="sd">           \Theta \mathbf{V}_z^{-*} &amp; \Theta \mathbf{V}_z^{+*}</span>
+<span class="sd">        \end{bmatrix}</span>
+<span class="sd">        \begin{bmatrix}</span>
+<span class="sd">           \mathbf{f^-}  \\</span>
+<span class="sd">           \mathbf{f_m^+}</span>
+<span class="sd">        \end{bmatrix}</span>
+
+<span class="sd">    Finally the subsurface Green&#39;s functions can be obtained applying the</span>
+<span class="sd">    following operator to the retrieved focusing functions</span>
+
+<span class="sd">    .. math::</span>
+<span class="sd">        \begin{bmatrix}</span>
+<span class="sd">           -\mathbf{p}^-  \\</span>
+<span class="sd">           \mathbf{p}^{+*}</span>
+<span class="sd">        \end{bmatrix} =</span>
+<span class="sd">        \begin{bmatrix}</span>
+<span class="sd">           \mathbf{V}_z^+    &amp;   \mathbf{V}_z^-  \\</span>
+<span class="sd">           \mathbf{V}_z^{-*} &amp; \mathbf{V}_z^{+*}</span>
+<span class="sd">        \end{bmatrix}</span>
+<span class="sd">        \begin{bmatrix}</span>
+<span class="sd">           \mathbf{f^-}  \\</span>
+<span class="sd">           \mathbf{f^+}</span>
+<span class="sd">        \end{bmatrix}</span>
+
+<span class="sd">    .. [1] Ravasi, M., &quot;Rayleigh-Marchenko redatuming for target-oriented,</span>
+<span class="sd">        true-amplitude imaging&quot;, Geophysics, vol. 82, pp. S439-S452. 2017.</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">VZplus</span><span class="p">,</span> <span class="n">VZminus</span><span class="p">,</span> <span class="n">dt</span><span class="o">=</span><span class="mf">0.004</span><span class="p">,</span> <span class="n">nt</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">dr</span><span class="o">=</span><span class="mf">1.</span><span class="p">,</span>
+                 <span class="n">nfmax</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">wav</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">toff</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">nsmooth</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span>
+                 <span class="n">dtype</span><span class="o">=</span><span class="s1">&#39;float64&#39;</span><span class="p">,</span> <span class="n">saveVt</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">prescaled</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+
+        <span class="c1"># Save inputs into class</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">dt</span> <span class="o">=</span> <span class="n">dt</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">dr</span> <span class="o">=</span> <span class="n">dr</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">wav</span> <span class="o">=</span> <span class="n">wav</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">toff</span> <span class="o">=</span> <span class="n">toff</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">nsmooth</span> <span class="o">=</span> <span class="n">nsmooth</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">saveVt</span> <span class="o">=</span> <span class="n">saveVt</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">prescaled</span> <span class="o">=</span> <span class="n">prescaled</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">dtype</span> <span class="o">=</span> <span class="n">dtype</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">explicit</span> <span class="o">=</span> <span class="kc">False</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">ncp</span> <span class="o">=</span> <span class="n">get_array_module</span><span class="p">(</span><span class="n">VZplus</span><span class="p">)</span>
+
+        <span class="c1"># Infer dimensions of R</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">np</span><span class="o">.</span><span class="n">iscomplexobj</span><span class="p">(</span><span class="n">VZplus</span><span class="p">):</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">ns</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">nr</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">nt</span> <span class="o">=</span> <span class="n">VZplus</span><span class="o">.</span><span class="n">shape</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">nfmax</span> <span class="o">=</span> <span class="n">nfmax</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">ns</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">nr</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">nfmax</span> <span class="o">=</span> <span class="n">VZplus</span><span class="o">.</span><span class="n">shape</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">nt</span> <span class="o">=</span> <span class="n">nt</span>
+            <span class="k">if</span> <span class="n">nt</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+                <span class="n">logging</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="s1">&#39;nt must be provided as R is in frequency&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">nt2</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="bp">self</span><span class="o">.</span><span class="n">nt</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">t</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">nt</span><span class="p">)</span><span class="o">*</span><span class="bp">self</span><span class="o">.</span><span class="n">dt</span>
+
+        <span class="c1"># Fix nfmax to be at maximum equal to half of the size of fft samples</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">nfmax</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">or</span> <span class="bp">self</span><span class="o">.</span><span class="n">nfmax</span> <span class="o">&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">ceil</span><span class="p">((</span><span class="bp">self</span><span class="o">.</span><span class="n">nt2</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">/</span> <span class="mi">2</span><span class="p">):</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">nfmax</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">ceil</span><span class="p">((</span><span class="bp">self</span><span class="o">.</span><span class="n">nt2</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span><span class="o">/</span><span class="mi">2</span><span class="p">))</span>
+            <span class="n">logging</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="s1">&#39;nfmax set equal to (nt+1)/2=</span><span class="si">%d</span><span class="s1">&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">nfmax</span><span class="p">)</span>
+
+        <span class="c1"># Add negative time to reflection data and convert to frequency</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">np</span><span class="o">.</span><span class="n">iscomplexobj</span><span class="p">(</span><span class="n">VZplus</span><span class="p">):</span>
+            <span class="n">VZplus</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">((</span><span class="n">VZplus</span><span class="p">,</span>
+                                     <span class="bp">self</span><span class="o">.</span><span class="n">ncp</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="bp">self</span><span class="o">.</span><span class="n">ns</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">nr</span><span class="p">,</span>
+                                                     <span class="bp">self</span><span class="o">.</span><span class="n">nt</span> <span class="o">-</span> <span class="mi">1</span><span class="p">),</span>
+                                                    <span class="n">dtype</span><span class="o">=</span><span class="n">VZplus</span><span class="o">.</span><span class="n">dtype</span><span class="p">)),</span>
+                                    <span class="n">axis</span><span class="o">=-</span><span class="mi">1</span><span class="p">)</span>
+            <span class="n">VZplus_fft</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">fft</span><span class="o">.</span><span class="n">rfft</span><span class="p">(</span><span class="n">VZplus</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">nt2</span><span class="p">,</span>
+                                     <span class="n">axis</span><span class="o">=-</span><span class="mi">1</span><span class="p">)</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">nt2</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">VZplus_fft</span> <span class="o">=</span> <span class="n">VZplus_fft</span><span class="p">[</span><span class="o">...</span><span class="p">,</span> <span class="p">:</span><span class="n">nfmax</span><span class="p">]</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">VZplus_fft</span> <span class="o">=</span> <span class="n">VZplus</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">np</span><span class="o">.</span><span class="n">iscomplexobj</span><span class="p">(</span><span class="n">VZminus</span><span class="p">):</span>
+            <span class="n">VZminus</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">((</span><span class="n">VZminus</span><span class="p">,</span>
+                                      <span class="bp">self</span><span class="o">.</span><span class="n">ncp</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="bp">self</span><span class="o">.</span><span class="n">ns</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">nr</span><span class="p">,</span>
+                                                      <span class="bp">self</span><span class="o">.</span><span class="n">nt</span> <span class="o">-</span> <span class="mi">1</span><span class="p">),</span>
+                                                     <span class="n">dtype</span><span class="o">=</span><span class="n">VZminus</span><span class="o">.</span><span class="n">dtype</span><span class="p">)),</span>
+                                     <span class="n">axis</span><span class="o">=-</span><span class="mi">1</span><span class="p">)</span>
+            <span class="n">VZminus_fft</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">fft</span><span class="o">.</span><span class="n">rfft</span><span class="p">(</span><span class="n">VZminus</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">nt2</span><span class="p">,</span>
+                                      <span class="n">axis</span><span class="o">=-</span><span class="mi">1</span><span class="p">)</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">nt2</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">VZminus_fft</span> <span class="o">=</span> <span class="n">VZminus_fft</span><span class="p">[</span><span class="o">...</span><span class="p">,</span> <span class="p">:</span><span class="n">nfmax</span><span class="p">]</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">VZminus_fft</span> <span class="o">=</span> <span class="n">VZminus</span>
+
+        <span class="c1"># bring frequency to first dimension</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">VZplus_fft</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">VZplus_fft</span><span class="o">.</span><span class="n">transpose</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">VZminus_fft</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">VZminus_fft</span><span class="o">.</span><span class="n">transpose</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">apply_onepoint</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">travsrc</span><span class="p">,</span> <span class="n">travrec</span><span class="p">,</span> <span class="n">G0</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">nfft</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">rtm</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">greens</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+                       <span class="n">dottest</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">usematmul</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs_solver</span><span class="p">):</span>
+<span class="w">        </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;Rayleigh-Marchenko redatuming for one point</span>
+
+<span class="sd">        Solve the Rayleigh-Marchenko redatuming inverse problem for a single point</span>
+<span class="sd">        given its direct arrival traveltime curves (``travsrc`` and</span>
+<span class="sd">        ``travrec``) and waveform (``G0``).</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        travsrc : :obj:`numpy.ndarray`</span>
+<span class="sd">            Traveltime of first arrival from subsurface point to</span>
+<span class="sd">            surface sources of size :math:`[n_s \times 1]`</span>
+<span class="sd">        travsrc : :obj:`numpy.ndarray`</span>
+<span class="sd">            Traveltime of first arrival from subsurface point to</span>
+<span class="sd">            surface receivers of size :math:`[n_r \times 1]`</span>
+<span class="sd">        G0 : :obj:`numpy.ndarray`, optional</span>
+<span class="sd">            Direct arrival in time domain of size :math:`[n_r \times n_t]`</span>
+<span class="sd">            (if None, create arrival using ``travrec``)</span>
+<span class="sd">        nfft : :obj:`int`, optional</span>
+<span class="sd">            Number of samples in fft when creating the analytical direct wave</span>
+<span class="sd">        rtm : :obj:`bool`, optional</span>
+<span class="sd">            Compute and return rtm redatuming</span>
+<span class="sd">        greens : :obj:`bool`, optional</span>
+<span class="sd">            Compute and return Green&#39;s functions</span>
+<span class="sd">        dottest : :obj:`bool`, optional</span>
+<span class="sd">            Apply dot-test</span>
+<span class="sd">        usematmul : :obj:`bool`, optional</span>
+<span class="sd">            Use :func:`numpy.matmul` (``True``) or for-loop with :func:`numpy.dot`</span>
+<span class="sd">            (``False``) in :py:class:`pylops.signalprocessing.Fredholm1` operator.</span>
+<span class="sd">            Refer to Fredholm1 documentation for details.</span>
+<span class="sd">        **kwargs_solver</span>
+<span class="sd">            Arbitrary keyword arguments for chosen solver</span>
+<span class="sd">            (:py:func:`scipy.sparse.linalg.lsqr` and</span>
+<span class="sd">            :py:func:`pylops.optimization.solver.cgls` are used as default</span>
+<span class="sd">            for numpy and cupy `data`, respectively)</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        ----------</span>
+<span class="sd">        f1_inv_minus : :obj:`numpy.ndarray`</span>
+<span class="sd">            Inverted upgoing focusing function of size :math:`[n_r \times n_t]`</span>
+<span class="sd">        f1_inv_plus : :obj:`numpy.ndarray`</span>
+<span class="sd">            Inverted downgoing focusing function</span>
+<span class="sd">            of size :math:`[n_r \times n_t]`</span>
+<span class="sd">        p0_minus : :obj:`numpy.ndarray`</span>
+<span class="sd">            Single-scattering standard redatuming upgoing Green&#39;s function of</span>
+<span class="sd">            size :math:`[n_s \times n_t]`</span>
+<span class="sd">        g_inv_minus : :obj:`numpy.ndarray`</span>
+<span class="sd">            Inverted upgoing Green&#39;s function of size :math:`[n_s \times n_t]`</span>
+<span class="sd">        g_inv_plus : :obj:`numpy.ndarray`</span>
+<span class="sd">            Inverted downgoing Green&#39;s function</span>
+<span class="sd">            of size :math:`[n_s \times n_t]`</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="c1"># Create windows</span>
+        <span class="n">travsrc_off</span> <span class="o">=</span> <span class="n">travsrc</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">toff</span>
+        <span class="n">travsrc_off</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="n">travsrc_off</span> <span class="o">/</span> <span class="bp">self</span><span class="o">.</span><span class="n">dt</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">int32</span><span class="p">)</span>
+        <span class="n">travrec_off</span> <span class="o">=</span> <span class="n">travrec</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">toff</span>
+        <span class="n">travrec_off</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="n">travrec_off</span> <span class="o">/</span> <span class="bp">self</span><span class="o">.</span><span class="n">dt</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">int32</span><span class="p">)</span>
+
+        <span class="n">ws</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="bp">self</span><span class="o">.</span><span class="n">ns</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">nt</span><span class="p">),</span> <span class="n">dtype</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">dtype</span><span class="p">)</span>
+        <span class="n">wr</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="bp">self</span><span class="o">.</span><span class="n">nr</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">nt</span><span class="p">),</span> <span class="n">dtype</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">dtype</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">ir</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">ns</span><span class="p">):</span>
+            <span class="n">ws</span><span class="p">[</span><span class="n">ir</span><span class="p">,</span> <span class="p">:</span><span class="n">travsrc_off</span><span class="p">[</span><span class="n">ir</span><span class="p">]]</span> <span class="o">=</span> <span class="mi">1</span>
+        <span class="k">for</span> <span class="n">ir</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">nr</span><span class="p">):</span>
+            <span class="n">wr</span><span class="p">[</span><span class="n">ir</span><span class="p">,</span> <span class="p">:</span><span class="n">travrec_off</span><span class="p">[</span><span class="n">ir</span><span class="p">]]</span> <span class="o">=</span> <span class="mi">1</span>
+        <span class="n">ws</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">hstack</span><span class="p">((</span><span class="n">ws</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">:],</span> <span class="n">np</span><span class="o">.</span><span class="n">fliplr</span><span class="p">(</span><span class="n">ws</span><span class="p">)))</span>
+        <span class="n">wr</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">hstack</span><span class="p">((</span><span class="n">wr</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">:],</span> <span class="n">np</span><span class="o">.</span><span class="n">fliplr</span><span class="p">(</span><span class="n">wr</span><span class="p">)))</span>
+
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">nsmooth</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="n">smooth</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">nsmooth</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">dtype</span><span class="p">)</span> <span class="o">/</span> <span class="bp">self</span><span class="o">.</span><span class="n">nsmooth</span>
+            <span class="n">ws</span> <span class="o">=</span> <span class="n">filtfilt</span><span class="p">(</span><span class="n">smooth</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">ws</span><span class="p">)</span>
+            <span class="n">wr</span> <span class="o">=</span> <span class="n">filtfilt</span><span class="p">(</span><span class="n">smooth</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">wr</span><span class="p">)</span>
+        <span class="n">ws</span> <span class="o">=</span> <span class="n">to_cupy_conditional</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">VZminus_fft</span><span class="p">,</span> <span class="n">ws</span><span class="p">)</span>
+        <span class="n">wr</span> <span class="o">=</span> <span class="n">to_cupy_conditional</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">VZminus_fft</span><span class="p">,</span> <span class="n">wr</span><span class="p">)</span>
+
+        <span class="c1"># Create operators</span>
+        <span class="n">Vzuop</span> <span class="o">=</span> <span class="n">MDC</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">VZminus_fft</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">nt2</span><span class="p">,</span> <span class="n">nv</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">dt</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">dt</span><span class="p">,</span> <span class="n">dr</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">dr</span><span class="p">,</span>
+                    <span class="n">twosided</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">conj</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+                    <span class="n">saveGt</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">saveVt</span><span class="p">,</span> <span class="n">prescaled</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">prescaled</span><span class="p">,</span>
+                    <span class="n">usematmul</span><span class="o">=</span><span class="n">usematmul</span><span class="p">)</span>
+        <span class="n">Vzu1op</span> <span class="o">=</span> <span class="n">MDC</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">VZminus_fft</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">nt2</span><span class="p">,</span> <span class="n">nv</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">dt</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">dt</span><span class="p">,</span> <span class="n">dr</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">dr</span><span class="p">,</span>
+                     <span class="n">twosided</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">conj</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+                     <span class="n">saveGt</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">saveVt</span><span class="p">,</span> <span class="n">prescaled</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">prescaled</span><span class="p">,</span>
+                     <span class="n">usematmul</span><span class="o">=</span><span class="n">usematmul</span><span class="p">)</span>
+        <span class="n">Vzdop</span> <span class="o">=</span> <span class="n">MDC</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">VZplus_fft</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">nt2</span><span class="p">,</span> <span class="n">nv</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">dt</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">dt</span><span class="p">,</span> <span class="n">dr</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">dr</span><span class="p">,</span>
+                    <span class="n">twosided</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">conj</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+                    <span class="n">saveGt</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">saveVt</span><span class="p">,</span> <span class="n">prescaled</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">prescaled</span><span class="p">,</span>
+                    <span class="n">usematmul</span><span class="o">=</span><span class="n">usematmul</span><span class="p">)</span>
+        <span class="n">Vzd1op</span> <span class="o">=</span> <span class="n">MDC</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">VZplus_fft</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">nt2</span><span class="p">,</span> <span class="n">nv</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">dt</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">dt</span><span class="p">,</span> <span class="n">dr</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">dr</span><span class="p">,</span>
+                     <span class="n">twosided</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">conj</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+                     <span class="n">saveGt</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">saveVt</span><span class="p">,</span> <span class="n">prescaled</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">prescaled</span><span class="p">,</span>
+                     <span class="n">usematmul</span><span class="o">=</span><span class="n">usematmul</span><span class="p">)</span>
+
+        <span class="n">Wfop</span> <span class="o">=</span> <span class="n">Diagonal</span><span class="p">(</span><span class="n">wr</span><span class="o">.</span><span class="n">T</span><span class="o">.</span><span class="n">flatten</span><span class="p">())</span>
+        <span class="n">Wgop</span> <span class="o">=</span> <span class="n">Diagonal</span><span class="p">(</span><span class="n">ws</span><span class="o">.</span><span class="n">T</span><span class="o">.</span><span class="n">flatten</span><span class="p">())</span>
+
+        <span class="n">Dop</span> <span class="o">=</span> <span class="n">Block</span><span class="p">([[</span><span class="n">Wgop</span> <span class="o">*</span> <span class="n">Vzdop</span><span class="p">,</span> <span class="n">Wgop</span> <span class="o">*</span> <span class="n">Vzuop</span><span class="p">],</span>
+                     <span class="p">[</span><span class="n">Wgop</span> <span class="o">*</span> <span class="n">Vzu1op</span><span class="p">,</span> <span class="n">Wgop</span> <span class="o">*</span> <span class="n">Vzd1op</span><span class="p">]])</span>
+        <span class="n">Mop</span> <span class="o">=</span> <span class="n">Dop</span> <span class="o">*</span> <span class="n">BlockDiag</span><span class="p">([</span><span class="n">Wfop</span><span class="p">,</span> <span class="n">Wfop</span><span class="p">])</span>
+        <span class="n">Gop</span> <span class="o">=</span> <span class="n">Block</span><span class="p">([[</span><span class="n">Vzdop</span><span class="p">,</span> <span class="n">Vzuop</span><span class="p">],</span>
+                     <span class="p">[</span><span class="n">Vzu1op</span><span class="p">,</span> <span class="n">Vzd1op</span><span class="p">]])</span>
+
+        <span class="k">if</span> <span class="n">dottest</span><span class="p">:</span>
+            <span class="n">Dottest</span><span class="p">(</span><span class="n">Gop</span><span class="p">,</span> <span class="mi">2</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">ns</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">nt2</span><span class="p">,</span>
+                    <span class="mi">2</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">nr</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">nt2</span><span class="p">,</span>
+                    <span class="n">raiseerror</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">verb</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+                    <span class="n">backend</span><span class="o">=</span><span class="n">get_module_name</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">ncp</span><span class="p">))</span>
+        <span class="k">if</span> <span class="n">dottest</span><span class="p">:</span>
+            <span class="n">Dottest</span><span class="p">(</span><span class="n">Mop</span><span class="p">,</span> <span class="mi">2</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">ns</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">nt2</span><span class="p">,</span>
+                    <span class="mi">2</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">nr</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">nt2</span><span class="p">,</span>
+                    <span class="n">raiseerror</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">verb</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+                    <span class="n">backend</span><span class="o">=</span><span class="n">get_module_name</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">ncp</span><span class="p">))</span>
+
+        <span class="c1"># Create input focusing function</span>
+        <span class="k">if</span> <span class="n">G0</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">wav</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="n">nfft</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+                <span class="n">G0</span> <span class="o">=</span> <span class="p">(</span><span class="n">directwave</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">wav</span><span class="p">,</span> <span class="n">travrec</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">nt</span><span class="p">,</span>
+                                 <span class="bp">self</span><span class="o">.</span><span class="n">dt</span><span class="p">,</span> <span class="n">nfft</span><span class="o">=</span><span class="n">nfft</span><span class="p">,</span> <span class="n">derivative</span><span class="o">=</span><span class="kc">True</span><span class="p">))</span><span class="o">.</span><span class="n">T</span>
+                <span class="n">G0</span> <span class="o">=</span> <span class="n">to_cupy_conditional</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">VZminus_fft</span><span class="p">,</span> <span class="n">G0</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">logging</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="s1">&#39;wav and/or nfft are not provided. &#39;</span>
+                              <span class="s1">&#39;Provide either G0 or wav and nfft...&#39;</span><span class="p">)</span>
+                <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;wav and/or nfft are not provided. &#39;</span>
+                                 <span class="s1">&#39;Provide either G0 or wav and nfft...&#39;</span><span class="p">)</span>
+        <span class="n">fd_plus</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">((</span><span class="bp">self</span><span class="o">.</span><span class="n">ncp</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="bp">self</span><span class="o">.</span><span class="n">nt</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">nr</span><span class="p">),</span>
+                                                 <span class="n">dtype</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">dtype</span><span class="p">),</span>
+                                  <span class="n">np</span><span class="o">.</span><span class="n">fliplr</span><span class="p">(</span><span class="n">G0</span><span class="p">)</span><span class="o">.</span><span class="n">T</span><span class="p">))</span>
+
+        <span class="c1"># Run standard redatuming as benchmark</span>
+        <span class="k">if</span> <span class="n">rtm</span><span class="p">:</span>
+            <span class="n">p0_minus</span> <span class="o">=</span> <span class="n">Vzuop</span> <span class="o">*</span> <span class="n">fd_plus</span><span class="o">.</span><span class="n">flatten</span><span class="p">()</span>
+            <span class="n">p0_minus</span> <span class="o">=</span> <span class="n">p0_minus</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">nt2</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">ns</span><span class="p">)</span><span class="o">.</span><span class="n">T</span>
+
+        <span class="c1"># Create data and inverse focusing functions</span>
+        <span class="n">dinp</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">((</span><span class="bp">self</span><span class="o">.</span><span class="n">ncp</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="bp">self</span><span class="o">.</span><span class="n">nt2</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">nr</span><span class="p">),</span> <span class="bp">self</span><span class="o">.</span><span class="n">dtype</span><span class="p">),</span>
+                               <span class="n">fd_plus</span><span class="p">),</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+        <span class="n">d</span> <span class="o">=</span> <span class="o">-</span><span class="n">Dop</span> <span class="o">*</span> <span class="n">dinp</span><span class="o">.</span><span class="n">ravel</span><span class="p">()</span>
+
+        <span class="c1"># Invert for focusing functions</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">ncp</span> <span class="o">==</span> <span class="n">np</span><span class="p">:</span>
+            <span class="n">f1_inv</span> <span class="o">=</span> <span class="n">lsqr</span><span class="p">(</span><span class="n">Mop</span><span class="p">,</span> <span class="n">d</span><span class="o">.</span><span class="n">flatten</span><span class="p">(),</span> <span class="o">**</span><span class="n">kwargs_solver</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">f1_inv</span> <span class="o">=</span> <span class="n">cgls</span><span class="p">(</span><span class="n">Mop</span><span class="p">,</span> <span class="n">d</span><span class="o">.</span><span class="n">flatten</span><span class="p">(),</span>
+                          <span class="n">x0</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">ncp</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="bp">self</span><span class="o">.</span><span class="n">nt</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span><span class="o">*</span><span class="bp">self</span><span class="o">.</span><span class="n">nr</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">dtype</span><span class="p">),</span>
+                          <span class="o">**</span><span class="n">kwargs_solver</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+
+        <span class="n">f1_inv</span> <span class="o">=</span> <span class="n">f1_inv</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">nt2</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">nr</span><span class="p">)</span>
+        <span class="n">f1_inv_tot</span> <span class="o">=</span> <span class="n">f1_inv</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">((</span><span class="bp">self</span><span class="o">.</span><span class="n">ncp</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="bp">self</span><span class="o">.</span><span class="n">nt2</span><span class="p">,</span>
+                                                              <span class="bp">self</span><span class="o">.</span><span class="n">nr</span><span class="p">),</span>
+                                                             <span class="n">dtype</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">dtype</span><span class="p">),</span>
+                                              <span class="n">fd_plus</span><span class="p">))</span>
+        <span class="n">f1_inv_minus</span> <span class="o">=</span> <span class="n">f1_inv_tot</span><span class="p">[:</span><span class="bp">self</span><span class="o">.</span><span class="n">nt2</span><span class="p">]</span><span class="o">.</span><span class="n">T</span>
+        <span class="n">f1_inv_plus</span> <span class="o">=</span> <span class="n">f1_inv_tot</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">nt2</span><span class="p">:]</span><span class="o">.</span><span class="n">T</span>
+        <span class="k">if</span> <span class="n">greens</span><span class="p">:</span>
+            <span class="c1"># Create Green&#39;s functions</span>
+            <span class="n">g_inv</span> <span class="o">=</span> <span class="n">Gop</span> <span class="o">*</span> <span class="n">f1_inv_tot</span><span class="o">.</span><span class="n">flatten</span><span class="p">()</span>
+            <span class="n">g_inv</span> <span class="o">=</span> <span class="n">g_inv</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">nt2</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">ns</span><span class="p">)</span>
+            <span class="n">g_inv_minus</span><span class="p">,</span> <span class="n">g_inv_plus</span> <span class="o">=</span> <span class="o">-</span><span class="n">g_inv</span><span class="p">[:</span><span class="bp">self</span><span class="o">.</span><span class="n">nt2</span><span class="p">]</span><span class="o">.</span><span class="n">T</span><span class="p">,</span> \
+                                      <span class="n">np</span><span class="o">.</span><span class="n">fliplr</span><span class="p">(</span><span class="n">g_inv</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">nt2</span><span class="p">:]</span><span class="o">.</span><span class="n">T</span><span class="p">)</span>
+        <span class="c1"># Bring back to time axis with negative part</span>
+        <span class="n">f1_inv_minus</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">fft</span><span class="o">.</span><span class="n">ifftshift</span><span class="p">(</span><span class="n">f1_inv_minus</span><span class="p">,</span> <span class="n">axes</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+        <span class="n">f1_inv_plus</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">fft</span><span class="o">.</span><span class="n">ifftshift</span><span class="p">(</span><span class="n">f1_inv_plus</span><span class="p">,</span> <span class="n">axes</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">rtm</span><span class="p">:</span>
+            <span class="n">p0_minus</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">fft</span><span class="o">.</span><span class="n">ifftshift</span><span class="p">(</span><span class="n">p0_minus</span><span class="p">,</span> <span class="n">axes</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">greens</span><span class="p">:</span>
+            <span class="n">g_inv_minus</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">fft</span><span class="o">.</span><span class="n">ifftshift</span><span class="p">(</span><span class="n">g_inv_minus</span><span class="p">,</span> <span class="n">axes</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+            <span class="n">g_inv_plus</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">fft</span><span class="o">.</span><span class="n">ifftshift</span><span class="p">(</span><span class="n">g_inv_plus</span><span class="p">,</span> <span class="n">axes</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">rtm</span> <span class="ow">and</span> <span class="n">greens</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">f1_inv_minus</span><span class="p">,</span> <span class="n">f1_inv_plus</span><span class="p">,</span> <span class="n">p0_minus</span><span class="p">,</span> <span class="n">g_inv_minus</span><span class="p">,</span> <span class="n">g_inv_plus</span>
+        <span class="k">elif</span> <span class="n">rtm</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">f1_inv_minus</span><span class="p">,</span> <span class="n">f1_inv_plus</span><span class="p">,</span> <span class="n">p0_minus</span>
+        <span class="k">elif</span> <span class="n">greens</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">f1_inv_minus</span><span class="p">,</span> <span class="n">f1_inv_plus</span><span class="p">,</span> <span class="n">g_inv_minus</span><span class="p">,</span> <span class="n">g_inv_plus</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">f1_inv_minus</span><span class="p">,</span> <span class="n">f1_inv_plus</span>
+
+    <span class="k">def</span> <span class="nf">apply_multiplepoints</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">travsrc</span><span class="p">,</span> <span class="n">travrec</span><span class="p">,</span> <span class="n">G0</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">nfft</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+                             <span class="n">rtm</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">greens</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+                             <span class="n">dottest</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">usematmul</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs_solver</span><span class="p">):</span>
+<span class="w">        </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;Rayleigh-Marchenko redatuming for multiple points</span>
+
+<span class="sd">        Solve the Rayleigh-Marchenko redatuming inverse problem for multiple</span>
+<span class="sd">        points given their direct arrival traveltime curves (``travsrc`` and</span>
+<span class="sd">        ``travrec``) and waveforms (``G0``).</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        travsrc : :obj:`numpy.ndarray`</span>
+<span class="sd">            Traveltime of first arrival from subsurface point to</span>
+<span class="sd">            surface sources of size :math:`[n_s \times 1]`</span>
+<span class="sd">        travsrc : :obj:`numpy.ndarray`</span>
+<span class="sd">            Traveltime of first arrival from subsurface point to</span>
+<span class="sd">            surface receivers of size :math:`[n_r \times 1]`</span>
+<span class="sd">        G0 : :obj:`numpy.ndarray`, optional</span>
+<span class="sd">            Direct arrival in time domain of size</span>
+<span class="sd">            :math:`[n_r \times n_{vs} \times n_t]` (if None, create arrival</span>
+<span class="sd">            using ``travrec``)</span>
+<span class="sd">        nfft : :obj:`int`, optional</span>
+<span class="sd">            Number of samples in fft when creating the analytical direct wave</span>
+<span class="sd">        rtm : :obj:`bool`, optional</span>
+<span class="sd">            Compute and return rtm redatuming</span>
+<span class="sd">        greens : :obj:`bool`, optional</span>
+<span class="sd">            Compute and return Green&#39;s functions</span>
+<span class="sd">        dottest : :obj:`bool`, optional</span>
+<span class="sd">            Apply dot-test</span>
+<span class="sd">        usematmul : :obj:`bool`, optional</span>
+<span class="sd">            Use :func:`numpy.matmul` (``True``) or for-loop with :func:`numpy.dot`</span>
+<span class="sd">            (``False``) in :py:class:`pylops.signalprocessing.Fredholm1` operator.</span>
+<span class="sd">            Refer to Fredholm1 documentation for details.</span>
+<span class="sd">        **kwargs_solver</span>
+<span class="sd">            Arbitrary keyword arguments for chosen solver</span>
+<span class="sd">            (:py:func:`scipy.sparse.linalg.lsqr` and</span>
+<span class="sd">            :py:func:`pylops.optimization.solver.cgls` are used as default</span>
+<span class="sd">            for numpy and cupy `data`, respectively)</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        ----------</span>
+<span class="sd">        f1_inv_minus : :obj:`numpy.ndarray`</span>
+<span class="sd">            Inverted upgoing focusing function of size</span>
+<span class="sd">            :math:`[n_r \times n_{vs} \times n_t]`</span>
+<span class="sd">        f1_inv_plus : :obj:`numpy.ndarray`</span>
+<span class="sd">            Inverted downgoing focusing functionof size</span>
+<span class="sd">            :math:`[n_r \times n_{vs} \times n_t]`</span>
+<span class="sd">        p0_minus : :obj:`numpy.ndarray`</span>
+<span class="sd">            Single-scattering standard redatuming upgoing Green&#39;s function</span>
+<span class="sd">            of size :math:`[n_r \times n_{vs} \times n_t]`</span>
+<span class="sd">        g_inv_minus : :obj:`numpy.ndarray`</span>
+<span class="sd">            Inverted upgoing Green&#39;s function of size</span>
+<span class="sd">            :math:`[n_r \times n_{vs} \times n_t]`</span>
+<span class="sd">        g_inv_plus : :obj:`numpy.ndarray`</span>
+<span class="sd">            Inverted downgoing Green&#39;s function of size</span>
+<span class="sd">            :math:`[n_r \times n_{vs} \times n_t]`</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">nvs</span> <span class="o">=</span> <span class="n">travsrc</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+
+        <span class="c1"># Create window</span>
+        <span class="n">travsrc_off</span> <span class="o">=</span> <span class="n">travsrc</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">toff</span>
+        <span class="n">travsrc_off</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="n">travsrc_off</span> <span class="o">/</span> <span class="bp">self</span><span class="o">.</span><span class="n">dt</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">int32</span><span class="p">)</span>
+        <span class="n">travrec_off</span> <span class="o">=</span> <span class="n">travrec</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">toff</span>
+        <span class="n">travrec_off</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="n">travrec_off</span> <span class="o">/</span> <span class="bp">self</span><span class="o">.</span><span class="n">dt</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">int32</span><span class="p">)</span>
+
+        <span class="n">ws</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="bp">self</span><span class="o">.</span><span class="n">ns</span><span class="p">,</span> <span class="n">nvs</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">nt</span><span class="p">),</span> <span class="n">dtype</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">dtype</span><span class="p">)</span>
+        <span class="n">wr</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="bp">self</span><span class="o">.</span><span class="n">nr</span><span class="p">,</span> <span class="n">nvs</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">nt</span><span class="p">),</span> <span class="n">dtype</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">dtype</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">ir</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">ns</span><span class="p">):</span>
+            <span class="k">for</span> <span class="n">ivs</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">nvs</span><span class="p">):</span>
+                <span class="n">ws</span><span class="p">[</span><span class="n">ir</span><span class="p">,</span> <span class="n">ivs</span><span class="p">,</span> <span class="p">:</span><span class="n">travsrc_off</span><span class="p">[</span><span class="n">ir</span><span class="p">,</span> <span class="n">ivs</span><span class="p">]]</span> <span class="o">=</span> <span class="mi">1</span>
+        <span class="k">for</span> <span class="n">ir</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">nr</span><span class="p">):</span>
+            <span class="k">for</span> <span class="n">ivs</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">nvs</span><span class="p">):</span>
+                <span class="n">wr</span><span class="p">[</span><span class="n">ir</span><span class="p">,</span> <span class="n">ivs</span><span class="p">,</span> <span class="p">:</span><span class="n">travrec_off</span><span class="p">[</span><span class="n">ir</span><span class="p">,</span> <span class="n">ivs</span><span class="p">]]</span> <span class="o">=</span> <span class="mi">1</span>
+        <span class="n">ws</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">((</span><span class="n">ws</span><span class="p">[:,</span> <span class="p">:,</span> <span class="mi">1</span><span class="p">:],</span> <span class="n">np</span><span class="o">.</span><span class="n">flip</span><span class="p">(</span><span class="n">ws</span><span class="p">,</span> <span class="n">axis</span><span class="o">=-</span><span class="mi">1</span><span class="p">)),</span> <span class="n">axis</span><span class="o">=-</span><span class="mi">1</span><span class="p">)</span>
+        <span class="n">wr</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">((</span><span class="n">wr</span><span class="p">[:,</span> <span class="p">:,</span> <span class="mi">1</span><span class="p">:],</span> <span class="n">np</span><span class="o">.</span><span class="n">flip</span><span class="p">(</span><span class="n">wr</span><span class="p">,</span> <span class="n">axis</span><span class="o">=-</span><span class="mi">1</span><span class="p">)),</span> <span class="n">axis</span><span class="o">=-</span><span class="mi">1</span><span class="p">)</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">nsmooth</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="n">smooth</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">nsmooth</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">dtype</span><span class="p">)</span> <span class="o">/</span> <span class="bp">self</span><span class="o">.</span><span class="n">nsmooth</span>
+            <span class="n">ws</span> <span class="o">=</span> <span class="n">filtfilt</span><span class="p">(</span><span class="n">smooth</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">ws</span><span class="p">)</span>
+            <span class="n">wr</span> <span class="o">=</span> <span class="n">filtfilt</span><span class="p">(</span><span class="n">smooth</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">wr</span><span class="p">)</span>
+        <span class="n">ws</span> <span class="o">=</span> <span class="n">to_cupy_conditional</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">VZminus_fft</span><span class="p">,</span> <span class="n">ws</span><span class="p">)</span>
+        <span class="n">wr</span> <span class="o">=</span> <span class="n">to_cupy_conditional</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">VZminus_fft</span><span class="p">,</span> <span class="n">wr</span><span class="p">)</span>
+
+        <span class="c1"># Create operators</span>
+        <span class="n">Vzuop</span> <span class="o">=</span> <span class="n">MDC</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">VZminus_fft</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">nt2</span><span class="p">,</span> <span class="n">nv</span><span class="o">=</span><span class="n">nvs</span><span class="p">,</span> <span class="n">dt</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">dt</span><span class="p">,</span> <span class="n">dr</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">dr</span><span class="p">,</span>
+                    <span class="n">twosided</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">conj</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+                    <span class="n">saveGt</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">saveVt</span><span class="p">,</span> <span class="n">prescaled</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">prescaled</span><span class="p">,</span>
+                    <span class="n">usematmul</span><span class="o">=</span><span class="n">usematmul</span><span class="p">)</span>
+        <span class="n">Vzu1op</span> <span class="o">=</span> <span class="n">MDC</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">VZminus_fft</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">nt2</span><span class="p">,</span> <span class="n">nv</span><span class="o">=</span><span class="n">nvs</span><span class="p">,</span> <span class="n">dt</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">dt</span><span class="p">,</span> <span class="n">dr</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">dr</span><span class="p">,</span>
+                     <span class="n">twosided</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">conj</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+                     <span class="n">saveGt</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">saveVt</span><span class="p">,</span> <span class="n">prescaled</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">prescaled</span><span class="p">,</span>
+                     <span class="n">usematmul</span><span class="o">=</span><span class="n">usematmul</span><span class="p">)</span>
+        <span class="n">Vzdop</span> <span class="o">=</span> <span class="n">MDC</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">VZplus_fft</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">nt2</span><span class="p">,</span> <span class="n">nv</span><span class="o">=</span><span class="n">nvs</span><span class="p">,</span> <span class="n">dt</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">dt</span><span class="p">,</span> <span class="n">dr</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">dr</span><span class="p">,</span>
+                    <span class="n">twosided</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">conj</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+                    <span class="n">saveGt</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">saveVt</span><span class="p">,</span> <span class="n">prescaled</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">prescaled</span><span class="p">,</span>
+                    <span class="n">usematmul</span><span class="o">=</span><span class="n">usematmul</span><span class="p">)</span>
+        <span class="n">Vzd1op</span> <span class="o">=</span> <span class="n">MDC</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">VZplus_fft</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">nt2</span><span class="p">,</span> <span class="n">nv</span><span class="o">=</span><span class="n">nvs</span><span class="p">,</span> <span class="n">dt</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">dt</span><span class="p">,</span> <span class="n">dr</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">dr</span><span class="p">,</span>
+                     <span class="n">twosided</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">conj</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+                     <span class="n">saveGt</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">saveVt</span><span class="p">,</span> <span class="n">prescaled</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">prescaled</span><span class="p">,</span>
+                     <span class="n">usematmul</span><span class="o">=</span><span class="n">usematmul</span><span class="p">)</span>
+        <span class="n">Wfop</span> <span class="o">=</span> <span class="n">Diagonal</span><span class="p">(</span><span class="n">wr</span><span class="o">.</span><span class="n">transpose</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">flatten</span><span class="p">())</span>
+        <span class="n">Wgop</span> <span class="o">=</span> <span class="n">Diagonal</span><span class="p">(</span><span class="n">ws</span><span class="o">.</span><span class="n">transpose</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">flatten</span><span class="p">())</span>
+
+        <span class="n">Dop</span> <span class="o">=</span> <span class="n">Block</span><span class="p">([[</span><span class="n">Wgop</span> <span class="o">*</span> <span class="n">Vzdop</span><span class="p">,</span> <span class="n">Wgop</span> <span class="o">*</span> <span class="n">Vzuop</span><span class="p">],</span>
+                     <span class="p">[</span><span class="n">Wgop</span> <span class="o">*</span> <span class="n">Vzu1op</span><span class="p">,</span> <span class="n">Wgop</span> <span class="o">*</span> <span class="n">Vzd1op</span><span class="p">]])</span>
+        <span class="n">Mop</span> <span class="o">=</span> <span class="n">Dop</span> <span class="o">*</span> <span class="n">BlockDiag</span><span class="p">([</span><span class="n">Wfop</span><span class="p">,</span> <span class="n">Wfop</span><span class="p">])</span>
+        <span class="n">Gop</span> <span class="o">=</span> <span class="n">Block</span><span class="p">([[</span><span class="n">Vzdop</span><span class="p">,</span> <span class="n">Vzuop</span><span class="p">],</span>
+                     <span class="p">[</span><span class="n">Vzu1op</span><span class="p">,</span> <span class="n">Vzd1op</span><span class="p">]])</span>
+
+        <span class="k">if</span> <span class="n">dottest</span><span class="p">:</span>
+            <span class="n">Dottest</span><span class="p">(</span><span class="n">Gop</span><span class="p">,</span> <span class="mi">2</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">ns</span> <span class="o">*</span> <span class="n">nvs</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">nt2</span><span class="p">,</span>
+                    <span class="mi">2</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">nr</span> <span class="o">*</span> <span class="n">nvs</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">nt2</span><span class="p">,</span>
+                    <span class="n">raiseerror</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">verb</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+                    <span class="n">backend</span><span class="o">=</span><span class="n">get_module_name</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">ncp</span><span class="p">))</span>
+        <span class="k">if</span> <span class="n">dottest</span><span class="p">:</span>
+            <span class="n">Dottest</span><span class="p">(</span><span class="n">Mop</span><span class="p">,</span> <span class="mi">2</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">ns</span> <span class="o">*</span> <span class="n">nvs</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">nt2</span><span class="p">,</span>
+                    <span class="mi">2</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">nr</span> <span class="o">*</span> <span class="n">nvs</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">nt2</span><span class="p">,</span>
+                    <span class="n">raiseerror</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">verb</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+                    <span class="n">backend</span><span class="o">=</span><span class="n">get_module_name</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">ncp</span><span class="p">))</span>
+
+        <span class="c1"># Create input focusing function</span>
+        <span class="k">if</span> <span class="n">G0</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">wav</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="n">nfft</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+                <span class="n">G0</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="bp">self</span><span class="o">.</span><span class="n">nr</span><span class="p">,</span> <span class="n">nvs</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">nt</span><span class="p">),</span> <span class="n">dtype</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">dtype</span><span class="p">)</span>
+                <span class="k">for</span> <span class="n">ivs</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">nvs</span><span class="p">):</span>
+                    <span class="n">G0</span><span class="p">[:,</span> <span class="n">ivs</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">directwave</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">wav</span><span class="p">,</span> <span class="n">travrec</span><span class="p">[:,</span> <span class="n">ivs</span><span class="p">],</span>
+                                             <span class="bp">self</span><span class="o">.</span><span class="n">nt</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">dt</span><span class="p">,</span>
+                                             <span class="n">nfft</span><span class="o">=</span><span class="n">nfft</span><span class="p">,</span> <span class="n">derivative</span><span class="o">=</span><span class="kc">True</span><span class="p">))</span><span class="o">.</span><span class="n">T</span>
+                <span class="n">G0</span> <span class="o">=</span> <span class="n">to_cupy_conditional</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">VZminus_fft</span><span class="p">,</span> <span class="n">G0</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">logging</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="s1">&#39;wav and/or nfft are not provided. &#39;</span>
+                              <span class="s1">&#39;Provide either G0 or wav and nfft...&#39;</span><span class="p">)</span>
+                <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;wav and/or nfft are not provided. &#39;</span>
+                                 <span class="s1">&#39;Provide either G0 or wav and nfft...&#39;</span><span class="p">)</span>
+        <span class="n">fd_plus</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">((</span><span class="bp">self</span><span class="o">.</span><span class="n">ncp</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="bp">self</span><span class="o">.</span><span class="n">nt</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">nr</span><span class="p">,</span> <span class="n">nvs</span><span class="p">),</span>
+                                                 <span class="n">dtype</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">dtype</span><span class="p">),</span>
+                                  <span class="n">np</span><span class="o">.</span><span class="n">flip</span><span class="p">(</span><span class="n">G0</span><span class="p">,</span> <span class="n">axis</span><span class="o">=-</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">transpose</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">)))</span>
+
+        <span class="c1"># Run standard redatuming as benchmark</span>
+        <span class="k">if</span> <span class="n">rtm</span><span class="p">:</span>
+            <span class="n">p0_minus</span> <span class="o">=</span> <span class="n">Vzuop</span> <span class="o">*</span> <span class="n">fd_plus</span><span class="o">.</span><span class="n">flatten</span><span class="p">()</span>
+            <span class="n">p0_minus</span> <span class="o">=</span> <span class="n">p0_minus</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">nt2</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">ns</span><span class="p">,</span>
+                                        <span class="n">nvs</span><span class="p">)</span><span class="o">.</span><span class="n">transpose</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+
+        <span class="c1"># Create data and inverse focusing functions</span>
+        <span class="n">dinp</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">((</span><span class="bp">self</span><span class="o">.</span><span class="n">ncp</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="bp">self</span><span class="o">.</span><span class="n">nt2</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">nr</span><span class="p">,</span> <span class="n">nvs</span><span class="p">),</span>
+                                              <span class="bp">self</span><span class="o">.</span><span class="n">dtype</span><span class="p">),</span>
+                               <span class="n">fd_plus</span><span class="p">),</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+        <span class="n">d</span> <span class="o">=</span> <span class="o">-</span><span class="n">Dop</span> <span class="o">*</span> <span class="n">dinp</span><span class="o">.</span><span class="n">ravel</span><span class="p">()</span>
+
+        <span class="c1"># Invert for focusing functions</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">ncp</span> <span class="o">==</span> <span class="n">np</span><span class="p">:</span>
+            <span class="n">f1_inv</span> <span class="o">=</span> <span class="n">lsqr</span><span class="p">(</span><span class="n">Mop</span><span class="p">,</span> <span class="n">d</span><span class="o">.</span><span class="n">flatten</span><span class="p">(),</span> <span class="o">**</span><span class="n">kwargs_solver</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">f1_inv</span> <span class="o">=</span> <span class="n">cgls</span><span class="p">(</span><span class="n">Mop</span><span class="p">,</span> <span class="n">d</span><span class="o">.</span><span class="n">flatten</span><span class="p">(),</span>
+                          <span class="n">x0</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">ncp</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">nt</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="o">*</span>
+                                            <span class="bp">self</span><span class="o">.</span><span class="n">nr</span> <span class="o">*</span> <span class="n">nvs</span><span class="p">,</span>
+                                            <span class="n">dtype</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">dtype</span><span class="p">),</span>
+                          <span class="o">**</span><span class="n">kwargs_solver</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+
+        <span class="n">f1_inv</span> <span class="o">=</span> <span class="n">f1_inv</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">nt2</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">nr</span><span class="p">,</span> <span class="n">nvs</span><span class="p">)</span>
+        <span class="n">f1_inv_tot</span> <span class="o">=</span> \
+            <span class="n">f1_inv</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">((</span><span class="bp">self</span><span class="o">.</span><span class="n">ncp</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="bp">self</span><span class="o">.</span><span class="n">nt2</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">nr</span><span class="p">,</span> <span class="n">nvs</span><span class="p">),</span>
+                                                    <span class="n">dtype</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">dtype</span><span class="p">),</span> <span class="n">fd_plus</span><span class="p">))</span>
+        <span class="n">f1_inv_minus</span> <span class="o">=</span> <span class="n">f1_inv_tot</span><span class="p">[:</span><span class="bp">self</span><span class="o">.</span><span class="n">nt2</span><span class="p">]</span><span class="o">.</span><span class="n">transpose</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+        <span class="n">f1_inv_plus</span> <span class="o">=</span> <span class="n">f1_inv_tot</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">nt2</span><span class="p">:]</span><span class="o">.</span><span class="n">transpose</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">greens</span><span class="p">:</span>
+            <span class="c1"># Create Green&#39;s functions</span>
+            <span class="n">g_inv</span> <span class="o">=</span> <span class="n">Gop</span> <span class="o">*</span> <span class="n">f1_inv_tot</span><span class="o">.</span><span class="n">flatten</span><span class="p">()</span>
+            <span class="n">g_inv</span> <span class="o">=</span> <span class="n">g_inv</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">nt2</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">ns</span><span class="p">,</span> <span class="n">nvs</span><span class="p">)</span>
+            <span class="n">g_inv_minus</span> <span class="o">=</span> <span class="o">-</span><span class="n">g_inv</span><span class="p">[:</span><span class="bp">self</span><span class="o">.</span><span class="n">nt2</span><span class="p">]</span><span class="o">.</span><span class="n">transpose</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+            <span class="n">g_inv_plus</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">flip</span><span class="p">(</span><span class="n">g_inv</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">nt2</span><span class="p">:],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">transpose</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+
+        <span class="c1"># Bring back to time axis with negative part</span>
+        <span class="n">f1_inv_minus</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">fft</span><span class="o">.</span><span class="n">ifftshift</span><span class="p">(</span><span class="n">f1_inv_minus</span><span class="p">,</span> <span class="n">axes</span><span class="o">=-</span><span class="mi">1</span><span class="p">)</span>
+        <span class="n">f1_inv_plus</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">fft</span><span class="o">.</span><span class="n">ifftshift</span><span class="p">(</span><span class="n">f1_inv_plus</span><span class="p">,</span> <span class="n">axes</span><span class="o">=-</span><span class="mi">1</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">rtm</span><span class="p">:</span>
+            <span class="n">p0_minus</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">fft</span><span class="o">.</span><span class="n">ifftshift</span><span class="p">(</span><span class="n">p0_minus</span><span class="p">,</span> <span class="n">axes</span><span class="o">=-</span><span class="mi">1</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">greens</span><span class="p">:</span>
+            <span class="n">g_inv_minus</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">fft</span><span class="o">.</span><span class="n">ifftshift</span><span class="p">(</span><span class="n">g_inv_minus</span><span class="p">,</span> <span class="n">axes</span><span class="o">=-</span><span class="mi">1</span><span class="p">)</span>
+            <span class="n">g_inv_plus</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">fft</span><span class="o">.</span><span class="n">ifftshift</span><span class="p">(</span><span class="n">g_inv_plus</span><span class="p">,</span> <span class="n">axes</span><span class="o">=-</span><span class="mi">1</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">rtm</span> <span class="ow">and</span> <span class="n">greens</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">f1_inv_minus</span><span class="p">,</span> <span class="n">f1_inv_plus</span><span class="p">,</span> <span class="n">p0_minus</span><span class="p">,</span> <span class="n">g_inv_minus</span><span class="p">,</span> <span class="n">g_inv_plus</span>
+        <span class="k">elif</span> <span class="n">rtm</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">f1_inv_minus</span><span class="p">,</span> <span class="n">f1_inv_plus</span><span class="p">,</span> <span class="n">p0_minus</span>
+        <span class="k">elif</span> <span class="n">greens</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">f1_inv_minus</span><span class="p">,</span> <span class="n">f1_inv_plus</span><span class="p">,</span> <span class="n">g_inv_minus</span><span class="p">,</span> <span class="n">g_inv_plus</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">f1_inv_minus</span><span class="p">,</span> <span class="n">f1_inv_plus</span></div>
+
+</pre></div>
+
+                </article>
+              
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/bootstrap.js?digest=5b4479735964841361fd"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+
+  <p class="copyright">
+    
+      © Copyright 2023, DIG-Kaust.
+      <br/>
+    
+  </p>
+</div>
+      
+        <div class="footer-item">
+
+  <p class="sphinx-version">
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.2.6.
+    <br/>
+  </p>
+</div>
+      
+    </div>
+  
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item">
+<p class="theme-version">
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.14.4.
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>
