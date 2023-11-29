@@ -6,6 +6,9 @@ This example performs internal multiple elimination using the
 for transmission losses provided a proper choice of the windowing function,
 here we show how this can be done with our routine.
 
+In this tutorial, we will demultiple only a small portion of the data. Consult
+the notebooks in the repository for a complete example.
+
 """
 # sphinx_gallery_thumbnail_number = 3
 # pylint: disable=C0103
@@ -34,6 +37,7 @@ toff = 0.045         # direct arrival time shift
 nsmooth = 10         # time window smoothing
 nfmax = 400          # max frequency for MDC (#samples)
 niter = 10           # iterations
+ntmax = 200          # maximum time of data to demultiple
 
 inputdata = np.load(inputfile)
 
@@ -114,24 +118,25 @@ Rwav = Rwav[wav_c:][:nt]
 MarchenkoMME = MME(R, wav, wav_c, nt=nt, dt=dt, dr=dr,
                    toff=toff, nsmooth=nsmooth)
 
-U_minus = MarchenkoMME.apply_onesrc(R[ns//2], n_iter=niter)
+U_minus = MarchenkoMME.apply_onesrc(R[ns//2], ntmax=ntmax, n_iter=niter)
 
 ##############################################################################
 # We can now compare the original dataset with the demultipled one
-fig, axs = plt.subplots(1, 3, sharey=True, figsize=(12, 7))
-axs[0].imshow(Rwav, cmap='gray', vmin=-1e-1, vmax=1e-1,
-              extent=(r[0, 0], r[0, -1], t[-1], t[0]))
+fig, axs = plt.subplots(1, 3, sharey=True, figsize=(12, 3))
+axs[0].imshow(Rwav[:ntmax], cmap='gray', vmin=-1e-1, vmax=1e-1,
+              extent=(r[0, 0], r[0, -1], t[ntmax], t[0]))
 axs[0].set_title(r'$R$')
 axs[0].set_xlabel(r'$x_R$')
 axs[0].set_ylabel(r'$t$')
 axs[0].axis('tight')
-axs[1].imshow(U_minus.T, cmap='gray', vmin=-1e-1, vmax=1e-1,
-              extent=(r[0, 0], r[0, -1], t[-1], t[0]))
+axs[1].imshow(U_minus[:, :ntmax].T, cmap='gray', vmin=-1e-1, vmax=1e-1,
+              extent=(r[0, 0], r[0, -1], t[ntmax], t[0]))
 axs[1].set_title(r'$R_{TMME}$')
 axs[1].set_xlabel(r'$x_R$')
 axs[1].axis('tight')
-axs[2].imshow(Rwav - U_minus.T, cmap='gray', vmin=-1e-1, vmax=1e-1,
-              extent=(r[0, 0], r[0, -1], t[-1], t[0]))
+axs[2].imshow(Rwav[:ntmax] - U_minus[:, :ntmax].T,
+              cmap='gray', vmin=-1e-1, vmax=1e-1,
+              extent=(r[0, 0], r[0, -1], t[ntmax], t[0]))
 axs[2].set_title(r'$Diff.$')
 axs[2].set_xlabel(r'$x_R$')
 axs[2].axis('tight')

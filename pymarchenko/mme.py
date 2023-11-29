@@ -9,7 +9,7 @@ from pylops.utils import dottest as Dottest
 from pylops import Diagonal, Identity, Block, BlockDiag
 from pylops.waveeqprocessing.mdd import MDC
 from pylops.waveeqprocessing.marchenko import directwave
-from pylops.optimization.solver import cgls
+from pylops.optimization.basic import cgls
 from pylops.utils.backend import get_array_module, get_module_name, \
     to_cupy_conditional
 
@@ -249,13 +249,13 @@ class MME():
 
         # Create operators
         Rop = MDC(self.Rtwosided_fft, self.nt2, nv=1, dt=self.dt, dr=self.dr,
-                  twosided=False, conj=False, transpose=False,
+                  twosided=False, conj=False,
                   saveGt=self.saveRt, prescaled=self.prescaled,
-                  usematmul=usematmul, dtype=self.dtype)
+                  usematmul=usematmul)
         R1op = MDC(self.Rtwosided_fft, self.nt2, nv=1, dt=self.dt, dr=self.dr,
-                   twosided=False, conj=True, transpose=False,
+                   twosided=False, conj=True,
                    saveGt=self.saveRt, prescaled=self.prescaled,
-                   usematmul=usematmul, dtype=self.dtype)
+                   usematmul=usematmul)
 
         # Run estimate over time steps
         U_sub_minus = np.zeros((self.nr, self.nt), dtype=self.dtype)
@@ -303,7 +303,7 @@ class MME():
         return U_sub_minus
 
     def apply_multisrc(self, Rsrcs, usematmul=False, trcomp=False, ntmax=None,
-                     n_iter=10):
+                       n_iter=10):
         r"""Marchenko Multiple elimination for multiple shot gathers
 
         Solve the Marchenko Multiple elimination problem via
@@ -345,13 +345,13 @@ class MME():
         # Create operators
         nsrc = Rsrcs.shape[0]
         Rop = MDC(self.Rtwosided_fft, self.nt2, nv=nsrc, dt=self.dt, dr=self.dr,
-                  twosided=False, conj=False, transpose=False,
+                  twosided=False, conj=False,
                   saveGt=self.saveRt, prescaled=self.prescaled,
-                  usematmul=usematmul, dtype=self.dtype)
+                  usematmul=usematmul)
         R1op = MDC(self.Rtwosided_fft, self.nt2, nv=nsrc, dt=self.dt, dr=self.dr,
-                   twosided=False, conj=True, transpose=False,
+                   twosided=False, conj=True,
                    saveGt=self.saveRt, prescaled=self.prescaled,
-                   usematmul=usematmul, dtype=self.dtype)
+                   usematmul=usematmul)
 
         # Run estimate over time steps
         U_sub_minus = np.zeros((nsrc, self.nr, self.nt), dtype=self.dtype)

@@ -5,7 +5,7 @@ import time
 from multiprocessing import set_start_method
 from multiprocessing import get_context
 from scipy.signal import convolve, filtfilt
-from pylops.waveeqprocessing.marchenko import directwave#, Marchenko
+from pylops.waveeqprocessing.marchenko import directwave
 from pylops.waveeqprocessing.mdd import MDD
 from pymarchenko.marchenko import Marchenko
 from pymarchenko.raymarchenko import RayleighMarchenko
@@ -111,7 +111,49 @@ def MarchenkoImaging(vsx, vsz, r, s, dr, dt, nt, vel,
 
     Parameters
     ----------
-    
+    vsx : :obj:`numpy.ndarray`
+        X-coordinates of virtual sources
+    vsz : :obj:`numpy.ndarray`
+        Z-coordinates of virtual sources
+    r : :obj:`numpy.ndarray`
+        Receiver array
+    s : :obj:`numpy.ndarray`
+        Source array
+    dr : :obj:`float`
+        Sampling of receiver integration axis
+    dt : :obj:`float`
+        Sampling of time integration axis
+    nt : :obj:`int`
+        Number of samples in time (not required if ``R`` is in time)
+    vel : :obj:`numpy.ndarray`
+        Velocity model
+    toff : :obj:`float`
+        Time-offset to apply to traveltime
+    nsmooth : :obj:`int`
+        Number of samples of smoothing operator to apply to window
+    wav : :obj:`numpy.ndarray`, optional
+        Wavelet to apply to direct arrival when created using ``trav``
+    wav_c : :obj:`int`
+        Index of center of wavelet
+    nfmax : :obj:`int`
+        Index of max frequency to include in deconvolution process
+    igaths : :obj:`list`, optional
+        Indices of x-axis along which to compute angle gathers
+    nalpha : :obj:`int`
+        Indices of x-axis along which to compute angle gathers
+    jt : :obj:`int`
+        Subsampling to apply to time axis of inputs wavefields for MDD
+    data : :obj:`numpy.ndarray`
+        Reflection data
+    kind : :obj:`str`, optional
+        Marchenko algorithm to apply (``mck``, ``nmck``, or ``rmck``)
+    niter : :obj:`int`, optional
+        Number of iterations of Marchenko scheme
+    nproc : :obj:`int`, optional
+        Number of processes
+    nthread : :obj:`int`, optional
+        Number of threads per process
+
     Returns
     -------
     iss : :obj:`numpy.ndarray`
@@ -122,6 +164,7 @@ def MarchenkoImaging(vsx, vsz, r, s, dr, dt, nt, vel,
         Single-scattering angle gathers
     amck : :obj:`numpy.ndarray`, optional
         Marchenko angle gathers
+
     """
     # Set threads
     os.environ["OMP_NUM_THREADS"] = str(nthreads)

@@ -9,7 +9,7 @@ from pylops.utils import dottest as Dottest
 from pylops import Diagonal, Identity, Block, BlockDiag
 from pylops.waveeqprocessing.mdd import MDC
 from pylops.waveeqprocessing.marchenko import directwave
-from pylops.optimization.solver import cgls
+from pylops.optimization.basic import cgls
 from pylops.utils.backend import get_array_module, get_module_name, \
     to_cupy_conditional
 
@@ -220,7 +220,7 @@ class NeumannMarchenko():
         """
         # Create window
         trav_off = trav - self.toff
-        trav_off = np.round(trav_off / self.dt).astype(np.int)
+        trav_off = np.round(trav_off / self.dt).astype(np.int32)
 
         w = np.zeros((self.nr, self.nt), dtype=self.dtype)
         for ir in range(self.nr):
@@ -233,13 +233,13 @@ class NeumannMarchenko():
 
         # Create operators
         Rop = MDC(self.Rtwosided_fft, self.nt2, nv=1, dt=self.dt, dr=self.dr,
-                  twosided=False, conj=False, transpose=False,
+                  twosided=False, conj=False,
                   saveGt=self.saveRt, prescaled=self.prescaled,
-                  usematmul=usematmul, dtype=self.dtype)
+                  usematmul=usematmul)
         R1op = MDC(self.Rtwosided_fft, self.nt2, nv=1, dt=self.dt, dr=self.dr,
-                   twosided=False, conj=True, transpose=False,
+                   twosided=False, conj=True,
                    saveGt=self.saveRt, prescaled=self.prescaled,
-                   usematmul=usematmul, dtype=self.dtype)
+                   usematmul=usematmul)
         Wop = Diagonal(w.T.flatten())
 
         # Create input focusing function

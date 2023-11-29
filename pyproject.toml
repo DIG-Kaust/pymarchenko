@@ -1,0 +1,42 @@
+[build-system]
+requires = [
+    "setuptools >= 65",
+    "setuptools_scm[toml]",
+    "wheel",
+]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "pymarchenko"
+description = "A bag of Marchenko algorithms implemented on top of PyLops"
+readme = "README.md"
+authors = [
+    {name = "Matteo Ravasi", email = "matteoravasi@gmail.com"},
+]
+license = {file = "LICENSE.md"}
+keywords = ["geophysics", "inverse problems", "seismic"]
+classifiers = [
+    "Development Status :: 1 - Planning",
+    "Intended Audience :: Science/Research",
+    "Intended Audience :: Education",
+    "License :: OSI Approved :: GNU Lesser General Public License v3 (LGPLv3)",
+    "Natural Language :: English",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3 :: Only",
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Topic :: Scientific/Engineering : Mathematics",
+]
+dependencies = [
+    "numpy >= 1.15.0",
+    "scipy >= 1.8.0",
+    "pylops >= 2.0.0",
+]
+dynamic = ["version"]
+
+[tool.setuptools.packages.find]
+exclude = ["pytests"]
+
+[tool.setuptools_scm]
+version_file = "pymarchenko/version.py"

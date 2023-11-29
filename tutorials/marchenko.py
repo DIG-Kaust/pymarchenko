@@ -309,12 +309,12 @@ for ivs in range(nvs):
 _, Rrtm = MDD(G0sub, p0_minus[:, :, nt-1:],
               dt=dt, dr=dvsx, twosided=True, adjoint=True,
               psf=False, wav=wav[wav_c-60:wav_c+60],
-              nfmax=nfmax, dtype='complex64', dottest=False,
+              nfmax=nfmax, dottest=False,
               **dict(iter_lim=0, show=0))
 
 Rmck = MDD(g_inv_plus[:, :, nt-1:], g_inv_minus[:, :, nt-1:],
            dt=dt, dr=dvsx, twosided=True, adjoint=False, psf=False,
-           nfmax=nfmax, dtype='complex64', dottest=False,
+           nfmax=nfmax, dottest=False,
            **dict(iter_lim=10, show=0))
 
 fig, axs = plt.subplots(1, 2,  sharey=True, figsize=(10, 8))
