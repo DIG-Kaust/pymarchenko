@@ -8,18 +8,17 @@ dependencies:
   - pip
   - numpy>=1.15.0
   - scipy>=1.1.0
-  - pylops<=1.18.3
+  - pylops>=2.0
   - matplotlib
   - ipython
   - pytest
-  - Sphinx
+  - sphinx
   - numpydoc
   - numba
   - icc_rt
   - pip:
     - pytest-runner
     - setuptools_scm
-    - sphinx-rtd-theme
     - pydata-sphinx-theme
     - sphinx-gallery
     - nbsphinx

@@ -1,14 +1,13 @@
 numpy>=1.15.0
 scipy>=1.1.0
-pylops<=1.18.3
+pylops>=2.0
 numba
 matplotlib
 ipython
 pytest
 pytest-runner
 setuptools_scm
-Sphinx==3.5.4
-sphinx-rtd-theme
+sphinx
 pydata-sphinx-theme
 sphinx-gallery
 numpydoc
