@@ -3,6 +3,17 @@
 Changelog
 =========
 
+Version 0.2.0
+-------------
+
+*Released on: 29/11/2023*
+
+|:vertical_traffic_light:| |:vertical_traffic_light:| This is the first version supporting PyLops v2.
+|:vertical_traffic_light:| |:vertical_traffic_light:|
+
+* Modified all routines to interface with PyLops v2.x.x
+
+
 Version 0.1.0
 -------------
 
