@@ -52,9 +52,12 @@ numpydoc_class_members_toctree = False
 
 sphinx_gallery_conf = {
     # path to your examples scripts
-    'examples_dirs': ['../../tutorials',],
+    "examples_dirs": [
+        "../../examples",
+        "../../tutorials",
+    ],
     # path where to save gallery generated examples
-    'gallery_dirs': ['tutorials',],
+    "gallery_dirs": ["gallery", "tutorials"],
     'filename_pattern': '\.py',
     # Remove the "Download all examples" button from the top level gallery
     'download_all_examples': False,
@@ -73,9 +76,10 @@ plot_include_source = True
 plot_formats = ['png']
 
 # Sphinx project configuration
-templates_path = ['_templates']
-exclude_patterns = ['_build', '**.ipynb_checkpoints']
-source_suffix = '.rst'
+templates_path = ["_templates"]
+exclude_patterns = ["_build", "**.ipynb_checkpoints", "**.ipynb", "**.md5"]
+source_suffix = ".rst"
+
 # The encoding of source files.
 source_encoding = 'utf-8-sig'
 master_doc = 'index'
@@ -132,9 +136,11 @@ html_context = {
     # Custom variables to enable "Improve this page"" and "Download notebook"
     # links
     'doc_path': 'docs/source',
-    'galleries': sphinx_gallery_conf['gallery_dirs'],
-    'gallery_dir': sphinx_gallery_conf['gallery_dirs'],
-    'github_project': 'PyLops',
+    "galleries": sphinx_gallery_conf["gallery_dirs"],
+    "gallery_dir": dict(
+        zip(sphinx_gallery_conf["gallery_dirs"], sphinx_gallery_conf["examples_dirs"])
+    ),
+    'github_project': 'DIG-Kaust',
     'github_repo': 'pymarchenko',
     'github_version': 'main',
 }
