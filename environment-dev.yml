@@ -21,5 +21,6 @@ dependencies:
     - setuptools_scm
     - pydata-sphinx-theme
     - sphinx-gallery
+    - sphinxemoji
     - nbsphinx
     - image
