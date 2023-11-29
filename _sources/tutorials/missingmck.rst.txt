@@ -461,7 +461,7 @@ a sparsity promoting solver like :func:`pylops.optimization.sparsity.FISTA`
        399      -0.0000e+00         5.165e+10   3.499e+12   7.642e+03
        400      -0.0000e+00         5.164e+10   3.498e+12   7.616e+03
 
-    Iterations = 400        Total time (s) = 247.83
+    Iterations = 400        Total time (s) = 252.35
     --------------------------------------------------------------------------------
 
 
@@ -633,7 +633,7 @@ and finally the total Green's functions
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** (4 minutes 17.515 seconds)
+   **Total running time of the script:** (4 minutes 22.528 seconds)
 
 
 .. _sphx_glr_download_tutorials_missingmck.py:
