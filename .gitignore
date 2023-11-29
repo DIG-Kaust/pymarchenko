@@ -138,7 +138,6 @@ data
 TODO
 .idea
 .DS_Store
-docssrc/source/gallery/
-docssrc/source/api/generated/
-docssrc/source/tutorials
+docs/source/api/generated/
+docs/source/tutorials
 doctrees/

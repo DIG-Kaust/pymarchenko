@@ -34,20 +34,12 @@ tests:
 	$(PYTHON) setup.py test
 
 doc:
-	cd docssrc  && rm -rf source/api/generated && rm -rf source/gallery &&\
+	cd docs  && rm -rf source/api/generated && rm -rf source/gallery &&\
 	rm -rf source/tutorials && rm -rf source/examples &&\
 	rm -rf build && make html && cd ..
 
 docupdate:
-	cd docssrc && make html && cd ..
-
-docgithub:
-	cd docssrc && make github && cd ..
-
-docpush:
-	git checkout gh-pages && git merge main && cd docssrc && make github &&\
-	cd ../docs && git add . && git commit -m "Updated documentation" &&\
-	git push origin gh-pages && git checkout main
+	cd docs && make html && cd ..
 
 servedoc:
 	$(PYTHON) -m http.server --directory docs/build/html/

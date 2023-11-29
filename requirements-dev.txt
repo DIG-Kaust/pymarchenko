@@ -7,7 +7,7 @@ ipython
 pytest
 pytest-runner
 setuptools_scm
-sphinx
+Sphinx
 pydata-sphinx-theme
 sphinx-gallery
 sphinxemoji

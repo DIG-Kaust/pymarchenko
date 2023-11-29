@@ -12,7 +12,7 @@ dependencies:
   - matplotlib
   - ipython
   - pytest
-  - sphinx
+  - Sphinx
   - numpydoc
   - numba
   - icc_rt
